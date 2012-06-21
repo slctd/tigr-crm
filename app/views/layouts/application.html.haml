@@ -6,10 +6,20 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-  =link_to "Sign in", new_user_session_path
-  =link_to "Sign out", destroy_user_session_path, method: :delete
-  - flash.each do |name, msg|
-    %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
-      %a.close{'data-dismiss' => "alert"} ×
-      = msg
-  = yield
+  .navbar
+    .navbar-inner
+      .container
+        %a.brand{href: root_path} CRM
+        %ul.nav
+          %li= link_to "Contacts", contacts_path
+          %li= link_to "Tasks", "#"
+  .container
+    - if user_signed_in?
+      = "Hello, #{current_user.email}!"
+      = link_to "Sign out", destroy_user_session_path, method: :delete
+    - flash.each do |name, msg|
+      %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
+        %a.close{'data-dismiss' => "alert"} ×
+        = msg
+    = yield
+    
