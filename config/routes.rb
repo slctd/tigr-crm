@@ -1,11 +1,12 @@
 Crm::Application.routes.draw do
-  
-  resources :companies
+
+  resources :contacts, only: [:index]
+  resources :people, except: [:index]
+  resources :companies, except: [:index]
 
   devise_for :users
   
-  
-  root :to => 'pages#index'
+  root :to => 'contacts#index'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

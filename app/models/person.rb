@@ -6,7 +6,7 @@ class Person < ActiveRecord::Base
   
   accepts_nested_attributes_for :emails, allow_destroy: true
   
-  attr_accessible :company_id, :description, :firstname, :job, :lastname
+  attr_accessible :company_id, :description, :firstname, :job, :lastname, :emails_attributes
   
   validates :firstname, :lastname, presence: true
 end

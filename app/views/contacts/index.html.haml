@@ -1,0 +1,7 @@
+%h1 All contacts
+=link_to "Add new company", new_company_path
+=link_to "Add new person", new_person_path
+
+%table
+  =render @companies
+  =render @people

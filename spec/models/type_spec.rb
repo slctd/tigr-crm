@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe ContactType do
+describe Type do
   pending "add some examples to (or delete) #{__FILE__}"
 end
