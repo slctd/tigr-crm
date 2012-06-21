@@ -30,4 +30,17 @@ def create_contact_types
   AddressType.create!(name: "Счета")
   AddressType.create!(name: "Другой")
   AddressType.create!(name: "Работа")
+  
+  TaskType.create!(name: "Звонок")
+  TaskType.create!(name: "Возможная сделка")
+  TaskType.create!(name: "Демо")
+  TaskType.create!(name: "Электронная почта")
+  TaskType.create!(name: "Факс")
+  TaskType.create!(name: "Проверка выполнения")
+  TaskType.create!(name: "Обед")
+  TaskType.create!(name: "Встреча")
+  TaskType.create!(name: "Заметка")
+  TaskType.create!(name: "Доставка")  
+  TaskType.create!(name: "Социальные сети")
+  TaskType.create!(name: "Выражение благодарности")
 end
