@@ -3,8 +3,13 @@ namespace :db do
   desc "Fill database with necessary data"
   task :crm => :environment do
     Rake::Task['db:reset'].invoke
+    create_users
     create_contact_types
   end
+end
+
+def create_users
+  User.create!(email: "admin@example.com", password: "qwerty")  
 end
 
 def create_contact_types

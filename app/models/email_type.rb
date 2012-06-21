@@ -1,3 +1,3 @@
-class EmailType < ContactType
+class EmailType < Type
   has_many :emails
 end

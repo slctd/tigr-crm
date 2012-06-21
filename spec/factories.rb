@@ -6,6 +6,10 @@ FactoryGirl.define do
     password_confirmation "foobar"
   end
   
+  factory :company do
+    name "Company"
+  end
+  
   sequence :email do |n|
     "email#{n}@example.com"
   end

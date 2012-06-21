@@ -7,4 +7,9 @@
     = csrf_meta_tags
   %body
   =link_to "Sign in", new_user_session_path
+  =link_to "Sign out", destroy_user_session_path, method: :delete
+  - flash.each do |name, msg|
+    %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
+      %a.close{'data-dismiss' => "alert"} ×
+      = msg
   = yield

@@ -1,6 +1,6 @@
-class CreateContactTypes < ActiveRecord::Migration
+class CreateTypes < ActiveRecord::Migration
   def change
-    create_table :contact_types do |t|
+    create_table :types do |t|
       t.string :name
       t.string :type
 
