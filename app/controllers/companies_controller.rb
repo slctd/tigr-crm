@@ -1,6 +1,11 @@
 class CompaniesController < ApplicationController
   before_filter :authenticate_user!
   
+  def index
+    @companies = Company.order(:name).where("name like ?", "%#{params[:term]}%")
+    render json: @companies.map(&:name)
+  end
+  
   # GET /companies/1
   # GET /companies/1.json
   def show

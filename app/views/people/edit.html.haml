@@ -1,3 +1,12 @@
+%ul.breadcrumb
+  %li
+    = link_to "All contacts", contacts_path
+    %span.divider >
+  %li
+    = link_to "#{@person.firstname} #{@person.lastname}", @person
+    %span.divider >
+  %li Edit
+
 %h1 Edit person
 
 = render 'form'

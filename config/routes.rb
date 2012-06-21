@@ -2,7 +2,7 @@ Crm::Application.routes.draw do
 
   resources :contacts, only: [:index]
   resources :people, except: [:index]
-  resources :companies, except: [:index] do
+  resources :companies do
     get 'add_person/:person_id' => 'people#add_to_company', as: "add_person"
     resources :people, only: [:create]
   end
