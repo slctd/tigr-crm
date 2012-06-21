@@ -7,7 +7,7 @@ class Company < ActiveRecord::Base
   
   accepts_nested_attributes_for :emails, allow_destroy: true
   
-  attr_accessible :name, :emails_attributes
+  attr_accessible :name, :description, :emails_attributes
   
   validates :name, presence: true
 end

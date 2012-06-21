@@ -9,6 +9,8 @@
     = render 'shared/email_fields', f: email_form
   = link_to_add_fields t('.add_email'), f, :emails
 
+  = f.input :description, input_html: { rows: 2 }  
+  
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), companies_path, :class => 'btn'

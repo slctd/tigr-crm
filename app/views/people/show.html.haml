@@ -1,10 +1,43 @@
-%p
-  %b Firstname:
-  = @person.firstname
-%p
-  %b Lastname:
-  = @person.lastname  
+%ul.breadcrumb
+  %li
+    = link_to "All contacts", contacts_path
+    %span.divider >
+  %li
+    = "#{@person.firstname} #{@person.lastname}"
 
-= link_to 'Edit', edit_person_path(@person)
-\|
-= link_to 'Back', contacts_path
+%h2
+  = "#{@person.firstname} #{@person.lastname}"
+%div
+  = link_to 'Edit person', edit_person_path(@person)
+  
+%h3 General info
+%dl.dl-horizontal
+  -unless @person.company.nil?
+    %dt Company:
+    %dd= link_to @person.company.name, @person.company
+  %dt Contact type:
+  %dd ...
+  = render @person.emails
+  - unless @person.description.nil?
+    %dt Description:
+    %dd= @person.description
+  %dt Tags:
+  %dd ...
+
+.tabbable
+  %ul.nav.nav-tabs
+    %li.active
+      %a{href: "#history", "data-toggle" => "tab"} History  
+    %li
+      %a{href: "#tasks", "data-toggle" => "tab"} Tasks  
+    %li
+      %a{href: "#twitter", "data-toggle" => "tab"} Twitter
+    %li
+      %a{href: "#deals", "data-toggle" => "tab"} Deals      
+  .tab-content
+    .tab-pane.active#history
+      %p History here
+    .tab-pane#tasks
+      %p Tasks
+    .tab-pane#deals
+      %p Deals

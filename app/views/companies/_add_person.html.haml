@@ -1,0 +1,3 @@
+= form_tag '/people/search', class: "form-search" do
+  = text_field_tag :search, params[:search], class: "search-query"
+  = submit_tag "Search", name: nil, class: "btn"

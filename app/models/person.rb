@@ -1,4 +1,6 @@
 class Person < ActiveRecord::Base
+  scope :free, where(company_id: nil)
+  
   belongs_to :company
   has_many :emails, as: :emailable, inverse_of: :emailable, dependent: :destroy
   has_many :phones

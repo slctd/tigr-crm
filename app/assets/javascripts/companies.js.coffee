@@ -7,8 +7,8 @@ jQuery ->
     $(this).before(new_elem)
     event.preventDefault()
     
-    # Set callback on Remove email button
-    $('form').on 'click', '.remove_email_fields', (event) ->
-      $(this).prev('input[type=hidden]').val('1')
-      $(this).closest('fieldset').hide()
-      event.preventDefault()
+  # Set callback on Remove email button
+  $('form').on 'click', '.remove_email_fields', (event) ->
+    $(this).prev('input[type=hidden]').val('1')
+    $(this).closest('fieldset').hide()
+    event.preventDefault()
