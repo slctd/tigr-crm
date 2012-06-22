@@ -7,5 +7,6 @@ describe "Companies" do
   
   describe "/companies/:id" do
     pending "something for show action"
+    pending "adding person to company from here"
   end
 end
