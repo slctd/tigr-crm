@@ -9,5 +9,7 @@ class Company < ActiveRecord::Base
   
   attr_accessible :name, :description, :emails_attributes
   
-  validates :name, presence: true
+  validates :name, presence: true,
+                   uniqueness: { case_sensitive:  false }
+  
 end

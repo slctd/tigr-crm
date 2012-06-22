@@ -1,6 +1,13 @@
 require 'spec_helper'
 
 describe Company do
+  
+  it "should reject companies with the same names" do
+    company1 = FactoryGirl.create(:company, name: "Company 1")
+    company2 = Company.new(name: "Company 1")
+    company2.should be_invalid
+  end
+  
   describe "associations" do
     it "should delete emails when deleted" do
       company = FactoryGirl.create(:company);

@@ -7,7 +7,7 @@ FactoryGirl.define do
   end
   
   factory :company do
-    name "Company"
+    name { generate(:random_string) }
   end
 
   factory :person do

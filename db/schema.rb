@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20120621214058) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "companies", ["name"], :name => "index_companies_on_name", :unique => true
+
   create_table "emails", :force => true do |t|
     t.string   "email"
     t.string   "email_type_id"
