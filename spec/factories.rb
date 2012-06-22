@@ -9,6 +9,20 @@ FactoryGirl.define do
   factory :company do
     name "Company"
   end
+
+  factory :person do
+    firstname { generate(:random_string) }
+    lastname { generate(:random_string) }    
+  end
+  
+  factory :email do
+    email { generate(:email) }
+    email_type
+  end
+  
+  factory :email_type do
+    name "Some type"
+  end
   
   sequence :email do |n|
     "email#{n}@example.com"

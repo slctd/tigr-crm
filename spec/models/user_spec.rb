@@ -1,5 +1,5 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  pending "reject users with the same emails"
 end

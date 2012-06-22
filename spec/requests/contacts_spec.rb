@@ -8,11 +8,15 @@ describe "Contacts" do
     end
     
     it "shows list of companies and persons" do
-#      user = FactoryGirl.create(:user)
-#      company = FactoryGirl.create(:company)
-#      integration_sign_in FactoryGirl.create(:user)
-#      visit companies_path
-#      page.should have_content company.name
+      user = FactoryGirl.create(:user)
+      company = FactoryGirl.create(:company)
+      person = FactoryGirl.create(:person)
+      
+      integration_sign_in FactoryGirl.create(:user)
+      visit contacts_path
+
+      page.should have_selector("td", text: company.name)
+      page.should have_selector("td", text: "#{person.firstname} #{person.lastname}")
     end    
   end
 end
