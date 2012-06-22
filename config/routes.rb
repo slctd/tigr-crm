@@ -1,5 +1,6 @@
 Crm::Application.routes.draw do
 
+  resources :tasks, except: [:show]  
   resources :contacts, only: [:index]
   resources :people, except: [:index]
   resources :companies do

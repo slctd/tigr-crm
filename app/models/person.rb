@@ -5,6 +5,7 @@ class Person < ActiveRecord::Base
   has_many :emails, as: :emailable, inverse_of: :emailable, dependent: :destroy
   has_many :phones
   has_many :addresses
+  has_many :tasks, as: :taskable, dependent: :destroy
   
   accepts_nested_attributes_for :emails, allow_destroy: true
   

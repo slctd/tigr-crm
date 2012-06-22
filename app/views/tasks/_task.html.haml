@@ -1,0 +1,9 @@
+%tr
+  %td
+    = task.name
+    = task.description
+    = task.deadline_date.to_s
+    - if task.taskable.class.name == "Company"
+      = task.taskable.name
+    - else
+      = "#{task.taskable.firstname} #{task.taskable.lastname}"

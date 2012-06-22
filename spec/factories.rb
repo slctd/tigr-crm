@@ -15,6 +15,15 @@ FactoryGirl.define do
     lastname { generate(:random_string) }    
   end
   
+  factory :task do
+    name { generate(:random_string) }
+    task_type_id TaskType.first_or_create(name: "Type")
+    deadline_date 2.days.since
+    deadline_time Time.now
+    responsible_id :user
+    description { generate(:random_string) }
+  end
+  
   factory :email do
     email { generate(:email) }
     email_type
@@ -23,7 +32,7 @@ FactoryGirl.define do
   factory :email_type do
     name "Some type"
   end
-  
+    
   sequence :email do |n|
     "email#{n}@example.com"
   end
