@@ -1,0 +1,13 @@
+= simple_form_for @task, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :name
+  = f.association :task_type, include_blank: false
+  - pre = [@task.taskable].to_json(methods: [:id_with_class_name, :name], only: [])
+  = f.input :contact, input_html: { 'data-pre' => pre }
+  = f.input :deadline_date
+  = f.input :deadline_time
+  = f.association :user, label_method: :email, value_method: :id, selected: current_user.id, include_blank: false 
+  = f.input :description, html: { rows: 2 }
+
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), tasks_path, :class => 'btn'

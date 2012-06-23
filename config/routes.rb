@@ -1,11 +1,16 @@
 Crm::Application.routes.draw do
 
-  resources :tasks, except: [:show]  
+  resources :tasks, except: [:show]
+  
   resources :contacts, only: [:index]
-  resources :people, except: [:index]
+  
+  resources :people, except: [:index] do
+    resources :tasks, except: [:show]
+  end
+  
   resources :companies do
     get 'add_person/:person_id' => 'people#add_to_company', as: "add_person"
-    resources :people, only: [:create]
+    resources :tasks, except: [:show]
   end
 
   devise_for :users

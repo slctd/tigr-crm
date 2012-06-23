@@ -13,4 +13,7 @@ class Company < ActiveRecord::Base
   validates :name, presence: true,
                    uniqueness: { case_sensitive:  false }
   
+  def id_with_class_name
+    "#{id}_#{self.class.name}"
+  end
 end
