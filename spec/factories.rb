@@ -17,7 +17,7 @@ FactoryGirl.define do
   
   factory :task do
     name { generate(:random_string) }
-    task_type_id TaskType.first_or_create(name: "Type")
+    task_type_id TaskType.first_or_create(name: "Type").id
     deadline_date 2.days.since
     responsible_id :user
     description { generate(:random_string) }

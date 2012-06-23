@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120623201906) do
+ActiveRecord::Schema.define(:version => 20120623203844) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address"
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(:version => 20120623201906) do
   end
 
   add_index "companies", ["name"], :name => "index_companies_on_name", :unique => true
+
+  create_table "currencies", :force => true do |t|
+    t.string   "name"
+    t.string   "abbreviation"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "currencies", ["abbreviation"], :name => "index_currencies_on_abbreviation", :unique => true
+  add_index "currencies", ["name"], :name => "index_currencies_on_name", :unique => true
 
   create_table "emails", :force => true do |t|
     t.string   "email"
