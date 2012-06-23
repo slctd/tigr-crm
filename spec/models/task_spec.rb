@@ -11,12 +11,12 @@ describe Task do
   it "should be created by person" do
     person =  FactoryGirl.create(:person)
     task = Task.new(FactoryGirl.attributes_for(:task))
-    task.contact = "#{person.id}_Person"    
+    task.contact = "#{person.id}_Person"
     task.should be_valid
   end
   
-  it "should not be created by itself" do
+  it "should be created by no one" do
     task = Task.new(FactoryGirl.attributes_for(:task))
-    task.should be_invalid
+    task.should be_valid
   end
 end

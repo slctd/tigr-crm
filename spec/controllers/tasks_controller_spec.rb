@@ -48,7 +48,12 @@ describe TasksController do
 
       it "redirects to the created task's parent" do
         post :create, {:task => valid_attributes}
-        response.should redirect_to company_path(Task.last.taskable, anchor: "tasks")
+        response.should redirect_to company_url(Task.last.taskable, anchor: "tasks")
+      end
+      
+      it "redirects to tasks url" do
+        post :create, {:task => valid_attributes.merge({contact: nil})}
+        response.should redirect_to tasks_url
       end
     end
 
@@ -87,11 +92,17 @@ describe TasksController do
         assigns(:task).should eq(task)
       end
  
-      it "redirects to the task" do
+      it "redirects to the task's parent" do
         task = Task.create! valid_attributes
         put :update, {:id => task.to_param, :task => valid_attributes}
         task.reload
         response.should redirect_to company_path(task.taskable, anchor: "tasks")
+      end
+      
+      it "redirects to tasks url" do
+        task = Task.create! valid_attributes
+        put :update, {:id => task.to_param, :task => valid_attributes.merge({contact: nil})}
+        response.should redirect_to tasks_url
       end
     end
  

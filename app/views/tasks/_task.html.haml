@@ -9,7 +9,8 @@
     .date
       = task.deadline_date.to_s
   %td
-    = link_to task.taskable.name, polymorphic_path(task.taskable)
+    - unless task.taskable.nil?
+      = link_to task.taskable.name, polymorphic_path(task.taskable)
   %td
     = link_to "Edit", edit_task_path(task)
     %br
