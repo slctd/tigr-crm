@@ -19,7 +19,6 @@ FactoryGirl.define do
     name { generate(:random_string) }
     task_type_id TaskType.first_or_create(name: "Type")
     deadline_date 2.days.since
-    deadline_time Time.now
     responsible_id :user
     description { generate(:random_string) }
   end

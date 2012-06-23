@@ -64,14 +64,15 @@ ActiveRecord::Schema.define(:version => 20120621214058) do
   end
 
   create_table "tasks", :force => true do |t|
-    t.string   "name"
-    t.integer  "task_type_id"
-    t.date     "deadline_date"
-    t.time     "deadline_time"
-    t.integer  "responsible_id"
-    t.string   "description"
     t.integer  "taskable_id"
     t.string   "taskable_type"
+    t.integer  "event_id"
+    t.integer  "deal_id"
+    t.string   "name"
+    t.integer  "task_type_id"
+    t.datetime "deadline_date"
+    t.integer  "responsible_id"
+    t.string   "description"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
