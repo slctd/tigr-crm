@@ -2,14 +2,16 @@ require 'spec_helper'
 
 describe Task do
   it "should be created by company" do
-    company =  FactoryGirl.create(:company)
-    task = company.tasks.new(FactoryGirl.attributes_for(:task))
+    company = FactoryGirl.create(:company)
+    task = Task.new(FactoryGirl.attributes_for(:task))
+    task.contact = "#{company.id}_Company"
     task.should be_valid
   end
   
   it "should be created by person" do
     person =  FactoryGirl.create(:person)
-    task = person.tasks.new(FactoryGirl.attributes_for(:task))
+    task = Task.new(FactoryGirl.attributes_for(:task))
+    task.contact = "#{person.id}_Person"    
     task.should be_valid
   end
   

@@ -1,3 +1,21 @@
-// Place all the styles related to the tasks controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.task-type {
+  width: 100px;
+}
+.task {
+  color: #CC3333;
+  .title {
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+.active {
+  .title {
+    color: #1A6DB3;
+  }
+  .description {
+    color: #000;
+  }
+  .date {
+    color: #000;
+  }
+}

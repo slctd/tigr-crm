@@ -5,8 +5,9 @@ describe "People" do
     integration_sign_in FactoryGirl.create(:user)
   end
   
-  describe "/person/:id" do
+  describe "/people/:id" do
     pending "something for show action"
+    pending "opens tasks tab"
   end
   
   describe "/person/new" do

@@ -5,13 +5,19 @@ class TasksController < ApplicationController
   
   def new
     @task = Task.new
+    if params[:company_id].present?
+      @task.taskable = Company.find(params[:company_id])
+    end
+    if params[:person_id].present?
+      @task.taskable = Person.find(params[:person_id])
+    end
   end
   
   def create
     @task = Task.new(params[:task])
     
     if @task.save
-      redirect_to tasks_url, notice: 'Task was successfully created.'
+      redirect_to polymorphic_path(@task.taskable, anchor: "tasks"), notice: 'Task was successfully created.'
     else
       render "new"
     end
@@ -25,7 +31,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     if @task.update_attributes(params[:task])
-      redirect_to tasks_url, notice: 'Company was successfully updated.'
+      redirect_to polymorphic_path(@task.taskable, anchor: "tasks"), notice: 'Task was successfully updated.'
     else
       render "edit"
     end
@@ -35,6 +41,6 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task.destroy
 
-    redirect_to tasks_path
+    redirect_to polymorphic_path(@task.taskable, anchor: "tasks"), notice: 'Task was deleted.'
   end
 end

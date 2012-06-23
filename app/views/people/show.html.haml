@@ -24,20 +24,4 @@
   %dt Tags:
   %dd ...
 
-.tabbable
-  %ul.nav.nav-tabs
-    %li.active
-      %a{href: "#history", "data-toggle" => "tab"} History  
-    %li
-      %a{href: "#tasks", "data-toggle" => "tab"} Tasks  
-    %li
-      %a{href: "#twitter", "data-toggle" => "tab"} Twitter
-    %li
-      %a{href: "#deals", "data-toggle" => "tab"} Deals      
-  .tab-content
-    .tab-pane.active#history
-      %p History here
-    .tab-pane#tasks
-      %p Tasks
-    .tab-pane#deals
-      %p Deals
+= render 'contacts/tabs', object: @person

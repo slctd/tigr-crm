@@ -20,31 +20,5 @@
     %dd= @company.description
   %dt Tags: 
   %dd ...
-
-.tabbable
-  %ul.nav.nav-tabs
-    %li.active
-      %a{href: "#history", "data-toggle" => "tab"} History  
-    %li
-      %a{href: "#tasks", "data-toggle" => "tab"} Tasks  
-    %li
-      %a{href: "#people", "data-toggle" => "tab"}
-        People
-        = "(#{@company.people.count})"
-    %li
-      %a{href: "#twitter", "data-toggle" => "tab"} Twitter
-    %li
-      %a{href: "#deals", "data-toggle" => "tab"} Deals      
-  .tab-content
-    .tab-pane.active#history
-      %p History here
-    .tab-pane#tasks
-      %p Tasks
-    .tab-pane#people
-      Add new person:
-      - Person.free.each do |person|
-        %li= link_to "#{person.firstname} #{person.lastname}", company_add_person_path(@company.id, person.id)
-      %table.table
-        = render @company.people
-    .tab-pane#deals
-      %p Deals
+  
+= render 'contacts/tabs', object: @company

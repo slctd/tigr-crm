@@ -1,9 +1,16 @@
 %tr
+  %td.task-type
+    = task.task_type.name
+  %td.task{class: ("active" if task.deadline_date > Time.now.to_date)}
+    .title
+      = task.name
+    .description
+      = task.description
+    .date
+      = task.deadline_date.to_s
   %td
-    = task.name
-    = task.description
-    = task.deadline_date.to_s
-    = task.taskable.name
+    = link_to task.taskable.name, polymorphic_path(task.taskable)
   %td
     = link_to "Edit", edit_task_path(task)
+    %br
     = link_to "Delete", task, :method => :delete, :confirm => "You sure?"    

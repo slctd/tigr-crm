@@ -1,0 +1,6 @@
+.tab-pane#people
+  Add new person:
+  - Person.free.each do |person|
+    %li= link_to "#{person.firstname} #{person.lastname}", company_add_person_path(object.id, person.id)
+  %table.table
+    = render object.people
