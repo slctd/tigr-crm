@@ -5,6 +5,7 @@ namespace :db do
     Rake::Task['db:reset'].invoke
     create_users
     create_contact_types
+    create_stages
   end
 end
 
@@ -43,4 +44,14 @@ def create_contact_types
   TaskType.create!(name: "Доставка")  
   TaskType.create!(name: "Социальные сети")
   TaskType.create!(name: "Выражение благодарности")
+end
+
+def create_stages
+  Stage.create!(name: "Нулевая точка", success_probability: 0)
+  Stage.create!(name: "Начало", success_probability: 3)
+  Stage.create!(name: "Обсуждение", success_probability: 20)  
+  Stage.create!(name: "Оценка", success_probability: 50)  
+  Stage.create!(name: "Переговоры", success_probability: 75)
+  Stage.create!(name: "Устная договоренность", success_probability: 90)  
+  Stage.create!(name: "Успех", success_probability: 100)  
 end
