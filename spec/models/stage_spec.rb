@@ -2,20 +2,26 @@ require 'spec_helper'
 
 describe Stage do
   it "should have unique names" do
-    stage1 = Stage.create!(name: "stage", success_probability: 100)
-    stage2 = Stage.new(name: "stage", success_probability: 100)
+    stage1 = FactoryGirl.create(:stage)
+    stage2 = FactoryGirl.build(:stage, name: stage1.name)
     stage2.should be_invalid
   end
   
   it "should have success probability > 0" do
-    stage = Stage.create!(name: "stage", success_probability: -1)
+    stage = FactoryGirl.create(:stage, success_probability: -1)
     stage.reload
     stage.success_probability.should == 0
   end
   
   it "should have success probability < 100" do
-    stage = Stage.create!(name: "stage", success_probability: 101)
+    stage = FactoryGirl.create(:stage, success_probability: 101)
     stage.reload
     stage.success_probability.should == 100
+  end
+  
+  it "should set success probability to 0 when it's nil" do
+    stage = FactoryGirl.create(:stage, success_probability: nil)
+    stage.reload
+    stage.success_probability.should == 0
   end
 end

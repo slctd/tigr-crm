@@ -9,7 +9,7 @@ class Task < ActiveRecord::Base
                   :name,            :responsible_id,  
                   :task_type_id,    :contact
   
-  validates :name, :task_type, :deadline_date, :responsible_id, presence: true
+  validates :name, :task_type_id, :deadline_date, :responsible_id, presence: true
   
   before_validation :set_taskable
   

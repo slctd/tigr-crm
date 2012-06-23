@@ -7,8 +7,8 @@ describe "Tasks" do
     end
     
     it "shows list of tasks" do
-      company_task = FactoryGirl.create(:company).tasks.create!(FactoryGirl.attributes_for(:task))
-      person_task = FactoryGirl.create(:person).tasks.create!(FactoryGirl.attributes_for(:task))
+      company_task = FactoryGirl.create(:task_by_company)
+      person_task = FactoryGirl.create(:task_by_person)      
       visit tasks_path
       page.should have_selector("td", text: company_task.name)
       page.should have_selector("td", text: company_task.description)    

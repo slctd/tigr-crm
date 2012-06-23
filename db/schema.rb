@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120623203844) do
+ActiveRecord::Schema.define(:version => 20120623205421) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address"
@@ -44,6 +44,22 @@ ActiveRecord::Schema.define(:version => 20120623203844) do
 
   add_index "currencies", ["abbreviation"], :name => "index_currencies_on_abbreviation", :unique => true
   add_index "currencies", ["name"], :name => "index_currencies_on_name", :unique => true
+
+  create_table "deals", :force => true do |t|
+    t.integer  "dealable_id"
+    t.string   "dealable_type"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "currency_id"
+    t.decimal  "budget"
+    t.integer  "budget_type_id"
+    t.date     "closing_date"
+    t.integer  "responsible_id"
+    t.integer  "stage_id"
+    t.integer  "success_probability"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
 
   create_table "emails", :force => true do |t|
     t.string   "email"

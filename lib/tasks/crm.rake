@@ -6,6 +6,7 @@ namespace :db do
     create_users
     create_contact_types
     create_stages
+    create_currencies
   end
 end
 
@@ -44,6 +45,13 @@ def create_contact_types
   TaskType.create!(name: "Доставка")  
   TaskType.create!(name: "Социальные сети")
   TaskType.create!(name: "Выражение благодарности")
+  
+  BudgetType.create!(name: "фиксированный")
+  BudgetType.create!(name: "в час")
+  BudgetType.create!(name: "в день")
+  BudgetType.create!(name: "в неделю")
+  BudgetType.create!(name: "в месяц")
+  BudgetType.create!(name: "в год")
 end
 
 def create_stages
@@ -54,4 +62,9 @@ def create_stages
   Stage.create!(name: "Переговоры", success_probability: 75)
   Stage.create!(name: "Устная договоренность", success_probability: 90)  
   Stage.create!(name: "Успех", success_probability: 100)  
+end
+
+def create_currencies
+  Currency.create!(name: "Рубль", abbreviation: "RUR")
+  Currency.create!(name: "Доллар США", abbreviation: "USD")
 end
