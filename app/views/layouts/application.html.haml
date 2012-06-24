@@ -6,21 +6,22 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-  .navbar
-    .navbar-inner
-      .container
-        %a.brand{href: root_path} CRM
-        %ul.nav
-          %li= link_to "Contacts", contacts_path
-          %li= link_to "Tasks", tasks_path
-          %li.divider-vertical
-        %p.navbar-text.pull-right
-          - if user_signed_in?
-            = "Hi, #{current_user.email}!"
-            = link_to "Sign out", destroy_user_session_path, method: :delete
-  .container
-    - flash.each do |name, msg|
-      %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
-        %a.close{'data-dismiss' => "alert"} ×
-        = msg
-    = yield
+    .navbar
+      .navbar-inner
+        .container
+          %a.brand{href: root_path} CRM
+          %ul.nav
+            %li= link_to "Contacts", contacts_path
+            %li= link_to "Tasks", tasks_path
+            %li.divider-vertical
+          %p.navbar-text.pull-right
+            - if user_signed_in?
+              = "Hi, #{current_user.email}!"
+              = link_to "Sign out", destroy_user_session_path, method: :delete
+    .container
+      - flash.each do |name, msg|
+        %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
+          %a.close{'data-dismiss' => "alert"} ×
+          = msg
+      = yield
+      = debug(params) if Rails.env.development?

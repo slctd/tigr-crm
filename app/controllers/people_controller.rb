@@ -39,7 +39,10 @@ class PeopleController < ApplicationController
   
   def update
     @person = Person.find(params[:id])
-
+    
+    # Nil company if empty name
+    @person.company = nil if params[:person][:company_name] == ''
+    
     respond_to do |format|
       if @person.update_attributes(params[:person])
         format.html { redirect_to @person, notice: 'Person was successfully updated.' }
