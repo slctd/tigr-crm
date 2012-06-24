@@ -22,8 +22,11 @@ class Deal < ActiveRecord::Base
                                                   greater_than_or_equal_to: 0,
                                                   less_than_or_equal_to: 100 }
 
-
-  private  
+  def responsible
+    User.find(self.responsible_id)
+  end
+                                                  
+  private
 
     def set_dealable
       if self.contact =~ /_/

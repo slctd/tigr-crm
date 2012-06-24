@@ -23,13 +23,11 @@ FactoryGirl.define do
     description { generate(:random_string) }
     
     factory :task_by_company do
-      taskable_id :company
-      taskable_type "Company"
+      contact { create(:company).id.to_s + "_Company" }
     end
     
     factory :task_by_person do
-      taskable_id :person
-      taskable_type "Person"
+      contact { create(:person).id.to_s + "_Person" }
     end    
   end
   
@@ -45,13 +43,11 @@ FactoryGirl.define do
     success_probability 50
     
     factory :deal_by_company do
-      dealable_id :company
-      dealable_type "Company"
+      contact { create(:company).id.to_s + "_Company" }
     end
     
     factory :deal_by_person do
-      dealable_id :person
-      dealable_type "Person"
+      contact { create(:person).id.to_s + "_Person" }
     end
   end
   

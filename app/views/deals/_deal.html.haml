@@ -1,0 +1,14 @@
+%tr.deal
+  %td
+    .name  
+      = deal.name
+    .contact
+    - unless deal.dealable.nil?
+      = link_to deal.dealable.name, polymorphic_path(deal.dealable)
+    - else
+      Клиент не задан
+  %td
+    = deal.responsible.email
+  %td
+    - if deal.budget.present?
+      = "#{deal.budget.to_s} #{deal.currency.abbreviation}"

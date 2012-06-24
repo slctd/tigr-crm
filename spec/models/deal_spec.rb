@@ -43,11 +43,34 @@ describe Deal do
     deal.success_probability.should == 0
   end
   
-  describe "taskable association" do
+  it "should respond to responsible" do
+    deal = FactoryGirl.create(:deal)
+    deal.should respond_to(:responsible)
+  end
+  
+  it "should should have proper User as responsible" do
+    user = FactoryGirl.create(:user)
+    deal = FactoryGirl.create(:deal, responsible_id: user.id)
+    deal.responsible.should == user
+  end
+  
+  describe "dealable association" do
     it "should respond to dealable" do
       FactoryGirl.create(:deal_by_company).should respond_to(:dealable)
       FactoryGirl.create(:deal_by_person).should respond_to(:dealable)      
     end
+    
+    it "should have proper dealable company" do
+      company = FactoryGirl.create(:company)
+      deal = FactoryGirl.create(:deal, contact: company.id.to_s + "_Company")
+      deal.dealable.should == company
+    end
+
+    it "should have proper dealable person" do
+      person = FactoryGirl.create(:person)
+      deal = FactoryGirl.create(:deal, contact: person.id.to_s + "_Person")
+      deal.dealable.should == person
+    end    
     
     it "should be created with contact line by company" do
       company = FactoryGirl.create(:company)
