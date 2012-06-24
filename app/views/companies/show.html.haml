@@ -20,5 +20,11 @@
     %dd= @company.description
   %dt Tags: 
   %dd ...
-  
-= render 'contacts/tabs', object: @company
+
+.tabbable
+  = render 'tabs_header', object: @company
+  .tab-content
+    = render 'history_tab', object: @company
+    = render 'tasks_tab', object: @company
+    = render 'people_tab', object: @company
+    = render 'deals_tab', object: @company

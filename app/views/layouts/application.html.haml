@@ -13,13 +13,14 @@
         %ul.nav
           %li= link_to "Contacts", contacts_path
           %li= link_to "Tasks", tasks_path
+          %li.divider-vertical
+        %p.navbar-text.pull-right
+          - if user_signed_in?
+            = "Hi, #{current_user.email}!"
+            = link_to "Sign out", destroy_user_session_path, method: :delete
   .container
-    - if user_signed_in?
-      = "Hello, #{current_user.email}!"
-      = link_to "Sign out", destroy_user_session_path, method: :delete
     - flash.each do |name, msg|
       %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
         %a.close{'data-dismiss' => "alert"} ×
         = msg
     = yield
-    

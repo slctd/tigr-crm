@@ -24,4 +24,9 @@
   %dt Tags:
   %dd ...
 
-= render 'contacts/tabs', object: @person
+.tabbable
+  = render 'tabs_header'
+  .tab-content
+    = render 'history_tab', object: @person
+    = render 'tasks_tab', object: @person
+    = render 'deals_tab', object: @person

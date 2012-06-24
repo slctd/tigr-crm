@@ -6,7 +6,7 @@
 
   %h2 General info
   = f.simple_fields_for :emails do |email_form|
-    = render 'shared/email_fields', f: email_form
+    = render 'email_fields', f: email_form
   = link_to_add_fields t('.add_email'), f, :emails
 
   = f.input :description, input_html: { rows: 2 }  
