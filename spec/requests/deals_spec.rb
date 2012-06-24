@@ -43,4 +43,22 @@ describe "Deals" do
       find("tr", text: @deal3.name).should have_selector("td", text: "#{@deal3.budget.to_s} #{@deal3.currency.abbreviation}")
     end
   end
+  
+  describe "GET /deals/new" do
+    pending "tests with TokenInput" do
+      #company = FactoryGirl.create(:company)
+      #ti_field = find(:xpath, XPath::HTML::fillable_field("#token-input-deal-contact"))
+      #ti_field.set(company.name)
+      #wait_until { page.evaluate_script('active') == 0 }
+      #within(:css, ".token-input-dropdown") { find("li:contains('#{company.name}')").click }
+      
+      #within(:xpath, "//ul[@class='token-input-list' and following-sibling::input[@id='#deal_contat']]") do
+      #  find(:css, ".token-input-delete-token").click
+      #end
+    end
+    
+    pending "sets success probability accoring to stage" do
+      
+    end
+  end
 end

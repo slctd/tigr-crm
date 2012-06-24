@@ -1,3 +1,13 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+jQuery ->
+  $('#deal_stage_id').change ->
+    stage_id = $(this).find('option:selected').val()
+    $.getJSON "/stages/#{stage_id}.json", (stage) ->
+      $('#deal_success_probability').val(stage.success_probability)
+  
+  input = $('#deal_contact')
+  input.tokenInput '/contacts.json'
+    theme: 'facebook'
+    prePopulate: input.data('pre')    
+    tokenLimit: 1
+    propertyToSearch: "name"    
+    tokenValue: "id_with_class_name"
