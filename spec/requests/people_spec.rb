@@ -7,7 +7,12 @@ describe "People" do
   
   describe "/people/:id" do
     pending "something for show action"
-    pending "opens tasks tab"
+    
+    it "opens tasks tab when #tasks path open" do
+      person = FactoryGirl.create(:person)
+      visit person_path(person, anchor: "tasks")
+      page.should have_selector('a', content: "New task", visible: false)
+    end
   end
   
   describe "/person/new" do
