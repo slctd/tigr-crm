@@ -36,10 +36,10 @@ FactoryGirl.define do
     description { generate(:random_string) }
     currency_id Currency.first_or_create(name: "Dollar", abbreviation: "USD")
     budget 100
-    budget_type BudgetType.first_or_create(name: "fixed")
+    budget_type_id BudgetType.first_or_create(name: "fixed").id
     closing_date 1.month.since
     responsible_id :user
-    stage Stage.first_or_create(name: "Stage")
+    stage_id { create(:stage).id }
     success_probability 50
     
     factory :deal_by_company do
