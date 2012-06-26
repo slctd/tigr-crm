@@ -1,0 +1,22 @@
+%h2= @deal.name
+= link_to "Edit this deal", edit_deal_path(@deal)
+%table.table-condensed.deal
+  %tr
+    %td Возможная сделка на стадии:
+    %td Вероятность успеха:
+    %td Бюджет:
+    %td Предполагаема дата закрытия
+  %tr
+    %td= @deal.stage.name
+    %td= @deal.success_probability
+    %td
+      - if @deal.budget.present?
+        = @deal.budget
+      - else
+        Бюджет не задан
+    %td= @deal.closing_date
+    
+%tabletable-condensed
+  %tr
+    %td Ответственный за сделку:
+    %td= @deal.responsible.email

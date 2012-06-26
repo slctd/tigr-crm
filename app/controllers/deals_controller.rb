@@ -5,6 +5,10 @@ class DealsController < ApplicationController
     @deals = Deal.all
   end
   
+  def show
+    @deal = Deal.find(params[:id])
+  end
+  
   def new
     @deal = Deal.new
     if params[:company_id].present?

@@ -24,6 +24,27 @@ describe DealsController do
     end
   end
   
+  describe "GET show" do
+    before(:each) do
+      @deal = FactoryGirl.create(:deal)
+    end
+    
+    describe "unauthorized" do
+      it "should redirect to log in page" do
+        get :show, { id: @deal.id }
+        response.should redirect_to new_user_session_path
+      end
+    end
+    
+    describe "authorized" do
+      it "should assign the requested deal as @deal" do
+        sign_in FactoryGirl.create(:user)
+        get :show, { id: @deal.id }
+        assigns(:deal).should eq(@deal)
+      end
+    end
+  end
+  
   describe "GET new" do
     describe "unauthorized" do
       it "should redirect to login page" do

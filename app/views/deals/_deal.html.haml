@@ -1,7 +1,7 @@
 %tr.deal
   %td
     .name  
-      = deal.name
+      = link_to deal.name, deal
     .contact
     - unless deal.dealable.nil?
       = link_to deal.dealable.name, polymorphic_path(deal.dealable)
