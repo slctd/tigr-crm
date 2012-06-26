@@ -15,6 +15,10 @@ class DealsController < ApplicationController
     end    
   end
   
+  def edit
+    @deal = Deal.find(params[:id])
+  end
+  
   def create
     @deal = Deal.new(params[:deal])
     
@@ -23,6 +27,16 @@ class DealsController < ApplicationController
     else
       render "new"
     end  
+  end
+  
+  def update
+    @deal = Deal.find(params[:id])
+
+    if @deal.update_attributes(params[:deal])
+      redirect_to deal_or_dealable_url(@deal), notice: 'Deal was successfully updated.'
+    else
+      render "edit"
+    end
   end
 
   private
