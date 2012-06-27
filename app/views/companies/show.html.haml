@@ -1,6 +1,6 @@
 %ul.breadcrumb
   %li
-    = link_to "All contacts", contacts_path
+    = link_to t('contacts.index.all_contacts'), contacts_path
     %span.divider >
   %li
     = @company.name
@@ -8,23 +8,22 @@
 %h2
   = @company.name
 %div
-  = link_to 'Edit company', edit_company_path(@company)
+  = link_to t('.edit_company'), edit_company_path(@company)
   
-%h3 General info
+%h3= t('.general_info')
 %dl.dl-horizontal
-  %dt Contact type: 
+  %dt= t('.contact_type')
   %dd ...
   = render @company.emails
   - unless @company.description.nil?
-    %dt Description:
+    %dt= t('.description')
     %dd= @company.description
-  %dt Tags: 
+  %dt= t('.tags')
   %dd ...
 
 .tabbable
   = render 'tabs_header', object: @company
   .tab-content
-    = render 'history_tab', object: @company
     = render 'tasks_tab', object: @company
     = render 'people_tab', object: @company
     = render 'deals_tab', object: @company

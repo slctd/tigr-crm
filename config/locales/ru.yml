@@ -1,0 +1,134 @@
+ru:
+
+  number:
+    format:
+      separator: ","
+      delimiter: "."
+      precision: 3
+
+    currency:
+      format:
+        format: "%n %u"
+        unit: "руб."
+        separator: "."
+        delimiter: ","
+        precision: 2
+
+  date:
+    formats:
+      default: "%d.%m.%Y"
+    month_names: [~, Январь, Февраль, Март, Апрель, Май, Июнь, Июль, Август, Сентябрь, Октябрь, Ноябрь, Декабрь]
+        
+  time:
+    formats:
+      default: "%d.%m.%Y %H:%M"
+      
+  datetime:
+    formats:
+      default: "%d.%m.%Y %H:%M"      
+  
+  helpers:
+    actions: Действия
+    links:
+      new: Создать
+      edit: Редактировать
+      destroy: Удалить
+      back: Назад
+      cancel: Отмена
+      confirm: Вы уверены?
+    titles:
+      new: Создать
+      edit: Редактировать
+    submit:
+      create: "Создать"
+      update: "Сохранить"
+
+  errors: &errors
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: нужно подтвердить
+      blank: не может быть пустым
+      confirmation: не совпадает с подтверждением
+      empty: не может быть пустым
+      equal_to: может иметь лишь значение, равное %{count}
+      even: может иметь лишь нечетное значение
+      exclusion: имеет зарезервированное значение
+      greater_than: может иметь значение большее %{count}
+      greater_than_or_equal_to: может иметь значение большее или равное %{count}
+      inclusion: имеет непредусмотренное значение
+      invalid: имеет неверное значение
+      less_than: может иметь значение меньшее чем %{count}
+      less_than_or_equal_to: может иметь значение меньшее или равное %{count}
+      not_a_number: не является числом
+      not_an_integer: не является целым числом
+      odd: может иметь лишь четное значение
+      record_invalid: ! 'Возникли ошибки: %{errors}'
+      taken: уже существует
+      too_long:
+        few: слишком большой длины (не может быть больше чем %{count} символа)
+        many: слишком большой длины (не может быть больше чем %{count} символов)
+        one: слишком большой длины (не может быть больше чем %{count} символ)
+        other: слишком большой длины (не может быть больше чем %{count} символа)
+      too_short:
+        few: недостаточной длины (не может быть меньше %{count} символов)
+        many: недостаточной длины (не может быть меньше %{count} символов)
+        one: недостаточной длины (не может быть меньше %{count} символа)
+        other: недостаточной длины (не может быть меньше %{count} символа)
+      wrong_length:
+        few: неверной длины (может быть длиной ровно %{count} символа)
+        many: неверной длины (может быть длиной ровно %{count} символов)
+        one: неверной длины (может быть длиной ровно %{count} символ)
+        other: неверной длины (может быть длиной ровно %{count} символа)      
+      
+  activerecord:
+    attributes:
+      company:
+        id: "#"
+        name: Название
+        description: Описание
+      user:
+        email: Email
+        password: Пароль
+        
+  layouts:
+    application:
+      contacts: Контакты
+      tasks: Задачи
+      deals: Сделки
+
+  application:
+    email_fields:
+      add_email: Добавить email
+      remove_email: Удалить email
+      
+  contacts:
+    index:
+      all_contacts: Все контакты
+      add_new_company: Новая компания
+      add_new_person: Новая персона
+      
+  companies:
+    form:
+      general_info: Основная информация
+    new:
+      new_company: Новая компания
+    edit:
+      edit: Редактировать
+      edit_company: Редактировать компанию
+    show: 
+      edit_company: Редактировать компанию
+      general_info: Основная информация
+      contact_type: Тип контакта
+      description: Описание
+      tags: Теги
+    tabs_header:
+      history: История
+      tasks: Задания
+      people: Люди
+      deals: Сделки
+      
+      
+      
+      
+      
+      

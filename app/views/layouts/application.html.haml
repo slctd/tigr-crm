@@ -11,9 +11,12 @@
         .container
           %a.brand{href: root_path} CRM
           %ul.nav
-            %li= link_to "Contacts", contacts_path
-            %li= link_to "Tasks", tasks_path
-            %li= link_to "Deals", deals_path
+            %li{class: ("active" if current_page?(controller: :contacts) or current_page?(root_path))}
+              = link_to t('.contacts'), contacts_path
+            %li{class: ("active" if current_page?(controller: :tasks))}
+              = link_to t('.tasks'), tasks_path
+            %li{class: ("active" if current_page?(controller: :deals))}
+              = link_to t('.deals'), deals_path
             %li.divider-vertical
           %p.navbar-text.pull-right
             - if user_signed_in?

@@ -1,27 +1,27 @@
 Crm::Application.routes.draw do
-
-  resources :stages, only: [:show]
-  resources :deals do
-    post 'add_participant' => 'deals#add_participant', as: "add_participant"
+  scope '(:locale)' do
+    resources :stages, only: [:show]
+    resources :deals do
+      post 'add_participant' => 'deals#add_participant', as: "add_participant"
+    end
+    resources :tasks, except: [:show]
+    resources :contacts, only: [:index]
+    
+    resources :people, except: [:index] do
+      resources :deals, except: [:index]
+      resources :tasks, except: [:index, :show]
+    end
+    
+    resources :companies do
+      get 'add_person/:person_id' => 'people#add_to_company', as: "add_person"
+      resources :deals, except: [:index]    
+      resources :tasks, except: [:index, :show]
+    end
+  
+    devise_for :users
+    
+    root :to => 'contacts#index'
   end
-  resources :tasks, except: [:show]
-  resources :contacts, only: [:index]
-  
-  resources :people, except: [:index] do
-    resources :deals, except: [:index]
-    resources :tasks, except: [:index, :show]
-  end
-  
-  resources :companies do
-    get 'add_person/:person_id' => 'people#add_to_company', as: "add_person"
-    resources :deals, except: [:index]    
-    resources :tasks, except: [:index, :show]
-  end
-
-  devise_for :users
-  
-  root :to => 'contacts#index'
-  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,5 +1,24 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  
+  
+  layouts:
+    application:
+      contacts: Contacts
+      tasks: Tasks
+      deals: Deals
+
+  application:
+    email_fields:
+      add_email: Add email
+      remove_email: Remove email
+      
+  contacts:
+    index:
+      all_contacts: All contacts
+      add_new_company: Add new company
+      add_new_person: Add new person
+      
+  companies:
+    new:
+      new_company: New company
+      general_info: General info

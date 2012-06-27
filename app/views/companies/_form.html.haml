@@ -1,10 +1,10 @@
 = simple_form_for @company, :html => { :class => 'form-horizontal' } do |f|
   = f.input :name
 
-  %h2 General info
+  %h2= t('.general_info')
   = f.simple_fields_for :emails do |email_form|
     = render 'email_fields', f: email_form
-  = link_to_add_fields t('.add_email'), f, :emails
+  = link_to_add_fields t('application.email_fields.add_email'), f, :emails
 
   = f.input :description, input_html: { rows: 2 }  
   

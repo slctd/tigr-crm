@@ -1,6 +1,6 @@
-%h1 All contacts
-= link_to "Add new company", new_company_path
-= link_to "Add new person", new_person_path
+%h1= t('.all_contacts')
+= link_to t('.add_new_company'), new_company_path
+= link_to t('.add_new_person'), new_person_path
 
 %table.table
   = render @companies
