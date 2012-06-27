@@ -27,7 +27,7 @@ class DealsController < ApplicationController
     @deal = Deal.new(params[:deal])
     
     if @deal.save
-      redirect_to deal_or_dealable_url(@deal), notice: 'Deal was successfully created.'
+      redirect_to @deal, notice: 'Deal was successfully created.'
     else
       render "new"
     end  
@@ -37,19 +37,15 @@ class DealsController < ApplicationController
     @deal = Deal.find(params[:id])
 
     if @deal.update_attributes(params[:deal])
-      redirect_to deal_or_dealable_url(@deal), notice: 'Deal was successfully updated.'
+      redirect_to @deal, notice: 'Deal was successfully updated.'
     else
       render "edit"
     end
   end
-
-  private
-
-    def deal_or_dealable_url(deal)
-      if deal.dealable.nil?
-        deals_url
-      else
-        polymorphic_url(deal.dealable, anchor: "deals")
-      end
-    end
+  
+  def add_participant
+    @deal = Deal.find(params[:deal_id])
+    @deal.add_participant(params[:participant])
+    redirect_to deal_path(@deal, anchor: "participants")
+  end
 end

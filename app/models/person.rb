@@ -6,7 +6,8 @@ class Person < ActiveRecord::Base
   has_many :phones
   has_many :addresses
   has_many :tasks, as: :taskable
-  has_many :deals, as: :dealable
+  has_many :deal_contacts, as: :participatiable
+  has_many :deals, through: :deal_contacts
   
   accepts_nested_attributes_for :emails, allow_destroy: true
   

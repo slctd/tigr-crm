@@ -4,6 +4,12 @@ jQuery ->
     $.getJSON "/stages/#{stage_id}.json", (stage) ->
       $('#deal_success_probability').val(stage.success_probability)
   
+  $('#participant').tokenInput '/contacts.json'
+    theme: 'facebook'      
+    tokenLimit: 1
+    propertyToSearch: "name"    
+    tokenValue: "id_with_class_name"
+    
   input = $('#deal_contact')
   input.tokenInput '/contacts.json'
     theme: 'facebook'

@@ -16,7 +16,14 @@
         Бюджет не задан
     %td= @deal.closing_date
     
-%tabletable-condensed
+%table.table-condensed
   %tr
     %td Ответственный за сделку:
     %td= @deal.responsible.email
+    
+.tabbable
+  = render 'tabs_header'
+  .tab-content
+    = render 'tasks_tab', object: @deal
+    = render 'participants_tab', object: @deal
+    

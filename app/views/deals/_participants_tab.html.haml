@@ -1,0 +1,10 @@
+.tab-pane#participants
+  = form_tag deal_add_participant_path(@deal), method: "post", class: "form-search" do
+    = label_tag :participant, "Add participant"
+    = text_field_tag :participant, "", {class: "search-query"}
+    = submit_tag "Add", class: "btn"
+  Participants here
+  %table.table
+    = render object.companies
+    = render object.people
+    

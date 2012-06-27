@@ -1,7 +1,9 @@
 Crm::Application.routes.draw do
 
   resources :stages, only: [:show]
-  resources :deals
+  resources :deals do
+    post 'add_participant' => 'deals#add_participant', as: "add_participant"
+  end
   resources :tasks, except: [:show]
   resources :contacts, only: [:index]
   

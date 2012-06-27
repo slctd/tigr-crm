@@ -6,6 +6,9 @@ class Deal < ActiveRecord::Base
   belongs_to :currency
   belongs_to :user, class_name: "User", foreign_key: "responsible_id"
   belongs_to :dealable, polymorphic: true  
+  has_many :deal_contacts
+  has_many :people, through: :deal_contacts, source: :participatiable, source_type: 'Person'
+  has_many :companies, through: :deal_contacts, source: :participatiable, source_type: 'Company'
   
   attr_accessible :budget,              :budget_type_id, 
                   :closing_date,        :currency_id,
@@ -27,9 +30,18 @@ class Deal < ActiveRecord::Base
   def responsible
     User.find(self.responsible_id)
   end
-                                                  
-  private
 
+  def add_participant(participant)
+    contact_id, contact_type = participant.split('_')
+    if contact_type == "Company"
+      self.companies << Company.find(contact_id)
+    else
+      self.people << People.find(contact_id)
+    end
+  end  
+  
+  private
+  
     def set_dealable
       if self.contact =~ /_/
         contact_id, contact_type = self.contact.split('_')
