@@ -38,6 +38,10 @@ group :test do
   gem 'factory_girl_rails'
 end
 
+group :production do
+  gem 'mysql2'
+end
+
 gem 'haml'
 gem 'haml-rails'
 gem 'devise'
