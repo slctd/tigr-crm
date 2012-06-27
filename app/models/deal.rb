@@ -32,11 +32,13 @@ class Deal < ActiveRecord::Base
   end
 
   def add_participant(participant)
-    contact_id, contact_type = participant.split('_')
-    if contact_type == "Company"
-      self.companies << Company.find(contact_id)
-    else
-      self.people << People.find(contact_id)
+    if participant =~ /_/
+      contact_id, contact_type = participant.split('_')
+      if contact_type == "Company"
+        self.companies << Company.find(contact_id)
+      else
+        self.people << People.find(contact_id)
+      end
     end
   end  
   
