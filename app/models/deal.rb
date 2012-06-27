@@ -35,9 +35,11 @@ class Deal < ActiveRecord::Base
     if participant =~ /_/
       contact_id, contact_type = participant.split('_')
       if contact_type == "Company"
-        self.companies << Company.find(contact_id)
+        company = Company.find(contact_id)
+        self.companies << company unless self.companies.include?(company)
       else
-        self.people << Person.find(contact_id)
+        person = Person.find(contact_id)
+        self.people << person unless self.people.include?(person)
       end
     end
   end  
@@ -46,7 +48,15 @@ class Deal < ActiveRecord::Base
   
     def set_dealable
       if self.contact =~ /_/
+        self.add_participant(contact)
         contact_id, contact_type = self.contact.split('_')
+        # Remove old
+        #if contact_type == "Company"
+        #  self.companies.delete(Company.find(contact_id)) if self.companies.includes(Company.find(contact_id))
+        #end
+        #if contact_type == "Person"
+        #  self.people.delete(Person.find(contact_id)) if self.people.includes(Person.find(contact_id))
+        #end
         self.dealable_id = contact_id unless contact_id.nil?
         self.dealable_type = contact_type unless contact_type.nil?
       else
