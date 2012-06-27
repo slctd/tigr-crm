@@ -37,7 +37,7 @@ class Deal < ActiveRecord::Base
       if contact_type == "Company"
         self.companies << Company.find(contact_id)
       else
-        self.people << People.find(contact_id)
+        self.people << Person.find(contact_id)
       end
     end
   end  
