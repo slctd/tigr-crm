@@ -1,6 +1,7 @@
 .tab-pane#people
-  Add new person:
-  - Person.free.each do |person|
-    %li= link_to "#{person.firstname} #{person.lastname}", company_add_person_path(object.id, person.id)
+  = form_tag company_add_person_path(object), method: "post", class: "form-search" do
+    = label_tag :person_id, "Add participant"
+    = text_field_tag :person_id, "", {class: "search-query"}
+    = submit_tag "Add", class: "btn"
   %table.table
     = render object.people

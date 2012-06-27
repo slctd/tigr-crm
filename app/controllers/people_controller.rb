@@ -1,6 +1,11 @@
 class PeopleController < ApplicationController
   before_filter :authenticate_user!
 
+  def index
+    @people = Person.free.order(:firstname).where("firstname like ? or lastname like ?", "%#{params[:q]}%", "%#{params[:q]}%")
+    render json: @people.to_json(methods: [:name], only: [:id])
+  end
+  
   def show
     @person = Person.find(params[:id])
 
@@ -53,19 +58,4 @@ class PeopleController < ApplicationController
       end
     end
   end  
-  
-  def add_to_company
-      @person = Person.find(params[:person_id])
-      @company = Company.find(params[:company_id])
-
-      respond_to do |format|
-        if @person.update_attributes(company_id: @company)
-          format.html { redirect_to @company, notice: 'Person was successfully added to the company.' }
-          format.json { head :no_content }
-        else
-          format.html { redirect_to @company, error: "Person wasn't added to the company." }
-          format.json { render json: @person.errors, status: :unprocessable_entity }
-        end
-      end
-  end
 end

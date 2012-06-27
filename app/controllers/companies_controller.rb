@@ -76,4 +76,13 @@ class CompaniesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def add_person
+    @company = Company.find(params[:company_id])
+    if params[:person_id].present? && params[:company_id].present?
+      @person = Person.find(params[:person_id])
+      @person.update_attributes(company_id: @company)
+    end
+    redirect_to company_url(@company, anchor: "people")
+  end  
 end

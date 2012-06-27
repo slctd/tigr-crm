@@ -6,7 +6,7 @@
   = f.association :currency, include_blank: false
   = f.input :budget
   = f.association :budget_type, include_blank: false
-  = f.input :closing_date
+  = f.input :closing_date, as: :date
   = f.association :user, label_method: :email, value_method: :id, selected: current_user.id, include_blank: false 
   = f.association :stage, include_blank: false
   = f.input :success_probability
