@@ -4,10 +4,12 @@ class Task < ActiveRecord::Base
   belongs_to :task_type
   belongs_to :taskable, polymorphic: true
   belongs_to :user, class_name: "User", foreign_key: "responsible_id"
+  belongs_to :deal
   
   attr_accessible :deadline_date,   :description,
                   :name,            :responsible_id,  
-                  :task_type_id,    :contact
+                  :task_type_id,    :contact,
+                  :deal_id
   
   validates :name, :task_type_id, :deadline_date, :responsible_id, presence: true
   

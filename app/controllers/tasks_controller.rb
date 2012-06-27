@@ -7,12 +7,9 @@ class TasksController < ApplicationController
   
   def new
     @task = Task.new
-    if params[:company_id].present?
-      @task.taskable = Company.find(params[:company_id])
-    end
-    if params[:person_id].present?
-      @task.taskable = Person.find(params[:person_id])
-    end
+    @task.taskable = Company.find(params[:company_id]) if params[:company_id].present?
+    @task.taskable = Person.find(params[:person_id]) if params[:person_id].present?
+    @task.deal_id = params[:deal_id] if params[:deal_id].present?
   end
   
   def create
@@ -50,9 +47,13 @@ class TasksController < ApplicationController
 
     def task_or_taskable_url(task)
       if task.taskable.nil?
-        tasks_url
+        url = tasks_url
       else
-        polymorphic_url(task.taskable, anchor: "tasks")
+        url = polymorphic_url(task.taskable, anchor: "tasks")
       end
+      
+      url = deal_url(task.deal, anchor: "tasks") unless task.deal_id.nil?
+      
+      url
     end
 end

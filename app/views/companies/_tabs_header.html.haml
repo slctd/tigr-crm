@@ -1,6 +1,6 @@
 .tabbable
   %ul.nav.nav-tabs
-    %li
+    %li.active
       %a{href: "#tasks", "data-toggle" => "tab"}= t('.tasks')
     %li
       %a{href: "#people", "data-toggle" => "tab"}
@@ -8,4 +8,3 @@
         = "(#{object.people.count})"
     %li
       %a{href: "#deals", "data-toggle" => "tab"}= t('.deals')
-  .tab-content

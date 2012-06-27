@@ -9,6 +9,7 @@ class Deal < ActiveRecord::Base
   has_many :deal_contacts
   has_many :people, through: :deal_contacts, source: :participatiable, source_type: 'Person'
   has_many :companies, through: :deal_contacts, source: :participatiable, source_type: 'Company'
+  has_many :tasks
   
   attr_accessible :budget,              :budget_type_id, 
                   :closing_date,        :currency_id,
