@@ -3,6 +3,7 @@
   = f.input :lastname
   = f.input :company_name
   = f.input :job
+  = f.association :contact_type  
 
   %h2 General info
   = f.simple_fields_for :emails do |email_form|

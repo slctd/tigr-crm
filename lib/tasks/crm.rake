@@ -52,6 +52,10 @@ def create_contact_types
   BudgetType.create!(name: "в неделю")
   BudgetType.create!(name: "в месяц")
   BudgetType.create!(name: "в год")
+  
+  ContactType.create!(name: "Холодный")
+  ContactType.create!(name: "Теплый")  
+  ContactType.create!(name: "Горячий")  
 end
 
 def create_stages

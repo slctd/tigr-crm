@@ -16,7 +16,11 @@
     %dt Company:
     %dd= link_to @person.company.name, @person.company
   %dt Contact type:
-  %dd ...
+  %dd
+    - if @person.contact_type.nil?
+      не задан
+    - else
+      = @person.contact_type.name
   = render @person.emails
   - unless @person.description.nil?
     %dt Description:

@@ -86,6 +86,15 @@ ru:
         id: "#"
         name: Название
         description: Описание
+        contact_type: Тип контакта
+      person:
+        id: "#"
+        firstname: Имя
+        lastname: Фамилия
+        company_name: Компания
+        job: Должность
+        description: Описание
+        contact_type: Тип контакта        
       user:
         email: Email
         password: Пароль

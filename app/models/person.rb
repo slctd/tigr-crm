@@ -8,10 +8,11 @@ class Person < ActiveRecord::Base
   has_many :tasks, as: :taskable
   has_many :deal_contacts, as: :participatiable
   has_many :deals, through: :deal_contacts
+  belongs_to :contact_type
   
   accepts_nested_attributes_for :emails, allow_destroy: true
   
-  attr_accessible :company_id, :company_name, :description, :firstname, :job, :lastname, :emails_attributes
+  attr_accessible :company_id, :company_name, :description, :firstname, :job, :lastname, :emails_attributes, :contact_type_id
   validates :firstname, :lastname, presence: true
   
   

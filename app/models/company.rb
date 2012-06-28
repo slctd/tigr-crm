@@ -7,10 +7,11 @@ class Company < ActiveRecord::Base
   has_many :tasks, as: :taskable
   has_many :deal_contacts, as: :participatiable
   has_many :deals, through: :deal_contacts
+  belongs_to :contact_type
   
   accepts_nested_attributes_for :emails, allow_destroy: true
   
-  attr_accessible :name, :description, :emails_attributes
+  attr_accessible :name, :description, :emails_attributes, :contact_type_id
   
   validates :name, presence: true,
                    uniqueness: { case_sensitive:  false }

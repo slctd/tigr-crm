@@ -13,7 +13,11 @@
 %h3= t('.general_info')
 %dl.dl-horizontal
   %dt= t('.contact_type')
-  %dd ...
+  %dd
+    - if @company.contact_type.nil?
+      не задан
+    - else
+      = @company.contact_type.name
   = render @company.emails
   - unless @company.description.nil?
     %dt= t('.description')

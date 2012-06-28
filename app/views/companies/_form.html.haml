@@ -1,6 +1,7 @@
 = simple_form_for @company, :html => { :class => 'form-horizontal' } do |f|
   = f.input :name
-
+  = f.association :contact_type
+  
   %h2= t('.general_info')
   = f.simple_fields_for :emails do |email_form|
     = render 'email_fields', f: email_form
