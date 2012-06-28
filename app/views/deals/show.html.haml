@@ -24,6 +24,7 @@
 .tabbable
   = render 'tabs_header'
   .tab-content
+    = render 'histories_tab', object: @deal
     = render 'tasks_tab', object: @deal
     = render 'participants_tab', object: @deal
     

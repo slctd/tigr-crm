@@ -56,6 +56,11 @@ def create_contact_types
   ContactType.create!(name: "Холодный")
   ContactType.create!(name: "Теплый")  
   ContactType.create!(name: "Горячий")  
+  
+  HistoryType.create!(name: "Заметка")
+  HistoryType.create!(name: "Электронная почта")
+  HistoryType.create!(name: "Звонок")
+  HistoryType.create!(name: "Встреча")
 end
 
 def create_stages

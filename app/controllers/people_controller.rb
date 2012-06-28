@@ -8,7 +8,9 @@ class PeopleController < ApplicationController
   
   def show
     @person = Person.find(params[:id])
-
+    @history = History.new
+    @history.contact = "#{@person.id}_Person"
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @person }

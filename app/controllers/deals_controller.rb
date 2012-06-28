@@ -7,6 +7,8 @@ class DealsController < ApplicationController
   
   def show
     @deal = Deal.find(params[:id])
+    @history = History.new
+    @history.deal = @deal
   end
   
   def new

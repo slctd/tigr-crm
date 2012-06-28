@@ -4,6 +4,7 @@ class Company < ActiveRecord::Base
   has_many :phones
   #has_many :webs
   has_many :addresses
+  has_many :histories, as: :historable
   has_many :tasks, as: :taskable
   has_many :deal_contacts, as: :participatiable
   has_many :deals, through: :deal_contacts

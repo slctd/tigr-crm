@@ -3,7 +3,8 @@ Crm::Application.routes.draw do
     resources :stages, only: [:show]
     resources :deals do
       post 'add_participant' => 'deals#add_participant', as: "add_participant"
-      resources :tasks, except: [:index, :show]      
+      resources :tasks, except: [:index, :show]
+      resources :histories, only: [:create, :destroy]
     end
     resources :tasks, except: [:show]
     resources :contacts, only: [:index]
@@ -11,12 +12,14 @@ Crm::Application.routes.draw do
     resources :people do
       resources :deals, except: [:index]
       resources :tasks, except: [:index, :show]
+      resources :histories, only: [:create, :destroy]
     end
     
     resources :companies do
       post 'add_person' => 'companies#add_person', as: "add_person"
       resources :deals, except: [:index]    
       resources :tasks, except: [:index, :show]
+      resources :histories, only: [:create, :destroy]
     end
   
     devise_for :users

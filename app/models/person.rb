@@ -5,6 +5,7 @@ class Person < ActiveRecord::Base
   has_many :emails, as: :emailable, inverse_of: :emailable, dependent: :destroy
   has_many :phones
   has_many :addresses
+  has_many :histories, as: :historable
   has_many :tasks, as: :taskable
   has_many :deal_contacts, as: :participatiable
   has_many :deals, through: :deal_contacts
