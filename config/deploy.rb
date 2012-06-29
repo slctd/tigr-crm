@@ -39,8 +39,8 @@ set :deploy_server,   "neon.locum.ru"
 # Не включать в поставку разработческие инструменты и пакеты тестирования.
 set :bundle_without,  [:development, :test]
 
-set :user,            "hosting_texmark"
-set :login,           "texmark"
+set :user,            "hosting_whoindie"
+set :login,           "whoindie"
 set :use_sudo,        false
 set :deploy_to,       "/home/#{user}/projects/#{application}"
 set :unicorn_conf,    "/etc/unicorn/#{application}.#{login}.rb"
@@ -66,7 +66,7 @@ set :scm,             :git
 # домашнем каталоге в подкаталоге git/<имя проекта>.git.
 # Подробнее о создании репозитория читайте в нашем блоге
 # http://locum.ru/blog/hosting/git-on-locum
-set :repository,      "ssh://#{user}@#{deploy_server}/home/#{user}/git/crm.git"
+set :repository,      "ssh://#{user}@#{deploy_server}/home/#{user}/git/#{application}.git"
 
 ## Если ваш репозиторий в GitHub, используйте такую конфигурацию
 # set :repository,    "git@github.com:username/project.git"
