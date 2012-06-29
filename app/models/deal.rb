@@ -50,22 +50,29 @@ class Deal < ActiveRecord::Base
   
     def set_dealable
       if self.contact =~ /_/
-        self.add_participant(contact)
         contact_id, contact_type = self.contact.split('_')
-        # Remove old
-        #if contact_type == "Company"
-        #  self.companies.delete(Company.find(contact_id)) if self.companies.includes(Company.find(contact_id))
-        #end
-        #if contact_type == "Person"
-        #  self.people.delete(Person.find(contact_id)) if self.people.includes(Person.find(contact_id))
-        #end
+        delete_old_participant
+        self.add_participant(contact)
         self.dealable_id = contact_id unless contact_id.nil?
         self.dealable_type = contact_type unless contact_type.nil?
       else
+        delete_old_participant
         self.dealable = nil
       end
     end
   
+    def delete_old_participant(contact_id=nil, contact_type=nil)
+      unless self.dealable.nil?
+        unless contact_id == self.dealable.id && contact_type == self.dealable.class.name
+          if self.dealable.is_a?(Company)
+            self.companies.delete(self.dealable) if self.companies.includes(self.dealable)
+          else
+            self.people.delete(self.dealable) if self.people.includes(self.dealable)
+          end
+        end
+      end
+    end
+    
     def set_success_probability
       self.success_probability = 0 if self.success_probability.nil?
       self.success_probability = 0 if self.success_probability < 0
