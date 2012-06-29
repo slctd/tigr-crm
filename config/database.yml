@@ -20,8 +20,8 @@ test:
 
 production:
   adapter: mysql2
-  database: texmark_crm11
+  database: whoindie_test-39
   host: mysql2.locum.ru
-  username: texmark_crm11
-  password: k0[fyrF
+  username: whoindie_test-39
+  password: GcXCIx4r
   encoding: utf8
