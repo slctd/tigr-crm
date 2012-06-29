@@ -51,7 +51,7 @@ class Deal < ActiveRecord::Base
     def set_dealable
       if self.contact =~ /_/
         contact_id, contact_type = self.contact.split('_')
-        delete_old_participant
+        delete_old_participant(contact_id, contact_type)
         self.add_participant(contact)
         self.dealable_id = contact_id unless contact_id.nil?
         self.dealable_type = contact_type unless contact_type.nil?
@@ -63,7 +63,7 @@ class Deal < ActiveRecord::Base
   
     def delete_old_participant(contact_id=nil, contact_type=nil)
       unless self.dealable.nil?
-        unless contact_id == self.dealable.id && contact_type == self.dealable.class.name
+        unless contact_id == self.dealable_id && contact_type == self.dealable_type
           if self.dealable.is_a?(Company)
             self.companies.delete(self.dealable) if self.companies.includes(self.dealable)
           else
