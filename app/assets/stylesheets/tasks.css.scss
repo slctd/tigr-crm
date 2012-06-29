@@ -1,21 +1,23 @@
-.task-type {
-  width: 100px;
-}
-.task {
-  color: #CC3333;
-  .title {
-    font-size: 14px;
-    font-weight: bold;
+.tasks {
+  .task-type {
+    width: 100px;
   }
-}
-.active {
-  .title {
-    color: #1A6DB3;
+  .task {
+    color: #CC3333;
+    .title {
+      font-size: 14px;
+      font-weight: bold;
+    }
   }
-  .description {
-    color: #000;
-  }
-  .date {
-    color: #000;
+  .active {
+    .title {
+      color: #1A6DB3;
+    }
+    .description {
+      color: #000;
+    }
+    .date {
+      color: #000;
+    }
   }
 }
