@@ -82,19 +82,59 @@ ru:
       
   activerecord:
     attributes:
+      address:
+        address: Адрес
+        city: Город
+        state: Область
+        postal_code: Индекс
+        country: Страна
+        addres_type: Тип адреса
       company:
-        id: "#"
         name: Название
         description: Описание
         contact_type: Тип контакта
+      currency:
+        name: Название
+        abbreviation: Обозначение
+      deal:
+        name: Название
+        description: Описание
+        currency: Валюта
+        budget: Бюджет
+        budget_type: Тип бюджета
+        closing_date: Дата закрытия
+        user: Ответственное лицо
+        stage: Стадия
+        success_probability: Вероятность успеха
+        contact: Контакт
+      email:
+        email: Email
+        email_type: Тип почты
+      history:
+        deal: Связать со сделкой
+        history_type: Тип записи
+        date: Дата
+        description: Описание
       person:
-        id: "#"
         firstname: Имя
         lastname: Фамилия
         company_name: Компания
         job: Должность
         description: Описание
         contact_type: Тип контакта        
+      phone:
+        phone: Телефон
+        phone_type: Тип
+      stage:
+        name: Название
+        success_probability: Вероятность успеха
+      task:
+        name: Название
+        task_type: Тип задания
+        deadline_date: Срок выполнения
+        user: Назначить на
+        description: Описание
+        contact: Контакт
       user:
         email: Email
         password: Пароль
