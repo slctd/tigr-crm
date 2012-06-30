@@ -1,5 +1,5 @@
 .tab-pane#tasks
-  = link_to "New task", new_polymorphic_path([object, Task])
+  = link_to t('.new_task'), new_polymorphic_path([object, Task])
 
   %table.table.tasks
     = render object.tasks

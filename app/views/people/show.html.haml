@@ -1,6 +1,6 @@
 %ul.breadcrumb
   %li
-    = link_to "All contacts", contacts_path
+    = link_to t("contacts.index.all_contacts"), contacts_path
     %span.divider >
   %li
     = "#{@person.firstname} #{@person.lastname}"
@@ -8,24 +8,24 @@
 %h2
   = "#{@person.firstname} #{@person.lastname}"
 %div
-  = link_to 'Edit person', edit_person_path(@person)
+  = link_to t(".edit_person"), edit_person_path(@person)
   
-%h3 General info
+%h3= t(".general_info")
 %dl.dl-horizontal
   -unless @person.company.nil?
-    %dt Company:
+    %dt= t(".company")
     %dd= link_to @person.company.name, @person.company
-  %dt Contact type:
+  %dt= t(".contact_type")
   %dd
     - if @person.contact_type.nil?
-      не задан
+      = t(".not_set")
     - else
       = @person.contact_type.name
   = render @person.emails
   - unless @person.description.nil?
-    %dt Description:
+    %dt= t(".description")
     %dd= @person.description
-  %dt Tags:
+  %dt= t(".tags")
   %dd ...
 
 .tabbable

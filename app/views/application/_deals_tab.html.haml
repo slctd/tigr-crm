@@ -1,4 +1,4 @@
 .tab-pane#deals
-  = link_to "New deal", new_polymorphic_path([object, Deal])
+  = link_to t(".new_deal"), new_polymorphic_path([object, Deal])
   %table.table
     = render object.deals

@@ -1,7 +1,7 @@
 .tab-pane#people
   = form_tag company_add_person_path(object), method: "post", class: "form-search" do
-    = label_tag :person_id, "Add participant"
+    = label_tag :person_id, t(".add_person")
     = text_field_tag :person_id, "", {class: "search-query"}
-    = submit_tag "Add", class: "btn"
+    = submit_tag t(".add"), class: "btn"
   %table.table
     = render object.people

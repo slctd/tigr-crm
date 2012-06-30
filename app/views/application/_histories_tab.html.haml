@@ -1,5 +1,5 @@
 .tab-pane.active#histories
-  %h4= t('histories.new_history')
+  %h4= t('.new_history')
   = simple_form_for [object, @history], :html => { :class => 'form-horizontal' } do |f|
     =# t('histories.connect_with')
     =# select_tag :connect_with, options_for_select(["нет", "сделка", "событие"], params[:connect_with]), class: "span2"

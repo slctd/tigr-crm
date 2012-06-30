@@ -146,6 +146,19 @@ ru:
       deals: Сделки
 
   application:
+    tabs_header:
+      histories: История
+      tasks: Задачи
+      deals: Сделки
+    histories_tab:
+      new_history: Новая заметка
+    tasks_tab:
+      new_task: Новая задача
+    people_tab:
+      add_person: Добавить персону
+      add: Добавить
+    deals_tab:
+      new_deal: Новая сделка
     email_fields:
       add_email: Добавить email
       remove_email: Удалить email
@@ -171,13 +184,34 @@ ru:
       description: Описание
       tags: Теги
     tabs_header:
-      history: История
+      histories: История
       tasks: Задания
       people: Люди
       deals: Сделки
+
+  people:
+    form:
+      general_info: Основная информация
+    new:
+      new_person: Новая персона
+    edit:
+      edit_person: Редактировать
+    show:
+      edit_person: Редактировать
+      general_info: Основная информация
+      company: Компания
+      contact_type: Тип контакта
+      not_set: Не задан
+      description: Описание
+      tags: Теги
       
-      
-      
-      
+  tasks:
+    index:
+      tasks: Задачи
+      new_task: Новая задача
+    new:
+      new_task: Новая задача
+    edit:
+      edit_task: Редактировать задачу
       
       

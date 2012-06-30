@@ -1,8 +1,8 @@
 %ul.breadcrumb
   %li
-    = link_to "All contacts", contacts_path
+    = link_to t("contacts.index.all_contacts"), contacts_path
     %span.divider >
-  %li New person
+  %li= t(".new_person")
 
-%h1 New person
+%h1= t(".new_person")
 = render 'form'
