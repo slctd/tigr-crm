@@ -26,6 +26,7 @@ ru:
         title: Вход в систему
         sign_in: Войти 
         remember_me: Запомнить меня
+      sign_out: Выйти
       signed_in: "Вход в систему выполнен."
       signed_out: "Выход из системы выполнен."
     passwords:

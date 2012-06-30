@@ -20,8 +20,9 @@
             %li.divider-vertical
           %p.navbar-text.pull-right
             - if user_signed_in?
-              = "Hi, #{current_user.email}!"
-              = link_to "Sign out", destroy_user_session_path, method: :delete
+              = t(".hello")
+              = current_user.email + "."
+              = link_to t("devise.sessions.sign_out"), destroy_user_session_path, method: :delete
     .container
       - flash.each do |name, msg|
         %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
