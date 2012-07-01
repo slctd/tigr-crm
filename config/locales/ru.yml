@@ -172,6 +172,10 @@ ru:
       remove_email: Удалить email
     filter_form:
       filter_by_name: найти по названию
+    upload_image_form:
+      ok: OK
+      edit_image: Изменить фото
+      remove_image: Удалить
       
   contacts:
     index:

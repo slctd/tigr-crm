@@ -32,6 +32,8 @@
 
   .span4  
     = image_tag @person.image_url
+    %br
+    = render 'upload_image_form', object: @person
     
 .tabbable
   = render 'tabs_header'

@@ -17,7 +17,12 @@ class Person < ActiveRecord::Base
   
   accepts_nested_attributes_for :emails, allow_destroy: true
   
-  attr_accessible :company_id, :company_name, :description, :firstname, :job, :lastname, :emails_attributes, :contact_type_id
+  attr_accessible :company_id, :company_name, 
+                  :description, :firstname, 
+                  :job, :lastname, 
+                  :emails_attributes, :contact_type_id, 
+                  :image, :remove_image
+                  
   validates :firstname, :lastname, presence: true
   
   scope :by_name, lambda {|name| where("firstname like ? OR lastname like ?", "#{name}%", "#{name}%")}
