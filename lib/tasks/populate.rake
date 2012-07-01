@@ -6,6 +6,7 @@ namespace :db do
     create_companies
     create_tasks
     create_deals
+    create_events
     create_histories
   end
 end
@@ -110,31 +111,76 @@ def create_deals
   end
 end
 
-def create_histories
+def create_events
   Company.all.each do |company|
-    User.first.histories.create!(
-      description: Faker::Lorem.paragraph(rand(1..4)),
-      history_type_id: rand(HistoryType.first.id..HistoryType.last.id),
-      date: Time.now.to_date,
-      contact: "#{company.id}_Company"
-    )
+    rand(5).times do
+      Event.create!(
+        name: Faker::Lorem.sentence(rand(1..4))
+      )
+    end
   end
   
   Person.all.each do |person|
-    User.first.histories.create!(
-      description: Faker::Lorem.paragraph(rand(1..4)),
-      history_type_id: rand(HistoryType.first.id..HistoryType.last.id),
-      date: Time.now.to_date,
-      contact: "#{person.id}_Person"
-    )
+    rand(5).times do
+      Event.create!(
+        name: Faker::Lorem.sentence(rand(1..4))
+      )
+    end
+  end
+  
+  Event.all.each do |event|
+    rand(Person.count).times do |n|
+      event.people << Person.find(n+1)
+    end
+    
+    rand(Company.count).times do |n|
+      event.companies << Company.find(n+1)
+    end    
+  end
+end
+
+def create_histories
+  Company.all.each do |company|
+    3.times do
+      User.first.histories.create!(
+        description: Faker::Lorem.paragraph(rand(1..4)),
+        history_type_id: rand(HistoryType.first.id..HistoryType.last.id),
+        date: Time.now.to_date,
+        contact: "#{company.id}_Company"
+      )
+    end
+  end
+  
+  Person.all.each do |person|
+    3.times do
+      User.first.histories.create!(
+        description: Faker::Lorem.paragraph(rand(1..4)),
+        history_type_id: rand(HistoryType.first.id..HistoryType.last.id),
+        date: Time.now.to_date,
+        contact: "#{person.id}_Person"
+      )
+    end
   end
   
   Deal.all.each do |deal|
-    User.first.histories.create!(
-      description: Faker::Lorem.paragraph(rand(1..4)),
-      history_type_id: rand(HistoryType.first.id..HistoryType.last.id),
-      date: Time.now.to_date,
-      deal_id: deal.id
-    )
-  end  
+    3.times do
+      User.first.histories.create!(
+        description: Faker::Lorem.paragraph(rand(1..4)),
+        history_type_id: rand(HistoryType.first.id..HistoryType.last.id),
+        date: Time.now.to_date,
+        deal_id: deal.id
+      )
+    end
+  end
+  
+  Event.all.each do |event|
+    3.times do
+      User.first.histories.create!(
+        description: Faker::Lorem.paragraph(rand(1..4)),
+        history_type_id: rand(HistoryType.first.id..HistoryType.last.id),
+        date: Time.now.to_date,
+        event_id: event.id
+      )
+    end
+  end
 end
