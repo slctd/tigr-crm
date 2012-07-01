@@ -13,6 +13,8 @@ class Person < ActiveRecord::Base
   has_many :events, through: :event_contacts  
   belongs_to :contact_type
   
+  mount_uploader :image, ImageUploader
+  
   accepts_nested_attributes_for :emails, allow_destroy: true
   
   attr_accessible :company_id, :company_name, :description, :firstname, :job, :lastname, :emails_attributes, :contact_type_id

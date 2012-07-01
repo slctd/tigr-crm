@@ -12,9 +12,11 @@ class Company < ActiveRecord::Base
   has_many :events, through: :event_contacts
   belongs_to :contact_type
   
+  mount_uploader :image, ImageUploader
+  
   accepts_nested_attributes_for :emails, allow_destroy: true
   
-  attr_accessible :name, :description, :emails_attributes, :contact_type_id
+  attr_accessible :name, :description, :emails_attributes, :contact_type_id, :image
   
   validates :name, presence: true,
                    uniqueness: { case_sensitive:  false }

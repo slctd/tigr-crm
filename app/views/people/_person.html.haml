@@ -1,3 +1,3 @@
 %tr
-  %td
-    =link_to "#{person.firstname} #{person.lastname}", person
+  %td.image= image_tag person.image_url(:thumb)
+  %td= link_to "#{person.firstname} #{person.lastname}", person

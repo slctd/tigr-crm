@@ -10,24 +10,29 @@
 %div
   = link_to t(".edit_person"), edit_person_path(@person)
   
-%h3= t(".general_info")
-%dl.dl-horizontal
-  -unless @person.company.nil?
-    %dt= t(".company")
-    %dd= link_to @person.company.name, @person.company
-  %dt= t(".contact_type")
-  %dd
-    - if @person.contact_type.nil?
-      = t(".not_set")
-    - else
-      = @person.contact_type.name
-  = render @person.emails
-  - unless @person.description.nil?
-    %dt= t(".description")
-    %dd= @person.description
-  %dt= t(".tags")
-  %dd ...
+.row
+  .span8
+    %h3= t(".general_info")
+    %dl.dl-horizontal
+      -unless @person.company.nil?
+        %dt= t(".company")
+        %dd= link_to @person.company.name, @person.company
+      %dt= t(".contact_type")
+      %dd
+        - if @person.contact_type.nil?
+          = t(".not_set")
+        - else
+          = @person.contact_type.name
+      = render @person.emails
+      - unless @person.description.nil?
+        %dt= t(".description")
+        %dd= @person.description
+      %dt= t(".tags")
+      %dd ...
 
+  .span4  
+    = image_tag @person.image_url
+    
 .tabbable
   = render 'tabs_header'
   .tab-content
