@@ -5,9 +5,9 @@
     - path = event_add_participant_path(object)
     
   = form_tag path, method: "post", class: "form-search" do
-    = label_tag :participant, "Add participant"
+    = label_tag :participant, t(".add_participant")
     = text_field_tag :participant, "", {class: "search-query"}
-    = submit_tag "Add", class: "btn"
+    = submit_tag t(".add"), class: "btn"
   %table.table
     = render object.companies
     = render object.people

@@ -6,7 +6,7 @@
     - unless deal.dealable.nil?
       = link_to deal.dealable.name, polymorphic_path(deal.dealable)
     - else
-      Клиент не задан
+      t(".client_not_set")
   %td
     = deal.responsible.email
   %td

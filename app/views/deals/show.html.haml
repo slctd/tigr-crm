@@ -1,11 +1,11 @@
 %h2= @deal.name
-= link_to "Edit this deal", edit_deal_path(@deal)
+= link_to t(".edit_deal"), edit_deal_path(@deal)
 %table.table-condensed.deal
   %tr
-    %td Возможная сделка на стадии:
-    %td Вероятность успеха:
-    %td Бюджет:
-    %td Предполагаемая дата закрытия
+    %td= t(".deal_stage")
+    %td= t(".success_probability")
+    %td= t(".budget")
+    %td= t(".closing_date")
   %tr
     %td= @deal.stage.name
     %td= @deal.success_probability
@@ -13,12 +13,12 @@
       - if @deal.budget.present?
         = @deal.budget
       - else
-        Бюджет не задан
+        = t(".budget_not_set")
     %td= @deal.closing_date
     
 %table.table-condensed
   %tr
-    %td Ответственный за сделку:
+    %td= t(".responsible")
     %td= @deal.responsible.email
     
 .tabbable

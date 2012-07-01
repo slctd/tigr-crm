@@ -1,4 +1,4 @@
-%h1 Deals
-= link_to "New deal", new_deal_path
+%h1= t(".deals")
+= link_to t(".new_deal"), new_deal_path
 %table.table
   = render @deals

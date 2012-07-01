@@ -110,8 +110,11 @@ ru:
       email:
         email: Email
         email_type: Тип почты
+      event:
+        name: Название
       history:
         deal: Связать со сделкой
+        event: Связать с мероприятием
         history_type: Тип записи
         date: Дата
         description: Описание
@@ -161,6 +164,9 @@ ru:
       add: Добавить
     deals_tab:
       new_deal: Новая сделка
+    participants_tab:
+      add_participant: Добавить участника
+      add: Добавить
     email_fields:
       add_email: Добавить email
       remove_email: Удалить email
@@ -215,6 +221,48 @@ ru:
       new_task: Новая задача
     edit:
       edit_task: Редактировать задачу
+
+  deals:
+    deal:
+      client_not_set: Клиент не задан
+    tabs_header:
+      histories: История
+      tasks: Задачи
+      participants: Участники
+    edit:
+      edit_deal: Редактировать сделку
+    index:
+      deals: Сделки
+      new_deal: Новая сделка
+    new:
+      new_deal: Новая сделка
+    show:
+      edit_deal: Редактировать сделку
+      deal_stage: "Возможная сделка на стадии:"
+      success_probability: "Вероятность успеха:"
+      budget: "Бюджет:"
+      closing_date: "Предполагаемая дата закрытия:"
+      budget_not_set: Бюджет не задан
+      responsible: "Ответственный за сделку:"
+  
+  events:
+    tabs_header:
+      histories: История
+      tasks: Задачи
+      participants: Участники
+    edit:
+      edit_event: Редактировать мероприятие
+    index:
+      events: Мероприятия
+      new_event: Новое мероприятие
+    new:
+      new_event: Новое мероприятие
+    show:
+      edit_event: Редактировать мероприятие
+      status: Статус
+      opened: Открыто
+      closed: Закрыто
+      tags: Теги
       
   histories:
     history:
