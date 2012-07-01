@@ -19,6 +19,8 @@ class Company < ActiveRecord::Base
   validates :name, presence: true,
                    uniqueness: { case_sensitive:  false }
   
+  scope :by_name, lambda {|name| where("name like ?", "%#{name}%")}
+                  
   def id_with_class_name
     "#{id}_#{self.class.name}"
   end

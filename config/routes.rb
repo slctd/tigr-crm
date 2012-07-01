@@ -15,7 +15,9 @@ Crm::Application.routes.draw do
     end
 
     resources :tasks, except: [:show]
-    resources :contacts, only: [:index]
+    
+    get "contacts" => "contacts#index"    
+    post "contacts" => "contacts#index"
     
     resources :people do
       resources :deals, except: [:index]

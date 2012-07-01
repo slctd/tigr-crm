@@ -176,6 +176,7 @@ ru:
       all_contacts: Все контакты
       add_new_company: Новая компания
       add_new_person: Новая персона
+      filter_by_name: найти по имени
       
   companies:
     form:

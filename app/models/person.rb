@@ -18,7 +18,8 @@ class Person < ActiveRecord::Base
   attr_accessible :company_id, :company_name, :description, :firstname, :job, :lastname, :emails_attributes, :contact_type_id
   validates :firstname, :lastname, presence: true
   
-  
+  scope :by_name, lambda {|name| where("firstname like ? OR lastname like ?", "#{name}%", "#{name}%")}
+
   def name
     "#{firstname} #{lastname}"  
   end
