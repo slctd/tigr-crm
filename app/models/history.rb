@@ -4,6 +4,7 @@ class History < ActiveRecord::Base
   belongs_to :history_type
   belongs_to :historable, polymorphic: true
   belongs_to :deal
+  belongs_to :event
   belongs_to :user
     
   attr_accessible :date, :deal_id, :description, :event_id, :history_type_id, :contact

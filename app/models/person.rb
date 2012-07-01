@@ -9,6 +9,8 @@ class Person < ActiveRecord::Base
   has_many :tasks, as: :taskable
   has_many :deal_contacts, as: :participatiable
   has_many :deals, through: :deal_contacts
+  has_many :event_contacts, as: :participatiable
+  has_many :events, through: :event_contacts  
   belongs_to :contact_type
   
   accepts_nested_attributes_for :emails, allow_destroy: true

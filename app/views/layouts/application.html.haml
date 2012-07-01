@@ -17,6 +17,8 @@
               = link_to t('.tasks'), tasks_path
             %li{class: ("active" if current_page?(controller: :deals))}
               = link_to t('.deals'), deals_path
+            %li{class: ("active" if current_page?(controller: :events))}
+              = link_to t('.events'), events_path
             %li.divider-vertical
           %p.navbar-text.pull-right
             - if user_signed_in?

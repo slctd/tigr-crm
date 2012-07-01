@@ -1,5 +1,10 @@
 .tab-pane#participants
-  = form_tag deal_add_participant_path(@deal), method: "post", class: "form-search" do
+  - if object.is_a?(Deal)
+    - path = deal_add_participant_path(object)
+  - else
+    - path = event_add_participant_path(object)
+    
+  = form_tag path, method: "post", class: "form-search" do
     = label_tag :participant, "Add participant"
     = text_field_tag :participant, "", {class: "search-query"}
     = submit_tag "Add", class: "btn"

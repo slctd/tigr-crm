@@ -16,7 +16,8 @@ class HistoriesController < ApplicationController
         url = company_url(history.historable, anchor: "histories") if history.historable_type == "Company"
         url = person_url(history.historable, anchor: "histories") if history.historable_type == "Person"
       else
-        url = deal_url(history.deal, anchor: "histories")
+        url = deal_url(Deal.find(params[:deal_id]), anchor: "histories") if params[:deal_id].present?
+        url = event_url(Event.find(params[:event_id]), anchor: "histories") if params[:event_id].present?
       end
       url
     end

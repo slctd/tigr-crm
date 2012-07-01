@@ -1,11 +1,19 @@
 Crm::Application.routes.draw do
   scope '(:locale)' do
     resources :stages, only: [:show]
+    
+    resources :events do
+      post 'add_participant' => 'events#add_participant', as: "add_participant"
+      resources :tasks, except: [:index, :show]
+      resources :histories, only: [:create, :destroy]      
+    end
+    
     resources :deals do
       post 'add_participant' => 'deals#add_participant', as: "add_participant"
       resources :tasks, except: [:index, :show]
       resources :histories, only: [:create, :destroy]
     end
+
     resources :tasks, except: [:show]
     resources :contacts, only: [:index]
     

@@ -1,7 +1,10 @@
-%tr
+%tr.history
+  %td.type
+    = history.history_type.name
   %td
     .description
       = history.description
     .info
       = history.date
+      = t(".author")
       = history.user.email

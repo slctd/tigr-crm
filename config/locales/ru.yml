@@ -144,6 +144,7 @@ ru:
       contacts: Контакты
       tasks: Задачи
       deals: Сделки
+      events: Мероприятия
       hello: Вы вошли как
 
   application:
@@ -215,4 +216,8 @@ ru:
     edit:
       edit_task: Редактировать задачу
       
+  histories:
+    history:
+      author: "Автор:"
+  
       
