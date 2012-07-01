@@ -3,5 +3,5 @@
     = label_tag :person_id, t(".add_person")
     = text_field_tag :person_id, "", {class: "search-query"}
     = submit_tag t(".add"), class: "btn"
-  %table.table
+  %table.table.contacts
     = render object.people

@@ -8,7 +8,7 @@
     = label_tag :participant, t(".add_participant")
     = text_field_tag :participant, "", {class: "search-query"}
     = submit_tag t(".add"), class: "btn"
-  %table.table
+  %table.table.contacts
     = render object.companies
     = render object.people
     
