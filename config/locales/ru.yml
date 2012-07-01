@@ -170,13 +170,14 @@ ru:
     email_fields:
       add_email: Добавить email
       remove_email: Удалить email
+    filter_form:
+      filter_by_name: найти по названию
       
   contacts:
     index:
       all_contacts: Все контакты
       add_new_company: Новая компания
       add_new_person: Новая персона
-      filter_by_name: найти по имени
       
   companies:
     form:

@@ -2,7 +2,11 @@ class DealsController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    @deals = Deal.all
+    @deals = Deal.order(:closing_date)
+       
+    if params[:by_name].present?
+      @deals = @deals.by_name(params[:by_name])
+    end
   end
   
   def show

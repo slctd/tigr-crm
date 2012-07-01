@@ -2,7 +2,11 @@ class TasksController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    @tasks = Task.all
+    @tasks = Task.order(:deadline_date)
+
+    if params[:by_name].present?
+      @tasks = @tasks.by_name(params[:by_name])
+    end
   end
   
   def new

@@ -1,0 +1,4 @@
+= form_tag "", method: :get, class: 'well form-inline' do
+  .input-append<
+    = text_field_tag :by_name, params[:by_name], placeholder: t(".filter_by_name")
+    = submit_tag ">", name: nil, class: "btn"

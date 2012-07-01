@@ -16,6 +16,8 @@ class Task < ActiveRecord::Base
   
   before_validation :set_taskable
   
+  scope :by_name, lambda {|name| where("name like ?", "%#{name}%")}
+  
   private
     def set_taskable
       if self.contact =~ /_/

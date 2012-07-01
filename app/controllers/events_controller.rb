@@ -1,6 +1,10 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.all
+    @events = Event.order(:name)
+    
+    if params[:by_name].present?
+      @events = @events.by_name(params[:by_name])
+    end
   end
   
   def show

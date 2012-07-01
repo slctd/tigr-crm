@@ -28,7 +28,9 @@ class Deal < ActiveRecord::Base
   validates :success_probability, numericality: { only_integer: true,
                                                   greater_than_or_equal_to: 0,
                                                   less_than_or_equal_to: 100 }
-
+  
+  scope :by_name, lambda {|name| where("name like ?", "%#{name}%")}
+  
   def responsible
     User.find(self.responsible_id)
   end

@@ -1,4 +1,7 @@
 %h1= t(".deals")
 = link_to t(".new_deal"), new_deal_path
+
+= render 'filter_form'
+
 %table.table
   = render @deals

@@ -9,6 +9,8 @@ class Event < ActiveRecord::Base
   
   validates :name, presence: true
   
+  scope :by_name, lambda {|name| where("name like ?", "%#{name}%")}
+  
   def add_participant(participant)
     if participant =~ /_/
       contact_id, contact_type = participant.split('_')

@@ -1,5 +1,7 @@
 %h1= t(".tasks")
 = link_to t(".new_task"), new_task_path
 
+= render 'filter_form'
+
 %table.table.tasks
   = render @tasks

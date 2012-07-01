@@ -2,9 +2,7 @@
 = link_to t('.add_new_company'), new_company_path
 = link_to t('.add_new_person'), new_person_path
 
-= form_tag contacts_path, method: :post, class: 'form-inline' do
-  = text_field_tag :by_name, params[:by_name], placeholder: t(".filter_by_name")
-  = submit_tag ">", class: "btn"
+= render 'filter_form'
 
 %table.table
   = render @companies
