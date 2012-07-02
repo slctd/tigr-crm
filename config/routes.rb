@@ -4,12 +4,14 @@ Crm::Application.routes.draw do
     
     resources :events do
       post 'add_participant' => 'events#add_participant', as: "add_participant"
+      get 'remove_participant/:participant_type/:participant_id' => 'events#remove_participant', as: "remove_participant"
       resources :tasks, except: [:index, :show]
       resources :histories, only: [:create, :destroy]      
     end
     
     resources :deals do
       post 'add_participant' => 'deals#add_participant', as: "add_participant"
+      get 'remove_participant/:participant_type/:participant_id' => 'deals#remove_participant', as: "remove_participant"
       resources :tasks, except: [:index, :show]
       resources :histories, only: [:create, :destroy]
     end

@@ -49,4 +49,11 @@ class EventsController < ApplicationController
     @event.add_participant(params[:participant])
     redirect_to event_path(@event, anchor: "participants")
   end
+  
+  def remove_participant
+    @event = Event.find(params[:event_id])
+    participant = "#{params[:participant_id]}_#{params[:participant_type]}"
+    @event.remove_participant(participant)
+    redirect_to event_path(@event, anchor: "participants")
+  end
 end

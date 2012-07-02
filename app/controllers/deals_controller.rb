@@ -55,4 +55,11 @@ class DealsController < ApplicationController
     @deal.add_participant(params[:participant])
     redirect_to deal_path(@deal, anchor: "participants")
   end
+  
+  def remove_participant
+    @deal = Deal.find(params[:deal_id])
+    participant = "#{params[:participant_id]}_#{params[:participant_type]}"
+    @deal.remove_participant(participant)
+    redirect_to deal_path(@deal, anchor: "participants")
+  end
 end

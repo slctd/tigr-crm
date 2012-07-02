@@ -1,0 +1,11 @@
+- unless participant.nil?
+  %tr
+    %td.image= image_tag participant.image_url(:thumb)
+    %td= link_to participant.name, participant
+    %td
+      - if params[:controller] == "deals"
+        - deal = Deal.find(params[:id])
+        = link_to '<i class="icon-trash"></i>'.html_safe, deal_remove_participant_path(deal, participant.class.name, participant.id) unless deal.dealable == participant
+      - else
+        - event = Event.find(params[:id])
+        = link_to '<i class="icon-trash"></i>'.html_safe, event_remove_participant_path(event, participant.class.name, participant.id)

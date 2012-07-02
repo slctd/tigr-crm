@@ -23,4 +23,18 @@ class Event < ActiveRecord::Base
       end
     end
   end
+  
+  def remove_participant(participant)
+    if participant =~ /_/
+      contact_id, contact_type = participant.split('_')
+      if contact_type == "Company"
+        company = Company.find(contact_id)
+        self.companies.delete company if self.companies.include?(company)
+      else
+        person = Person.find(contact_id)
+        self.people.delete person if self.people.include?(person)
+      end
+    end    
+  end
+  
 end

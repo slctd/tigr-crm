@@ -48,6 +48,21 @@ class Deal < ActiveRecord::Base
     end
   end  
   
+  def remove_participant(participant)
+    if participant =~ /_/
+      contact_id, contact_type = participant.split('_')
+      if contact_type == "Company"
+        company = Company.find(contact_id)
+        return if self.dealable == company
+        self.companies.delete company if self.companies.include?(company)
+      else
+        person = Person.find(contact_id)
+        return if self.dealable == person
+        self.people.delete person if self.people.include?(person)
+      end
+    end    
+  end
+  
   private
   
     def set_dealable
