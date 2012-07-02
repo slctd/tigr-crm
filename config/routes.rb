@@ -5,6 +5,7 @@ Crm::Application.routes.draw do
     resources :events do
       post 'add_participant' => 'events#add_participant', as: "add_participant"
       get 'remove_participant/:participant_type/:participant_id' => 'events#remove_participant', as: "remove_participant"
+      get 'change_status' => 'events#change_status', as: 'change_status'
       resources :tasks, except: [:index, :show]
       resources :histories, only: [:create, :destroy]      
     end

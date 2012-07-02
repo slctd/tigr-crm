@@ -56,4 +56,10 @@ class EventsController < ApplicationController
     @event.remove_participant(participant)
     redirect_to event_path(@event, anchor: "participants")
   end
+  
+  def change_status
+    @event = Event.find(params[:event_id])
+    @event.toggle!(:opened)
+    redirect_to event_path(@event)
+  end
 end
