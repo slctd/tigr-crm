@@ -11,7 +11,6 @@
   %td
     - unless task.taskable.nil?
       = link_to task.taskable.name, polymorphic_path(task.taskable)
-  %td
-    = link_to "Edit", edit_task_path(task)
-    %br
-    = link_to "Delete", task, :method => :delete, :confirm => "You sure?"    
+  %td.links
+    = link_to '<i class="icon-edit"></i>'.html_safe, edit_task_path(task)
+    = link_to '<i class="icon-trash"></i>'.html_safe, task, :method => :delete, :confirm => "You sure?"    

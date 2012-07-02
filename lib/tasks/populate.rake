@@ -2,13 +2,22 @@
 namespace :db do
   desc "Fill database with random data"
   task :populate => :environment do
-    #Rake::Task['db:reset'].invoke
+    Rake::Task['db:crm'].invoke
+    create_users
     create_companies
-    create_tasks
     create_deals
     create_events
+    create_tasks
     create_histories
   end
+end
+
+def create_users
+  User.create!(
+    email: "user1@example.com",
+    password: "qwerty",
+    password_confirmation: "qwerty"
+  )
 end
 
 def create_companies
@@ -26,44 +35,6 @@ def create_companies
         )
       end
     end
-  end
-end
-
-def create_tasks
-  Company.all.each do |company|
-    rand(5).times do
-      Task.create(
-        name: Faker::Lorem.sentence(rand(1..4)),
-        description: Faker::Lorem.paragraph,
-        deadline_date: rand(2..10).days.since,
-        task_type_id: rand(TaskType.first.id..TaskType.last.id),
-        responsible_id: User.first.id,
-        contact: "#{company.id}_Company"
-      )
-    end
-  end
-  
-  Person.all.each do |person|
-    rand(5).times do
-      Task.create!(
-        name: Faker::Lorem.sentence(rand(1..4)),
-        description: Faker::Lorem.paragraph,
-        deadline_date: rand(2..10).days.since,
-        task_type_id: rand(TaskType.first.id..TaskType.last.id),
-        responsible_id: User.first.id,
-        contact: "#{person.id}_Person"
-        )
-    end
-  end
-  
-  rand(30).times do |n|
-    Task.create!(
-      name: Faker::Lorem.sentence(rand(1..4)),
-      description: Faker::Lorem.paragraph,
-      deadline_date: n.days.ago,
-      task_type_id: rand(TaskType.first.id..TaskType.last.id),
-      responsible_id: User.first.id
-    )
   end
 end
 
@@ -136,6 +107,72 @@ def create_events
     rand(Company.count).times do |n|
       event.companies << Company.find(n+1)
     end    
+  end
+end
+
+def create_tasks
+  Company.all.each do |company|
+    rand(5).times do
+      Task.create(
+        name: Faker::Lorem.sentence(rand(1..4)),
+        description: Faker::Lorem.paragraph,
+        deadline_date: rand(2..10).days.since,
+        task_type_id: rand(TaskType.first.id..TaskType.last.id),
+        responsible_id: User.first.id,
+        contact: "#{company.id}_Company"
+      )
+    end
+  end
+  
+  Person.all.each do |person|
+    rand(5).times do
+      Task.create!(
+        name: Faker::Lorem.sentence(rand(1..4)),
+        description: Faker::Lorem.paragraph,
+        deadline_date: rand(2..10).days.since,
+        task_type_id: rand(TaskType.first.id..TaskType.last.id),
+        responsible_id: User.first.id,
+        contact: "#{person.id}_Person"
+      )
+    end
+  end
+
+  Deal.all.each do |deal|
+    rand(5).times do
+      Task.create!(
+        name: Faker::Lorem.sentence(rand(1..4)),
+        description: Faker::Lorem.paragraph,
+        deadline_date: rand(2..10).days.since,
+        task_type_id: rand(TaskType.first.id..TaskType.last.id),
+        responsible_id: User.first.id,
+        deal_id: deal.id
+      )
+    end
+  end
+    
+  Event.all.each do |event|
+    rand(5).times do
+      Task.create!(
+        name: Faker::Lorem.sentence(rand(1..4)),
+        description: Faker::Lorem.paragraph,
+        deadline_date: rand(2..10).days.since,
+        task_type_id: rand(TaskType.first.id..TaskType.last.id),
+        responsible_id: User.first.id,
+        event_id: event.id
+      )
+    end 
+  end
+  
+  rand(30).times do |n|
+    rand(5).times do
+      Task.create!(
+        name: Faker::Lorem.sentence(rand(1..4)),
+        description: Faker::Lorem.paragraph,
+        deadline_date: n.days.ago,
+        task_type_id: rand(TaskType.first.id..TaskType.last.id),
+        responsible_id: User.first.id
+      )
+    end
   end
 end
 

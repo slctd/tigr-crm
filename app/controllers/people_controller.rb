@@ -1,5 +1,6 @@
 class PeopleController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
 
   def index
     @people = Person.free.order(:firstname).where("firstname like ? or lastname like ?", "%#{params[:q]}%", "%#{params[:q]}%")

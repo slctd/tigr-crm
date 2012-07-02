@@ -1,4 +1,7 @@
 class HistoriesController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
+  
   def create
     @history = current_user.histories.new(params[:history])
     flash[:error] = "History wasn't added" unless @history.save

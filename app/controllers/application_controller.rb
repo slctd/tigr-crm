@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_i18n_locale_from_params
   
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:alert] = "You have no permission to access this page."
+    redirect_to root_url
+  end
+  
   private
 
     def set_i18n_locale_from_params

@@ -32,6 +32,12 @@ Crm::Application.routes.draw do
     end
   
     devise_for :users
+
+    namespace :admin do
+      # Directs /admin/users/* to Admin::UsersController
+      # (app/controllers/admin/users_controller.rb)
+      resources :users
+    end
     
     root :to => 'contacts#index'
   end

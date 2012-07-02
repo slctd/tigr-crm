@@ -1,0 +1,6 @@
+%h1= t(".users")
+
+= link_to t(".new_user"), new_admin_user_path
+
+%table.table
+  = render @users

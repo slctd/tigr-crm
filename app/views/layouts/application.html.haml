@@ -11,15 +11,18 @@
         .container
           %a.brand{href: root_path} CRM
           %ul.nav
-            %li{class: ("active" if current_page?(controller: :contacts) or current_page?(root_path))}
+            %li{class: ("active" if ["contacts", "companies", "people"].include? params[:controller])}
               = link_to t('.contacts'), contacts_path
-            %li{class: ("active" if current_page?(controller: :tasks))}
+            %li{class: ("active" if params[:controller] == "tasks")}
               = link_to t('.tasks'), tasks_path
-            %li{class: ("active" if current_page?(controller: :deals))}
+            %li{class: ("active" if params[:controller] == "deals")}
               = link_to t('.deals'), deals_path
-            %li{class: ("active" if current_page?(controller: :events))}
+            %li{class: ("active" if params[:controller] == "events")}
               = link_to t('.events'), events_path
             %li.divider-vertical
+            - if current_user.admin?
+              %li{class: ("active" if params[:controller] == "admin/users")}
+                = link_to t('.users'), admin_users_path
           %p.navbar-text.pull-right
             - if user_signed_in?
               = t(".hello")

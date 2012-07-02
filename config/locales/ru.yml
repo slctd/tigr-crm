@@ -141,6 +141,8 @@ ru:
       user:
         email: Email
         password: Пароль
+        password_confirmation: Подтверждение пароля
+
         
   layouts:
     application:
@@ -148,6 +150,7 @@ ru:
       tasks: Задачи
       deals: Сделки
       events: Мероприятия
+      users: Пользователи
       hello: Вы вошли как
 
   application:
@@ -273,5 +276,14 @@ ru:
   histories:
     history:
       author: "Автор:"
-  
+      
+  admin:
+    users:
+      index:
+        users: Пользователи
+        new_user: Добавить пользователя
+      new:
+        new_user: Новый пользователь
+      edit:
+        edit: Редактировать
       
