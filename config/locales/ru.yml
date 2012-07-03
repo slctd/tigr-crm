@@ -88,7 +88,7 @@ ru:
         state: Область
         postal_code: Индекс
         country: Страна
-        addres_type: Тип адреса
+        address_type: Тип адреса
       company:
         name: Название
         description: Описание
@@ -176,6 +176,9 @@ ru:
     phone_fields:
       add_phone: Добавить телефон
       remove_phone: Удалить телефон
+    address_fields:
+      add_address: Добавить адрес
+      remove_address: Удалить адрес
     filter_form:
       filter_by_name: найти по названию
     upload_image_form:
@@ -190,6 +193,10 @@ ru:
   phones:
     phone:
       phone: "Телефон:"
+  
+  addresses:
+    address:
+      address: "Адрес:"
       
   contacts:
     index:

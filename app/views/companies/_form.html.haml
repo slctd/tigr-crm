@@ -15,6 +15,12 @@
   %br
   %br
   
+  = f.simple_fields_for :addresses do |address_form|
+    = render 'address_fields', f: address_form
+  = link_to_add_fields t('application.address_fields.add_address'), f, :addresses
+  %br
+  %br
+  
   = f.input :description, input_html: { rows: 2 }  
   
   .form-actions

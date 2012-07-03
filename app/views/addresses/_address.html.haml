@@ -1,0 +1,8 @@
+%dt= t(".address")
+%dd 
+  = address.address + "," if address.address.present?
+  = address.city + "," if address.city.present?
+  = address.state + "," if address.state.present?
+  = address.country + "," if address.country.present?
+  = address.postal_code if address.postal_code.present?  
+  = "(#{address.address_type.name})"
