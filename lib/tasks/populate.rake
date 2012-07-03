@@ -23,15 +23,33 @@ end
 def create_companies
   5.times do
     company = Company.create!(name: Faker::Company.name)
+    rand(5).times do
+      company.emails.create!(
+        email: Faker::Internet.email, 
+        email_type_id: rand(EmailType.first.id..EmailType.last.id)
+      )
+    end
+    rand(5).times do
+      company.phones.create!(
+        phone: "+#{rand(1..9)} #{rand(100..999)} #{rand(100..999)} #{rand(10..99)} #{rand(10..99)}", 
+        phone_type_id: rand(PhoneType.first.id..PhoneType.last.id)
+      )
+    end
     rand(10).times do
       person = company.people.create!( 
                   firstname: Faker::Name.first_name,
                   lastname: Faker::Name.last_name
                 )
-      rand(4).times do
+      rand(5).times do
         person.emails.create!(
           email: Faker::Internet.email, 
           email_type_id: rand(EmailType.first.id..EmailType.last.id)
+        )
+      end
+      rand(5).times do
+        person.phones.create!(
+          phone: "+#{rand(1..9)} #{rand(100..999)} #{rand(100..999)} #{rand(10..99)} #{rand(10..99)}", 
+          phone_type_id: rand(PhoneType.first.id..PhoneType.last.id)
         )
       end
     end

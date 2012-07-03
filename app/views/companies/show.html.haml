@@ -21,6 +21,7 @@
         - else
           = @company.contact_type.name
       = render @company.emails
+      = render @company.phones
       - unless @company.description.nil?
         %dt= t('.description')
         %dd= @company.description

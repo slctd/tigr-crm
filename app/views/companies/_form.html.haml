@@ -6,7 +6,15 @@
   = f.simple_fields_for :emails do |email_form|
     = render 'email_fields', f: email_form
   = link_to_add_fields t('application.email_fields.add_email'), f, :emails
-
+  %br
+  %br
+  
+  = f.simple_fields_for :phones do |phone_form|
+    = render 'phone_fields', f: phone_form
+  = link_to_add_fields t('application.phone_fields.add_phone'), f, :phones
+  %br
+  %br
+  
   = f.input :description, input_html: { rows: 2 }  
   
   .form-actions

@@ -2,5 +2,9 @@
   %td.image= image_tag company.image_url(:thumb)
   %td= link_to company.name, company
   %td
+    = link_to company.emails.first.email, "mailto:#{company.emails.first.email}" if company.emails.present?
+    %br
+    = company.phones.first.phone if company.phones.present?
+  %td
     = link_to '<i class="icon-edit"></i>'.html_safe, edit_company_path(company)
     = link_to '<i class="icon-trash"></i>'.html_safe, company_path(company), method: :delete

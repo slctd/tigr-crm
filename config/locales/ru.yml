@@ -173,12 +173,23 @@ ru:
     email_fields:
       add_email: Добавить email
       remove_email: Удалить email
+    phone_fields:
+      add_phone: Добавить телефон
+      remove_phone: Удалить телефон
     filter_form:
       filter_by_name: найти по названию
     upload_image_form:
       ok: OK
       edit_image: Изменить фото
       remove_image: Удалить
+      
+  emails:
+    email:
+      email: "Email:"
+  
+  phones:
+    phone:
+      phone: "Телефон:"
       
   contacts:
     index:

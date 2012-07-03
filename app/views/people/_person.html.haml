@@ -7,5 +7,9 @@
         = t(".company")
         = link_to person.company.name, company_path(person.company)
   %td
+    = link_to person.emails.first.email, "mailto:#{person.emails.first.email}" if person.emails.present?
+    %br
+    = person.phones.first.phone if person.phones.present?
+  %td
     = link_to '<i class="icon-edit"></i>'.html_safe, edit_person_path(person)
     = link_to '<i class="icon-trash"></i>'.html_safe, person_path(person), method: :delete  
