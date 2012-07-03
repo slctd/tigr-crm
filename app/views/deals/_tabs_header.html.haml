@@ -4,4 +4,6 @@
   %li
     %a{href: "#tasks", "data-toggle" => "tab"}= t(".tasks")
   %li
-    %a{href: "#participants", "data-toggle" => "tab"}= t(".participants")
+    %a{href: "#participants", "data-toggle" => "tab"}
+      = t(".participants")
+      = "(#{object.companies.count + object.people.count})"

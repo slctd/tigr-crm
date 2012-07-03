@@ -14,7 +14,7 @@
         = t(".closed")
     
 .tabbable
-  = render 'tabs_header'
+  = render 'tabs_header', object: @event
   .tab-content
     = render 'histories_tab', object: @event
     = render 'tasks_tab', object: @event

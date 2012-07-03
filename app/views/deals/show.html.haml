@@ -22,7 +22,7 @@
     %td= @deal.responsible.email
     
 .tabbable
-  = render 'tabs_header'
+  = render 'tabs_header', object: @deal
   .tab-content
     = render 'histories_tab', object: @deal
     = render 'tasks_tab', object: @deal

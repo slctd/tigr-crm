@@ -1,7 +1,7 @@
 = link_to t(".edit_image"), "#", id: "upload_image"
 .upload_image_form
   = form_for object, html: { multipart: true, class: "form-inline" } do |f|
-    = f.file_field :image, class: "span2"
+    = f.file_field :image
     %br
     - if object.image.present?
       = f.check_box :remove_image
