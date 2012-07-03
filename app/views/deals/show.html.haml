@@ -12,6 +12,7 @@
     %td
       - if @deal.budget.present?
         = @deal.budget
+        = @deal.currency.abbreviation
       - else
         = t(".budget_not_set")
     %td= @deal.closing_date
