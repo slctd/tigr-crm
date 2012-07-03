@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @tasks = Task.order(:deadline_date)
+    @tasks = Task.order("deadline_date desc")
 
     if params[:by_name].present?
       @tasks = @tasks.by_name(params[:by_name])

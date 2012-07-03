@@ -2,4 +2,4 @@
   = link_to t('.new_task'), new_polymorphic_path([object, Task])
 
   %table.table.tasks
-    = render object.tasks
+    = render object.tasks.order("deadline_date desc")
