@@ -236,6 +236,9 @@ ru:
   deals:
     deal:
       client_not_set: Клиент не задан
+    badge:
+      expired_since: Просрочен с
+      success: Успех
     tabs_header:
       histories: История
       tasks: Задачи

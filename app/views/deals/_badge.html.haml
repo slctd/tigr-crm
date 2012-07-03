@@ -1,0 +1,8 @@
+- if object.stage == Stage.find_by_success_probability(100)
+  %span.badge.badge-success
+    = t(".success")
+- else
+  - if object.closing_date < Time.now.to_date
+    %span.badge.badge-important
+      = t(".expired_since")
+      = object.closing_date
