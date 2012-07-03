@@ -24,8 +24,6 @@
       - unless @company.description.nil?
         %dt= t('.description')
         %dd= @company.description
-      %dt= t('.tags')
-      %dd ...
       
   .span4
     = image_tag @company.image_url
