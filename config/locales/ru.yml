@@ -221,6 +221,8 @@ ru:
       not_set: Не задан
       description: Описание
       tags: Теги
+    person:
+      company: "Компания:"
       
   tasks:
     index:

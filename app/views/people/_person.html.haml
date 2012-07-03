@@ -1,6 +1,11 @@
 %tr
   %td.image= image_tag person.image_url(:thumb)
-  %td= link_to person.name, person
+  %td
+    = link_to person.name, person
+    - if person.company.present?
+      .person_company
+        = t(".company")
+        = link_to person.company.name, company_path(person.company)
   %td
     = link_to '<i class="icon-edit"></i>'.html_safe, edit_person_path(person)
     = link_to '<i class="icon-trash"></i>'.html_safe, person_path(person), method: :delete  
