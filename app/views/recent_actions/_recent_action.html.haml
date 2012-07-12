@@ -1,0 +1,9 @@
+%tr
+  %td
+    = link_to recent_action.user.name || recent_action.user.email, recent_action.user
+    = t(".#{recent_action.action_type.name}")
+    = t(".#{recent_action.actionable_type.downcase}")
+    - if recent_action.actionable.present?
+      = link_to recent_action.actionable.name || recent_action.actionable.email, polymorphic_path(recent_action.actionable)
+    - else
+      = recent_action.comment

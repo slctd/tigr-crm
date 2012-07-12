@@ -28,12 +28,23 @@ class RecentActionsObserver < ActiveRecord::Observer
   end
   
   def after_destroy(record)
+    # Update comments for every recent action with this record
+    RecentAction.where(actionable_id: record.id, actionable_type: record.class.name).each do |action|
+      action.comment = record.name || record.email
+      action.save
+    end
+    # Update comments for every recent item with this record
+    RecentItem.where(itemable_id: record.id, itemable_type: record.class.name).each do |item|
+      item.comment = record.name || record.email
+      item.save
+    end
+    
     action = RecentAction.new(
       action_type_id: ActionType.find_by_name('destroy').id,
       user_id: User.current.id,
-      comment: record.name
+      comment: record.name || record.email
     )
     action.actionable_type = record.class.name
     action.save
-  end    
+  end
 end

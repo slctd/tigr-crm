@@ -345,3 +345,20 @@ ru:
       tasks: Задачи
       deals: Сделки
       events: События
+      
+  dashboard:
+    index:
+      recent_actions: Последние действия
+
+      
+  recent_actions:
+    recent_action:
+      create: создал
+      update: обновил
+      destroy: удалил
+      person: персону
+      company: компанию
+      task: задачу
+      deal: сделку
+      event: событие
+      user: пользователя

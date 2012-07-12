@@ -1,5 +1,6 @@
 class RecentItem < ActiveRecord::Base
   belongs_to :itemable, polymorphic: true
+  belongs_to :user  
   
   attr_accessible :user_id
   

@@ -2,9 +2,12 @@
   %h3= t('.recent_items')
   - RecentItem.of(current_user).each do |item|
     %p
-      = t(".#{item.itemable.class.name.downcase}")
+      = t(".#{item.itemable_type.downcase}")
       \:
-      - unless item.itemable.is_a?(Task)
-        = link_to item.itemable.name || item.itemable.email, polymorphic_path(item.itemable)
+      - if item.itemable.present?
+        - unless item.itemable.is_a?(Task)
+          = link_to item.itemable.name || item.itemable.email, polymorphic_path(item.itemable)
+        - else
+          = item.itemable.name
       - else
-        = item.itemable.name
+        = item.comment
