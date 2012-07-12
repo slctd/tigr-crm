@@ -1,0 +1,11 @@
+%h1
+  = t('.profile')
+  =@user.name || @user.email
+%table.table-condensed
+  %tr
+    %td{style: "width: 10%;"}
+      = t('.email')
+    %td= @user.email
+  %tr
+    %td= t('.name')
+    %td= @user.name if @user.name.present?

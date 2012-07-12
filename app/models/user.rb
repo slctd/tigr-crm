@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :name
   
   validates :password, :password_confirmation, presence: true, on: :create
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i      

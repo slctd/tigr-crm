@@ -140,6 +140,7 @@ ru:
         contact: Контакт
       user:
         email: Email
+        name: Имя
         password: Пароль
         password_confirmation: Подтверждение пароля
 
@@ -302,6 +303,15 @@ ru:
     history:
       author: "Автор:"
       
+  users:
+    profile:
+      profile: Ваш профиль
+      edit_profile: Редактировать профиль
+      email: Email
+      name: Имя
+    edit:
+      edit: Редактировать профиль
+      
   admin:
     users:
       index:
@@ -311,4 +321,7 @@ ru:
         new_user: Новый пользователь
       edit:
         edit: Редактировать
-      
+      show:
+        profile: Профиль пользователя
+        email: Email
+        name: Имя

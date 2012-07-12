@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702083031) do
+ActiveRecord::Schema.define(:version => 20120712072629) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address"
@@ -34,8 +34,6 @@ ActiveRecord::Schema.define(:version => 20120702083031) do
     t.integer  "contact_type_id"
     t.string   "image"
   end
-
-  add_index "companies", ["name"], :name => "index_companies_on_name", :unique => true
 
   create_table "currencies", :force => true do |t|
     t.string   "name"
@@ -162,6 +160,7 @@ ActiveRecord::Schema.define(:version => 20120702083031) do
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
     t.boolean  "admin",                  :default => false
+    t.string   "name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

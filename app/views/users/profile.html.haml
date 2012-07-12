@@ -1,0 +1,12 @@
+%h1= t('.profile')
+
+= link_to t('.edit_profile'), edit_user_path(current_user)
+
+%table.table-condensed
+  %tr
+    %td{style: "width: 10%;"}
+      = t('.email')
+    %td= current_user.email
+  %tr
+    %td= t('.name')
+    %td= current_user.name if current_user.name.present?
