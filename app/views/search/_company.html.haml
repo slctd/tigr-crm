@@ -1,0 +1,7 @@
+%tr
+  %td.image= image_tag company.image_url(:thumb)
+  %td= link_to company.name, company
+  %td
+    = link_to company.emails.first.email, "mailto:#{company.emails.first.email}" if company.emails.present?
+    %br
+    = company.phones.first.phone if company.phones.present?

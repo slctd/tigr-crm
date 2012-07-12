@@ -10,7 +10,7 @@
     - else
       = t(".client_not_set")
   %td
-    = deal.responsible.name || deal.responsible.email
+    = deal.responsible.email
   %td
     - if deal.budget.present?
       = "#{deal.budget.to_s} #{deal.currency.abbreviation}"

@@ -1,0 +1,22 @@
+%h1= t('.search_results')
+
+- unless @companies.count + @people.count == 0
+  %h2= t('.contacts')
+  %table.table.contacts
+    = render partial: 'company', collection: @companies
+    = render partial: 'person', collection: @people
+
+- unless @tasks.count == 0
+  %h2= t('.tasks')
+  %table.table
+    = render partial: 'task', collection: @tasks
+  
+- unless @deals.count == 0
+  %h2= t('.deals')
+  %table.table  
+    = render @deals
+  
+- unless @events.count == 0
+  %h2= t('.events')
+  %table.table  
+    = render @events

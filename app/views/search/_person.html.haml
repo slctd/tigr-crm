@@ -1,0 +1,12 @@
+%tr
+  %td.image= image_tag person.image_url(:thumb)
+  %td
+    = link_to person.name, person
+    - if person.company.present?
+      .person_company
+        = t(".company")
+        = link_to person.company.name, company_path(person.company)
+  %td
+    = link_to person.emails.first.email, "mailto:#{person.emails.first.email}" if person.emails.present?
+    %br
+    = person.phones.first.phone if person.phones.present?

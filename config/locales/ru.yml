@@ -153,6 +153,7 @@ ru:
       events: Мероприятия
       users: Пользователи
       welcome: Добро пожаловать,
+      quick_search: Быстрый поиск      
       profile: Профиль
 
   application:
@@ -187,6 +188,8 @@ ru:
       ok: OK
       edit_image: Изменить фото
       remove_image: Удалить
+    quick_search:
+      quick_search: Быстрый поиск
       
   emails:
     email:
@@ -312,7 +315,7 @@ ru:
       name: Имя
     edit:
       edit: Редактировать профиль
-      
+
   admin:
     users:
       index:
@@ -326,3 +329,11 @@ ru:
         profile: Профиль пользователя
         email: Email
         name: Имя
+        
+  search:
+    index:
+      search_results: Результаты поиска
+      contacts: Контакты
+      tasks: Задачи
+      deals: Сделки
+      events: События

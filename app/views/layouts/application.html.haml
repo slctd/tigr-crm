@@ -28,9 +28,12 @@
               = t(".welcome")
               = (current_user.name || current_user.email) + "!"
             |
+            = link_to t('.quick_search'), '#', id: "quick_search"
+            |
             = link_to t('.profile'), profile_path
             |
             = link_to t("devise.sessions.sign_out"), destroy_user_session_path, method: :delete
+    = render "quick_search"
     .container
       - flash.each do |name, msg|
         %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}

@@ -43,6 +43,8 @@ Crm::Application.routes.draw do
       resources :users
     end
     
+    get '/search/(:search)' => 'search#index', as: 'search'
+    
     root :to => 'contacts#index'
   end
   # The priority is based upon order of creation:
