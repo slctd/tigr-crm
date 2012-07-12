@@ -25,9 +25,12 @@
                 = link_to t('.users'), admin_users_path
           %p.navbar-text.pull-right
             - if user_signed_in?
-              = t(".hello")
-              = current_user.email + "."
-              = link_to t("devise.sessions.sign_out"), destroy_user_session_path, method: :delete
+              = t(".welcome")
+              = (current_user.name || current_user.email) + "!"
+            |
+            = link_to t('.profile'), profile_path
+            |
+            = link_to t("devise.sessions.sign_out"), destroy_user_session_path, method: :delete
     .container
       - flash.each do |name, msg|
         %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}

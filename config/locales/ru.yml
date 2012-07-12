@@ -152,7 +152,8 @@ ru:
       deals: Сделки
       events: Мероприятия
       users: Пользователи
-      hello: Вы вошли как
+      welcome: Добро пожаловать,
+      profile: Профиль
 
   application:
     tabs_header:
