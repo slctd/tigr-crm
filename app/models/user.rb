@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   has_many :tasks
   has_many :deals
   has_many :histories
+  has_many :recent_actions, as: :actionable
+  has_many :recent_items, as: :itemable
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -18,4 +20,12 @@ class User < ActiveRecord::Base
   validates :email, presence: true,
                     uniqueness: { case_sensitive:  false },
                     format: { with: email_regex }
+                    
+  def self.current
+    Thread.current[:user]
+  end
+  
+  def self.current=(user)
+    Thread.current[:user] = user
+  end
 end

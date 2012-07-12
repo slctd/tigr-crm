@@ -66,6 +66,10 @@ def create_contact_types
   HistoryType.create!(name: "Электронная почта")
   HistoryType.create!(name: "Звонок")
   HistoryType.create!(name: "Встреча")
+  
+  ActionType.create!(name: "create")
+  ActionType.create!(name: "update")
+  ActionType.create!(name: "destroy")
 end
 
 def create_stages

@@ -6,6 +6,7 @@ class Task < ActiveRecord::Base
   belongs_to :user, class_name: "User", foreign_key: "responsible_id"
   belongs_to :deal
   belongs_to :event
+  has_many :recent_actions, as: :actionable
   
   attr_accessible :deadline_date,   :description,
                   :name,            :responsible_id,  

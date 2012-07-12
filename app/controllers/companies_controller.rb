@@ -14,6 +14,9 @@ class CompaniesController < ApplicationController
     @history = History.new
     @history.contact = "#{@company.id}_Company"
 
+    # Log recent items
+    @company.recent_items.create(user_id: current_user.id)
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @company }

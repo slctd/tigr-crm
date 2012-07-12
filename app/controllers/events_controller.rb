@@ -14,6 +14,9 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @history = History.new
     @history.event = @event
+    
+    # Log recent items
+    @event.recent_items.create(user_id: current_user.id)
   end
   
   def new

@@ -34,10 +34,15 @@
             |
             = link_to t("devise.sessions.sign_out"), destroy_user_session_path, method: :delete
     = render "quick_search"
-    .container
-      - flash.each do |name, msg|
-        %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
-          %a.close{'data-dismiss' => "alert"} ×
-          = msg
-      = yield
-      = debug(params) if Rails.env.development?
+    .container-fluid
+      .row-fluid
+        .span2
+          = render 'recent_items'
+        .span8
+          - flash.each do |name, msg|
+            %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
+              %a.close{'data-dismiss' => "alert"} ×
+              = msg
+          = yield
+          = debug(params) if Rails.env.development?
+        .span2

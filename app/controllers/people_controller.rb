@@ -12,6 +12,9 @@ class PeopleController < ApplicationController
     @history = History.new
     @history.contact = "#{@person.id}_Person"
     
+    # Log recent items
+    @person.recent_items.create(user_id: current_user.id)
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @person }

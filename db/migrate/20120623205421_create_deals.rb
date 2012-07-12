@@ -1,7 +1,7 @@
 class CreateDeals < ActiveRecord::Migration
   def change
     create_table :deals do |t|
-      t.references :dealable, polymorphic: true      
+      t.references :dealable, polymorphic: true
       t.string :name
       t.text :description
       t.integer :currency_id

@@ -190,6 +190,13 @@ ru:
       remove_image: Удалить
     quick_search:
       quick_search: Быстрый поиск
+    recent_items:
+      recent_items: Последние объекты
+      company: Компания
+      person: Персона
+      deal: Сделка
+      event: Мероприятие
+      user: Пользователь
       
   emails:
     email:

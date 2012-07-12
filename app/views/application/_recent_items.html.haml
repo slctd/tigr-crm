@@ -1,0 +1,7 @@
+.recent_items
+  %h3= t('.recent_items')
+  - RecentItem.of(current_user).each do |item|
+    %p
+      = t(".#{item.itemable.class.name.downcase}")
+      \:
+      = link_to item.itemable.name || item.itemable.email, polymorphic_path(item.itemable)
