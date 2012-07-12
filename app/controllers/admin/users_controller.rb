@@ -8,9 +8,6 @@ class Admin::UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    
-    # Log recent items
-    @user.recent_items.create(user_id: current_user.id)
   end  
   
   def new

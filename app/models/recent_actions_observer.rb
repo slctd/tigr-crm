@@ -6,6 +6,7 @@ class RecentActionsObserver < ActiveRecord::Observer
       action_type_id: ActionType.find_by_name('create').id,
       user_id: User.current.id
     )
+    record.recent_items.create(user_id: User.current.id)
   end
   
   def after_update(record)
@@ -13,6 +14,7 @@ class RecentActionsObserver < ActiveRecord::Observer
       action_type_id: ActionType.find_by_name('update').id,
       user_id: User.current.id
     )
+    record.recent_items.create(user_id: User.current.id)
   end
   
   def after_destroy(record)

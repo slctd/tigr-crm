@@ -18,5 +18,6 @@ class HistoryObserver < ActiveRecord::Observer
         action_type_id: ActionType.find_by_name('update').id,
         user_id: User.current.id
       )
+      item.recent_items.create(user_id: User.current.id)
     end
 end

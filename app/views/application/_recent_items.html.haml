@@ -4,4 +4,7 @@
     %p
       = t(".#{item.itemable.class.name.downcase}")
       \:
-      = link_to item.itemable.name || item.itemable.email, polymorphic_path(item.itemable)
+      - unless item.itemable.is_a?(Task)
+        = link_to item.itemable.name || item.itemable.email, polymorphic_path(item.itemable)
+      - else
+        = item.itemable.name

@@ -14,9 +14,6 @@ class DealsController < ApplicationController
     @deal = Deal.find(params[:id])
     @history = History.new
     @history.deal = @deal
-
-    # Log recent items
-    @deal.recent_items.create(user_id: current_user.id)
   end
   
   def new
