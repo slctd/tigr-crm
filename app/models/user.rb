@@ -2,8 +2,7 @@ class User < ActiveRecord::Base
   has_many :tasks
   has_many :deals
   has_many :histories
-  has_many :recent_actions, as: :actionable
-  has_many :recent_items, as: :itemable
+  has_many :recent_items, as: :itemable, dependent: :destroy
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

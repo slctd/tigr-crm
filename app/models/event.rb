@@ -4,8 +4,7 @@ class Event < ActiveRecord::Base
   has_many :companies, through: :event_contacts, source: :participatiable, source_type: 'Company'
   has_many :histories
   has_many :tasks
-  has_many :recent_actions, as: :actionable
-  has_many :recent_items, as: :itemable
+  has_many :recent_items, as: :itemable, dependent: :destroy
   
   attr_accessible :name
   

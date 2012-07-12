@@ -2,19 +2,29 @@ class RecentActionsObserver < ActiveRecord::Observer
   observe :person, :company, :task, :deal, :event, :user
 
   def after_create(record)
-    record.recent_actions.create(
+    action = RecentAction.new(
       action_type_id: ActionType.find_by_name('create').id,
       user_id: User.current.id
     )
-    record.recent_items.create(user_id: User.current.id)
+    action.actionable = record
+    action.save
+    
+    item = RecentItem.new(user_id: User.current.id)
+    item.itemable = record
+    item.save
   end
   
   def after_update(record)
-    record.recent_actions.create(
+    action = RecentAction.new(
       action_type_id: ActionType.find_by_name('update').id,
       user_id: User.current.id
     )
-    record.recent_items.create(user_id: User.current.id)
+    action.actionable = record
+    action.save
+    
+    item = RecentItem.new(user_id: User.current.id)
+    item.itemable = record
+    item.save
   end
   
   def after_destroy(record)

@@ -11,8 +11,7 @@ class Deal < ActiveRecord::Base
   has_many :companies, through: :deal_contacts, source: :participatiable, source_type: 'Company'
   has_many :tasks
   has_many :histories
-  has_many :recent_actions, as: :actionable
-  has_many :recent_items, as: :itemable
+  has_many :recent_items, as: :itemable, dependent: :destroy
   
   attr_accessible :budget,              :budget_type_id, 
                   :closing_date,        :currency_id,

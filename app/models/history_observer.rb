@@ -13,11 +13,16 @@ class HistoryObserver < ActiveRecord::Observer
   
   private 
     def log(record)
-      item = record.historable || record.deal || record.event
-      item.recent_actions.create(
+      object = record.historable || record.deal || record.event
+      action = RecentAction.new(
         action_type_id: ActionType.find_by_name('update').id,
         user_id: User.current.id
       )
-      item.recent_items.create(user_id: User.current.id)
+      action.actionable = object
+      action.save
+      
+      item = RecentItem.new(user_id: User.current.id)
+      item.itemable = object
+      item.save
     end
 end

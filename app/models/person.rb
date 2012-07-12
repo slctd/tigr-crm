@@ -11,8 +11,7 @@ class Person < ActiveRecord::Base
   has_many :deals, through: :deal_contacts
   has_many :event_contacts, as: :participatiable
   has_many :events, through: :event_contacts
-  has_many :recent_actions, as: :actionable
-  has_many :recent_items, as: :itemable  
+  has_many :recent_items, as: :itemable, dependent: :destroy
   belongs_to :contact_type
   
   mount_uploader :image, ImageUploader
