@@ -1,5 +1,6 @@
 %h1= t('.recent_actions')
 = link_to t('.filter'), "#", id: "recent_actions_options"
+%i#recent_actions_options_icon{class: (params[:filter].present? ? "icon-chevron-down" : "icon-chevron-right")}
 #recent_actions_options{style: ("display: none" unless params[:filter])}
   = form_tag "", class: 'form-inline' do
     .input-prepend<
