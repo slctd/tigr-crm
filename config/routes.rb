@@ -1,5 +1,6 @@
 Crm::Application.routes.draw do
-  get "users/show"
+
+  get 'dashboard/index' => "dashboard#index", as: "dashboard"
 
   scope '(:locale)' do
     resources :stages, only: [:show]
@@ -45,7 +46,7 @@ Crm::Application.routes.draw do
     
     get '/search/(:search)' => 'search#index', as: 'search'
     
-    root :to => 'contacts#index'
+    root :to => 'dashboard#index'
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.

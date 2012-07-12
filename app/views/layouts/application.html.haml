@@ -11,18 +11,20 @@
         .container
           %a.brand{href: root_path} CRM
           %ul.nav
+            %li{class: ("active" if params[:controller] == "dashboard")}
+              = link_to "#{image_tag('dashboard_icon.png')} #{t('.dashboard')}".html_safe, dashboard_path
             %li{class: ("active" if ["contacts", "companies", "people"].include? params[:controller])}
-              = link_to t('.contacts'), contacts_path
+              = link_to "#{image_tag('contacts_icon.png')} #{t('.contacts')}".html_safe, contacts_path
             %li{class: ("active" if params[:controller] == "tasks")}
-              = link_to t('.tasks'), tasks_path
+              = link_to "#{image_tag('tasks_icon.png')} #{t('.tasks')}".html_safe, tasks_path
             %li{class: ("active" if params[:controller] == "deals")}
-              = link_to t('.deals'), deals_path
+              = link_to "#{image_tag('deals_icon.png')} #{t('.deals')}".html_safe, deals_path              
             %li{class: ("active" if params[:controller] == "events")}
-              = link_to t('.events'), events_path
+              = link_to "#{image_tag('events_icon.png')} #{t('.events')}".html_safe, events_path              
             %li.divider-vertical
             - if current_user.admin?
               %li{class: ("active" if params[:controller] == "admin/users")}
-                = link_to t('.users'), admin_users_path
+                = link_to "#{image_tag('users_icon.png')} #{t('.users')}".html_safe, admin_users_path
           %p.navbar-text.pull-right
             - if user_signed_in?
               = t(".welcome")
