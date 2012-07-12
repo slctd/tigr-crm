@@ -1,3 +1,7 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+jQuery ->
+  $('a#recent_actions_options').on 'click', (e) ->
+    if $('div#recent_actions_options').css('display') == 'none'
+      $('div#recent_actions_options').css('display', 'block')
+    else
+      $('div#recent_actions_options').css('display', 'none')
+    e.preventDefault()

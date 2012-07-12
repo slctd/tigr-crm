@@ -1,3 +1,17 @@
 %h1= t('.recent_actions')
+= link_to t('.filter'), "#", id: "recent_actions_options"
+#recent_actions_options{style: ("display: none" unless params[:filter])}
+  = form_tag "", class: 'form-inline' do
+    .input-prepend<
+      %span.add-on= t(".action_type")
+      = select_tag :action_type, options_for_select(ActionType.all.map { |type| [t(".#{type.name}"), type.id] }, params[:action_type]), include_blank: true
+    .input-prepend<
+      %span.add-on= t(".user")
+      = select_tag :user_id, options_from_collection_for_select(User.all, :id, :email, params[:user_id]), include_blank: true
+    .input-prepend<
+      %span.add-on= t(".during_last_3")
+      = select_tag :date, options_for_select([t('.days'), t('.weeks'), t('.months')], params[:date])
+    = submit_tag ">", name: "filter", class: "btn"
+
 %table.table
   = render @recent_actions

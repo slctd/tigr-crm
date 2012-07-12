@@ -349,7 +349,16 @@ ru:
   dashboard:
     index:
       recent_actions: Последние действия
-
+      filter: Фильтр
+      action_type: Тип действия
+      create: создать
+      update: обновить
+      destroy: удалить
+      user: Пользователь
+      during_last_3: За последние 3
+      days: дня
+      weeks: недели
+      months: месяца
       
   recent_actions:
     recent_action:

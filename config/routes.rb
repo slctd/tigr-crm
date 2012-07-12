@@ -43,7 +43,7 @@ Crm::Application.routes.draw do
     
     get '/search/(:search)' => 'search#index', as: 'search'
     
-    get 'dashboard/index' => "dashboard#index", as: "dashboard"
+    match 'dashboard/index' => "dashboard#index", as: "dashboard"
     
     root :to => 'dashboard#index'
   end
