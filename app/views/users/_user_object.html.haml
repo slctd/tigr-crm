@@ -1,0 +1,8 @@
+%tr
+  %td
+    - if user_object.is_a?(Task)
+      = t('.task')
+      = user_object.name
+    - else
+      = t(".#{user_object.class.name.downcase}")
+      = link_to user_object.name, polymorphic_path(user_object)

@@ -4,6 +4,12 @@ class User < ActiveRecord::Base
   has_many :histories
   has_many :recent_actions, dependent: :destroy    
   has_many :recent_items, dependent: :destroy
+  has_many :authentications
+  has_many :user_contacts, inverse_of: :user, dependent: :destroy
+  
+  accepts_nested_attributes_for :user_contacts, allow_destroy: true
+  
+  mount_uploader :image, ImageUploader
   
   nilify_blanks :only => [:name]
   
@@ -15,7 +21,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :name
+  attr_accessible :name, :gender, :birthday, :comment, :user_contacts_attributes, :image, :remove_image
   
   validates :password, :password_confirmation, presence: true, on: :create
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i      

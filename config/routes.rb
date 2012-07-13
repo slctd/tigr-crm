@@ -1,5 +1,7 @@
 Crm::Application.routes.draw do
+
   scope '(:locale)' do
+    
     resources :stages, only: [:show]
     
     resources :events do
@@ -34,9 +36,13 @@ Crm::Application.routes.draw do
       resources :histories, only: [:create, :destroy]
     end
   
+    resources :authentications, only: [:destroy]
+    match '/auth/:provider/callback' => 'authentications#create'
+    
     devise_for :users
     resources :users, only: [:edit, :update]
     get '/profile' => 'users#profile', as: 'profile'
+    
     namespace :admin do
       resources :users
     end

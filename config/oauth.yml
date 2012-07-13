@@ -1,0 +1,13 @@
+development: &defaults
+  twitter:
+    app_id: 
+    app_secret: 
+
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults

@@ -1,0 +1,8 @@
+.tab-pane#activity
+  = t('.objects')
+  %table.table
+    = render partial: 'user_object', collection: @user_objects
+  
+  = t('.recent_actions')
+  %table.table
+    = render @recent_actions

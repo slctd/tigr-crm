@@ -75,11 +75,17 @@ set :repository,      "ssh://#{user}@#{deploy_server}/home/#{user}/git/#{applica
 ## dayabase.yml в shared-каталог проекта на сервере и раскомментируйте
 ## следующие строки.
 
-# after "deploy:update_code", :copy_database_config
-# task :copy_database_config, roles => :app do
-#   db_config = "#{shared_path}/database.yml"
-#   run "cp #{db_config} #{release_path}/config/database.yml"
-# end
+ before "deploy:assets:precompile", :copy_database_config
+ after "deploy:update_code", :copy_database_config
+ task :copy_database_config, roles => :app do
+   db_config = "#{shared_path}/config/database.yml"
+   run "rm #{release_path}/config/database.yml"
+   run "cp #{db_config} #{release_path}/config/"
+
+   oauth_config = "#{shared_path}/config/oauth.yml"
+   run "rm #{release_path}/config/oauth.yml"
+   run "cp #{oauth_config} #{release_path}/config/"  
+ end
 
 ## --- Ниже этого места ничего менять скорее всего не нужно ---
 

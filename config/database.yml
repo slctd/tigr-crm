@@ -20,8 +20,8 @@ test:
 
 production:
   adapter: mysql2
-  database: whoindie_test-39
-  host: mysql2.locum.ru
-  username: whoindie_test-39
-  password: GcXCIx4r
+  database: 
+  host: 
+  username: 
+  password: 
   encoding: utf8

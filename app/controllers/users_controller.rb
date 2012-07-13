@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   load_and_authorize_resource
   
   def profile
+    @recent_tasks = Task.where(responsible_id: current_user)
+    @recent_deals = Deal.where(responsible_id: current_user)
+    @user_objects = @recent_tasks + @recent_deals
+    @recent_actions = current_user.recent_actions.days
   end
   
   def edit

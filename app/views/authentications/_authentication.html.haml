@@ -1,0 +1,4 @@
+.authentication
+  = image_tag "#{authentication.provider}.png"
+  = authentication.uid
+  = link_to "X", authentication, :method => :delete, :class => "btn"

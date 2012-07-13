@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120712150052) do
+ActiveRecord::Schema.define(:version => 20120713185838) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(:version => 20120712150052) do
     t.string   "addressable_type"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "authentications", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "companies", :force => true do |t|
@@ -170,6 +178,14 @@ ActiveRecord::Schema.define(:version => 20120712150052) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "user_contacts", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "user_contact_type_id"
+    t.string   "user_contact"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
     t.string   "encrypted_password",     :default => "",    :null => false
@@ -180,6 +196,10 @@ ActiveRecord::Schema.define(:version => 20120712150052) do
     t.datetime "updated_at",                                :null => false
     t.boolean  "admin",                  :default => false
     t.string   "name"
+    t.string   "image"
+    t.string   "gender"
+    t.date     "birthday"
+    t.text     "comment"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

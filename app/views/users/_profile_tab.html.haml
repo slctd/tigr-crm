@@ -1,0 +1,44 @@
+.tab-pane.active#profile
+  = link_to t('.edit_profile'), edit_user_path(current_user)
+  
+  .container
+    .row
+      .span2 
+        = image_tag current_user.image_url
+        %br
+        = render 'upload_image_form', object: current_user
+      .span8
+        %table.table-condensed
+          %tr
+            %td{style: "width: 115px;"}
+              = t('.email')
+            %td= current_user.email
+          - if current_user.name.present?
+            %tr
+              %td= t('.name')
+              %td= current_user.name
+          - if current_user.gender.present?
+            %tr
+              %td= t('.gender')
+              %td= current_user.gender
+          - if current_user.birthday.present?
+            %tr
+              %td= t('.birthday')
+              %td= current_user.birthday
+          = render current_user.user_contacts
+          - if current_user.comment.present?
+            %tr
+              %td= t('.comment')
+              %td= current_user.comment
+  
+  %br
+  - if current_user.authentications.present?
+    = t('.added_social_webs')
+    = render current_user.authentications
+        
+  %div
+    = t('.add_sign_in_provider')
+    %br
+    %a{href: "/auth/twitter"}
+      = image_tag "twitter.png", :alt => "Twitter"
+      = t('social.twitter')

@@ -70,6 +70,12 @@ def create_contact_types
   ActionType.create!(name: "create")
   ActionType.create!(name: "update")
   ActionType.create!(name: "destroy")
+  
+  UserContactType.create!(name: "Email")
+  UserContactType.create!(name: "Телефон")
+  UserContactType.create!(name: "Мобильный телефон")
+  UserContactType.create!(name: "Facebook")
+  UserContactType.create!(name: "Livejournal")
 end
 
 def create_stages

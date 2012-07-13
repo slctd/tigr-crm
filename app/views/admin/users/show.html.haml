@@ -6,6 +6,24 @@
     %td{style: "width: 10%;"}
       = t('.email')
     %td= @user.email
-  %tr
-    %td= t('.name')
-    %td= @user.name if @user.name.present?
+    - if @user.name.present?
+      %tr
+        %td= t('.name')
+        %td= @user.name
+    - if @user.gender.present?
+      %tr
+        %td= t('.gender')
+        %td= @user.gender
+    - if @user.birthday.present?
+      %tr
+        %td= t('.birthday')
+        %td= @user.birthday
+    - if @user.comment.present?
+      %tr
+        %td= t('.comment')
+        %td= @user.comment
+        
+%br
+- if current_user.authentications.present?
+  = t('.added_social_webs')
+  = render current_user.authentications

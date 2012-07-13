@@ -1,7 +1,14 @@
-= simple_form_for [@user], html: { class: 'form-horizontal' } do |f|
+= simple_form_for @user, html: { class: 'form-horizontal' } do |f|
 
   = f.input :email
   = f.input :name
+  = f.input :gender, as: :select, collection: [t('gender.male'), t('gender.female')], include_blank: true
+  = f.input :birthday, as: :date, order: [:day, :month, :year], include_blank: true
+  = f.input :comment, input_html: { rows: 3 }
+  
+  = f.simple_fields_for :user_contacts do |user_contacts_form|
+    = render 'user_contact_fields', f: user_contacts_form
+  = link_to_add_fields t('application.user_contact_fields.add_user_contact'), f, :user_contacts
 
   .form-actions
     = f.submit nil, class: 'btn btn-primary'
