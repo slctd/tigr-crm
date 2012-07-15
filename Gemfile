@@ -59,8 +59,8 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-yandex'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-vkontakte'
 #gem 'omniauth-facebook'
-#gem 'omniauth-vkontakte'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
