@@ -58,6 +58,7 @@ gem "nilify_blanks"
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-yandex'
+gem 'omniauth-google-oauth2'
 #gem 'omniauth-facebook'
 #gem 'omniauth-vkontakte'
 

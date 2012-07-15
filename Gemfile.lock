@@ -148,6 +148,9 @@ GEM
     omniauth (1.1.0)
       hashie (~> 1.2)
       rack
+    omniauth-google-oauth2 (0.1.12)
+      omniauth (~> 1.0)
+      omniauth-oauth2
     omniauth-oauth (1.0.1)
       oauth
       omniauth (~> 1.0)
@@ -273,6 +276,7 @@ DEPENDENCIES
   mysql2
   nilify_blanks
   omniauth
+  omniauth-google-oauth2
   omniauth-twitter
   omniauth-yandex
   rails (= 3.2.3)
