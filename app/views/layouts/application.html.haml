@@ -9,6 +9,16 @@
     .navbar
       .navbar-inner
         .container
+          %p.navbar-text.pull-right
+            - if user_signed_in?
+              = t(".welcome")
+              = (current_user.name || current_user.email) + "!"
+            |
+            = link_to t('.quick_search'), '#', id: "quick_search"
+            |
+            = link_to t('.profile'), profile_path
+            |
+            = link_to t("devise.sessions.sign_out"), destroy_user_session_path, method: :delete        
           %a.brand{href: root_path} CRM
           %ul.nav
             %li{class: ("active" if params[:controller] == "dashboard")}
@@ -25,16 +35,6 @@
             - if current_user.admin?
               %li{class: ("active" if params[:controller] == "admin/users")}
                 = link_to "#{image_tag('users_icon.png')} #{t('.users')}".html_safe, admin_users_path
-          %p.navbar-text.pull-right
-            - if user_signed_in?
-              = t(".welcome")
-              = (current_user.name || current_user.email) + "!"
-            |
-            = link_to t('.quick_search'), '#', id: "quick_search"
-            |
-            = link_to t('.profile'), profile_path
-            |
-            = link_to t("devise.sessions.sign_out"), destroy_user_session_path, method: :delete
     = render "quick_search"
     .container-fluid
       .row-fluid
