@@ -56,9 +56,10 @@ gem 'carrierwave'
 gem 'country_select'
 gem "nilify_blanks"
 gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-yandex'
 #gem 'omniauth-facebook'
 #gem 'omniauth-vkontakte'
-gem 'omniauth-twitter'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

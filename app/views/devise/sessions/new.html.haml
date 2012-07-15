@@ -10,6 +10,12 @@
     .span6        
       = t('.sign_in_with')
       %div
+        %br
         %a{href: "/auth/twitter"}
           = image_tag "twitter.png", :alt => "Twitter"
           = t('social.twitter')
+        %br
+        %br
+        %a{href: "/auth/yandex"}
+          = image_tag "yandex.png", :alt => "Ya.ru"
+          = t('social.yandex')
