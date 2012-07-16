@@ -52,6 +52,9 @@ GEM
       activesupport (>= 3.2.0)
     childprocess (0.3.3)
       ffi (~> 1.0.6)
+    ckeditor (3.7.1)
+      mime-types
+      orm_adapter
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -265,6 +268,7 @@ DEPENDENCIES
   capistrano
   capybara
   carrierwave
+  ckeditor
   coffee-rails (~> 3.2.1)
   country_select
   devise

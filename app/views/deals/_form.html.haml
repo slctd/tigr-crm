@@ -2,7 +2,7 @@
   = f.input :name
   - pre = [@deal.dealable].to_json(methods: [:id_with_class_name, :name], only: [])
   = f.input :contact, input_html: { 'data-pre' => pre }
-  = f.input :description, input_html: { rows: 3 }
+  = f.input :description, as: :ckeditor, input_html: { toolbar: 'Basic' }
   = f.association :currency, include_blank: false
   = f.input :budget
   = f.association :budget_type, include_blank: false

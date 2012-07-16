@@ -29,7 +29,7 @@
           - if current_user.comment.present?
             %tr
               %td= t('.comment')
-              %td= current_user.comment
+              %td= current_user.comment.html_safe
   
   %br
   - if current_user.authentications.present?

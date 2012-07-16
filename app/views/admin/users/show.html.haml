@@ -21,7 +21,7 @@
     - if @user.comment.present?
       %tr
         %td= t('.comment')
-        %td= @user.comment
+        %td= @user.comment.html_safe
         
 %br
 - if current_user.authentications.present?

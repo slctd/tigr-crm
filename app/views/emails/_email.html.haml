@@ -1,4 +1,5 @@
-%dt= t(".email")
-%dd 
-  = link_to email.email, "mailto:#{email.email}"
-  = "(#{email.email_type.name})"
+%tr
+	%tr= t(".email")
+	%td
+    = link_to email.email, "mailto:#{email.email}"
+    = "(#{email.email_type.name})"

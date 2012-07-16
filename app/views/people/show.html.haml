@@ -13,22 +13,25 @@
 .row
   .span8
     %h3= t(".general_info")
-    %dl.dl-horizontal
-      -unless @person.company.nil?
-        %dt= t(".company")
-        %dd= link_to @person.company.name, @person.company
-      %dt= t(".contact_type")
-      %dd
-        - if @person.contact_type.nil?
-          = t(".not_set")
-        - else
-          = @person.contact_type.name
+    %table.table-condensed
+      %tr
+        -unless @person.company.nil?
+          %td= t(".company")
+          %td= link_to @person.company.name, @person.company
+      %tr
+        %td= t(".contact_type")
+        %td
+          - if @person.contact_type.nil?
+            = t(".not_set")
+          - else
+            = @person.contact_type.name
       = render @person.emails
       = render @person.phones
       = render @person.addresses
       - unless @person.description.nil?
-        %dt= t(".description")
-        %dd= @person.description
+        %tr
+          %td= t(".description")
+          %td= @person.description.html_safe
 
   .span4  
     = image_tag @person.image_url

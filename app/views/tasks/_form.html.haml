@@ -5,7 +5,7 @@
   = f.input :contact, input_html: { 'data-pre' => pre }
   = f.input :deadline_date, as: :date, order: [:day, :month, :year]
   = f.association :user, label_method: :email, value_method: :id, selected: current_user.id, include_blank: false 
-  = f.input :description, input_html: { rows: 2 }
+  = f.input :description, as: :ckeditor, input_html: { toolbar: 'Basic' }
   = f.association :deal, as: :hidden
   = f.association :event, as: :hidden
   .form-actions

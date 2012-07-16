@@ -13,19 +13,21 @@
 .row
   .span8
     %h3= t('.general_info')
-    %dl.dl-horizontal
-      %dt= t('.contact_type')
-      %dd
-        - if @company.contact_type.nil?
-          не задан
-        - else
-          = @company.contact_type.name
+    %table.table-condensed
+      %tr
+        %td= t('.contact_type')
+        %td
+          - if @company.contact_type.nil?
+            не задан
+          - else
+            = @company.contact_type.name
       = render @company.emails
       = render @company.phones
       = render @company.addresses
       - unless @company.description.nil?
-        %dt= t('.description')
-        %dd= @company.description
+        %tr
+          %td= t('.description')
+          %td= @company.description.html_safe
       
   .span4
     = image_tag @company.image_url

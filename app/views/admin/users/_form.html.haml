@@ -4,7 +4,7 @@
   = f.input :name
   = f.input :gender, as: :select, collection: [t('gender.male'), t('gender.female')], include_blank: true
   = f.input :birthday, as: :date, order: [:day, :month, :year], include_blank: true
-  = f.input :comment, input_html: { rows: 3 }
+  = f.input :comment, as: :ckeditor, input_html: { toolbar: 'Basic' }
   
   - if @user.new_record? 
     = f.input :password

@@ -5,7 +5,7 @@
     .title
       = task.name
     .description
-      = task.description
+      = task.description.html_safe
     .date
       = task.deadline_date.to_s
   %td

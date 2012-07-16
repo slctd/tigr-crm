@@ -1,6 +1,8 @@
 Crm::Application.routes.draw do
 
   scope '(:locale)' do
+
+    mount Ckeditor::Engine => "/ckeditor"
     
     resources :stages, only: [:show]
     
