@@ -1,5 +1,5 @@
 %fieldset.well
   = f.input :phone
-  = f.association :phone_type, include_blank: false 
+  = f.association :phone_type, label_method: lambda { |type| t("types.phone.#{type.name}") }, include_blank: false 
   = f.hidden_field :_destroy
   = link_to ('<i class="icon-trash"></i> '+t('.remove_phone')).html_safe, '#', class: "btn btn-warning remove_phone_fields"

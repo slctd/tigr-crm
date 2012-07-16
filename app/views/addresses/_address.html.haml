@@ -6,4 +6,4 @@
     = address.state + "," if address.state.present?
     = address.country + "," if address.country.present?
     = address.postal_code if address.postal_code.present?  
-    = "(#{address.address_type.name})"
+    = "(" + t("types.address.#{address.address_type.name}") + ")"

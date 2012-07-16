@@ -20,23 +20,23 @@ def create_admin
 end
 
 def create_contact_types
-  EmailType.create!(name: "Дом")
-  EmailType.create!(name: "Работа")
-  EmailType.create!(name: "Другой")
+  EmailType.create!(name: "home")
+  EmailType.create!(name: "work")
+  EmailType.create!(name: "other")
   
-  PhoneType.create!(name: "Дом")
-  PhoneType.create!(name: "Работа")
-  PhoneType.create!(name: "Мобильный")  
-  PhoneType.create!(name: "Факс")  
-  PhoneType.create!(name: "Прямой")  
-  PhoneType.create!(name: "Другой")
+  PhoneType.create!(name: "home")
+  PhoneType.create!(name: "work")
+  PhoneType.create!(name: "mobile")  
+  PhoneType.create!(name: "fax")  
+  PhoneType.create!(name: "direct")  
+  PhoneType.create!(name: "other")
   
-  AddressType.create!(name: "Домашний")
-  AddressType.create!(name: "Доставки")
-  AddressType.create!(name: "Офис")
-  AddressType.create!(name: "Счета")
-  AddressType.create!(name: "Другой")
-  AddressType.create!(name: "Работа")
+  AddressType.create!(name: "home")
+  AddressType.create!(name: "delivery")
+  AddressType.create!(name: "office")
+  AddressType.create!(name: "account")
+  AddressType.create!(name: "other")
+  AddressType.create!(name: "work")
   
   TaskType.create!(name: "Звонок")
   TaskType.create!(name: "Возможная сделка")

@@ -1,5 +1,5 @@
 %fieldset.well
   = f.input :email
-  = f.association :email_type, include_blank: false 
+  = f.association :email_type, label_method: lambda { |type| t("types.email.#{type.name}") }, include_blank: false 
   = f.hidden_field :_destroy
   = link_to ('<i class="icon-trash"></i> '+t('.remove_email')).html_safe, '#', class: "btn btn-warning remove_email_fields"

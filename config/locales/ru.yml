@@ -407,3 +407,23 @@ ru:
   gender:
     male: мужской
     female: женский
+
+  types:
+    email:
+      home: Дом
+      work: Работа
+      other: Другой
+    phone:
+      home: Дом
+      work: Работа
+      mobile: Мобильный
+      fax: Факс
+      direct: Прямой
+      other: Другой
+    address:
+      home: Домашний
+      delivery: Доставки
+      office: Офис
+      account: Счета
+      other: Другой
+      work: Работа

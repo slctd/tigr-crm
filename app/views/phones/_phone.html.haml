@@ -2,4 +2,4 @@
   %td= t(".phone")
   %td 
     = phone.phone
-    = "(#{phone.phone_type.name})"
+    = "(" + t("types.phone.#{phone.phone_type.name}") + ")"

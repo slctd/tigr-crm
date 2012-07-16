@@ -4,6 +4,6 @@
   = f.input :state
   = f.input :country  
   = f.input :postal_code
-  = f.association :address_type, include_blank: false 
+  = f.association :address_type, label_method: lambda { |type| t("types.address.#{type.name}") }, include_blank: false 
   = f.hidden_field :_destroy
   = link_to ('<i class="icon-trash"></i> '+t('.remove_address')).html_safe, '#', class: "btn btn-warning remove_address_fields"
