@@ -1,6 +1,6 @@
 %h1= t(".users")
 .buttons-panel
-  = link_to t(".new_user"), new_admin_user_path
+  = link_to t(".new_user"), new_admin_user_path, class: "add"
 
 %table.table
   = render @users

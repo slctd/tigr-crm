@@ -8,18 +8,22 @@ table.table-condensed {
   }
 }
 
+h1, h2, h3 { font-weight: normal; }
 h1 {
   color: #111111;
   font-size: 24px;
-  font-weight: normal;
 }
 
 .buttons-panel {
   a {
-    background: transparent url("blue_plus.png") center left no-repeat;
     padding-left: 20px;
     margin-right: 20px;
+    background: transparent center left no-repeat;
   }
+  a.add { background-image: url("button_add.png"); }
+  a.edit { background-image: url("button_edit.png"); }
+  a.close-event { background-image: url("button_close.png"); }
+  a.open { background-image: url("button_open.png"); }
 }
 
 .filter {

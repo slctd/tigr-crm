@@ -1,5 +1,7 @@
 %h2= @deal.name
-= link_to t(".edit_deal"), edit_deal_path(@deal)
+.buttons-panel
+  = link_to t(".edit_deal"), edit_deal_path(@deal), class: "edit"
+  
 %table.table-condensed.deal
   %tr
     %td= t(".deal_stage")

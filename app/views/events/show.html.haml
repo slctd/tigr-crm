@@ -1,7 +1,7 @@
 %h2= @event.name
-= link_to t(".edit_event"), edit_event_path(@event)
-|
-= link_to_change_status @event
+.buttons-panel
+  = link_to t(".edit_event"), edit_event_path(@event), class: "edit"
+  = link_to_change_status @event
 
 %table.table-condensed
   %tr
