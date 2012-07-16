@@ -1,4 +1,11 @@
 jQuery ->
+  $.datepicker.setDefaults($.datepicker.regional['ru'])
+  $('#user_birthday').datepicker
+    dateFormat: 'dd.mm.yy'
+    showOn: 'button'
+    buttonImage: '/assets/calendar.gif'
+    buttonImageOnly: true
+
   # Set callback on Add user contact button
   $('form').on 'click', '.add_user_contact_fields', (event) ->
     time = new Date().getTime()

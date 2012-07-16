@@ -3,7 +3,7 @@
   = f.input :email
   = f.input :name
   = f.input :gender, as: :select, collection: [t('gender.male'), t('gender.female')], include_blank: true
-  = f.input :birthday, as: :date, order: [:day, :month, :year], include_blank: true
+  = f.input :birthday, as: :string, input_html: { class: 'date_picker' }
   = f.input :comment, as: :ckeditor, input_html: { toolbar: 'Basic' }
     
   = f.simple_fields_for :user_contacts do |user_contacts_form|

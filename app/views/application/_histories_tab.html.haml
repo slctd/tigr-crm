@@ -1,10 +1,10 @@
 .tab-pane.active#histories
   %h4= t('.new_history')
-  = simple_form_for [object, @history], :html => { :class => 'form-horizontal' } do |f|
+  = simple_form_for [object, @history], html: { class: 'form-horizontal' } do |f|
     = f.association :deal, as: (:hidden if object.is_a?(Deal))
     = f.association :event, as: (:hidden if object.is_a?(Event))    
     = f.association :history_type, label_method: lambda { |type| t("types.history.#{type.name}") }, include_blank: false
-    = f.input :date, order: [:day, :month, :year]
+    = f.input :date, as: :string, input_html: { class: 'date_picker' }
     = f.input :description, as: :ckeditor, input_html: { toolbar: 'Basic' }
     = f.input :contact, as: :hidden
 

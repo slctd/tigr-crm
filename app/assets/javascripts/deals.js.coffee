@@ -1,4 +1,11 @@
 jQuery ->
+  $.datepicker.setDefaults($.datepicker.regional['ru'])
+  $('#deal_closing_date').datepicker
+    dateFormat: 'dd.mm.yy'
+    showOn: 'button'
+    buttonImage: '/assets/calendar.gif'
+    buttonImageOnly: true
+
   $('#deal_stage_id').change ->
     stage_id = $(this).find('option:selected').val()
     $.getJSON "/stages/#{stage_id}.json", (stage) ->
@@ -6,7 +13,7 @@ jQuery ->
 
   $(document).ready ->  
     $('#participant').tokenInput '/contacts.json'
-      theme: 'facebook'      
+      theme: 'facebook'
       tokenLimit: 1
       propertyToSearch: "name"    
       tokenValue: "id_with_class_name"
