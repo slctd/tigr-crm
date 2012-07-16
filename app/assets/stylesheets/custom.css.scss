@@ -36,3 +36,19 @@ h1 {
     background: url("filter_search_button.png") center no-repeat    
   }
 }
+
+.tabbable {
+  li {
+    a { border: 0; }
+    background-color: #F3F3F3;
+    border: 1px solid #D1D1D1;
+    
+    margin-right: 2px;
+  }
+
+  li.active {
+    background-color: $white;
+    border-bottom: 1px solid $white;
+    a, a:hover { border: 0; }
+  }
+}
