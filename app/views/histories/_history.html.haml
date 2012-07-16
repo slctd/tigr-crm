@@ -1,6 +1,6 @@
 %tr.history
   %td.type
-    = t"types.history.#{history.history_type.name}"
+    = image_tag "types/history/#{history.history_type.name}.png", alt: t("types.history.#{history.history_type.name}")
   %td
     .description
       = history.description.html_safe

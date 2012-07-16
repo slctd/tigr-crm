@@ -1,6 +1,6 @@
 %tr
-  %td.task-type
-    = task.task_type.name
+  %td.type
+    = image_tag "types/task/#{task.task_type.name}.png", alt: t("types.task.#{task.task_type.name}")
   %td.task{class: ("active" if task.deadline_date > Time.now.to_date)}
     .title
       = task.name
