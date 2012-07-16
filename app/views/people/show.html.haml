@@ -22,9 +22,9 @@
         %td= t(".contact_type")
         %td
           - if @person.contact_type.nil?
-            = t(".not_set")
+            = t('.not_set')
           - else
-            = @person.contact_type.name
+            = t("types.contact.#{@person.contact_type.name}")
       = render @person.emails
       = render @person.phones
       = render @person.addresses

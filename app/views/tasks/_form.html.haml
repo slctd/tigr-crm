@@ -1,6 +1,6 @@
 = simple_form_for @task, :html => { :class => 'form-horizontal' } do |f|
   = f.input :name
-  = f.association :task_type, include_blank: false
+  = f.association :task_type, label_method: lambda { |type| t("types.task.#{type.name}") }, include_blank: false
   - pre = [@task.taskable].to_json(methods: [:id_with_class_name, :name], only: [])
   = f.input :contact, input_html: { 'data-pre' => pre }
   = f.input :deadline_date, as: :date, order: [:day, :month, :year]

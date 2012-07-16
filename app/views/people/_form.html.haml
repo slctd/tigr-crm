@@ -3,7 +3,7 @@
   = f.input :lastname
   = f.input :company_name
   = f.input :job
-  = f.association :contact_type  
+  = f.association :contact_type, label_method: lambda { |type| t("types.contact.#{type.name}") }
 
   %h2= t(".general_info")
   = f.simple_fields_for :emails do |email_form|

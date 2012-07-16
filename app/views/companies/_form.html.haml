@@ -1,6 +1,6 @@
 = simple_form_for @company, :html => { :class => 'form-horizontal' } do |f|
   = f.input :name
-  = f.association :contact_type
+  = f.association :contact_type, label_method: lambda { |type| t("types.contact.#{type.name}") }
   
   %h2= t('.general_info')
   = f.simple_fields_for :emails do |email_form|

@@ -239,6 +239,7 @@ ru:
       edit_company: Редактировать компанию
       general_info: Основная информация
       contact_type: Тип контакта
+      not_set: Не задан
       description: Описание
       tags: Теги
     tabs_header:
@@ -427,3 +428,46 @@ ru:
       account: Счета
       other: Другой
       work: Работа
+    task:
+      call: Звонок
+      deal: Возможная сделка
+      demo: Демо
+      email: Электронная почта
+      fax: Факс
+      test: Проверка выполнения
+      dinner: Обед
+      meeting: Встреча
+      note: Заметка
+      delivery: Доставка
+      social: Социальные сети
+      thanks: Выражение благодарности
+    budget:
+      fixed: фиксированный
+      hour: в час
+      day: в день
+      week: в неделю
+      month: в месяц
+      year: в год
+    contact:
+      cold: Холодный
+      warm: Теплый
+      hot: Горячий
+    history:
+      note: Заметка
+      email: Электронная почта
+      call: Звонок
+      meeting: Встреча
+    user_contact:
+      email: Email
+      phone: Телефон
+      mobile: Мобильный телефон
+      facebook: Facebook
+      livejournal: Livejournal
+  stages:
+    stage0: Нулевая точка
+    stage3: Начало
+    stage20: Обсуждение
+    stage50: Оценка
+    stage75: Переговоры
+    stage90: Устная договоренность
+    stage100: Успех

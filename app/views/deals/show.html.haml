@@ -7,7 +7,7 @@
     %td= t(".budget")
     %td= t(".closing_date")
   %tr
-    %td= @deal.stage.name
+    %td= t("stages.#{@deal.stage.name}")
     %td= @deal.success_probability
     %td
       - if @deal.budget.present?

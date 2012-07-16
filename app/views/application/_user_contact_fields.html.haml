@@ -1,5 +1,5 @@
 %fieldset.well
   = f.input :user_contact
-  = f.association :user_contact_type, include_blank: false 
+  = f.association :user_contact_type, label_method: lambda { |type| t("types.user_contact.#{type.name}") }, include_blank: false 
   = f.hidden_field :_destroy
   = link_to ('<i class="icon-trash"></i> '+t('.remove_user_contact')).html_safe, '#', class: "btn btn-warning remove_user_contact_fields"
