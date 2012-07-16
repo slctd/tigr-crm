@@ -1,7 +1,38 @@
+$inputBorderRadius: 0px;
+
 @import 'bootstrap';
 
 table.table-condensed {
   td {
     vertical-align: top;
+  }
+}
+
+h1 {
+  color: #111111;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.buttons-panel {
+  a {
+    background: transparent url("blue_plus.png") center left no-repeat;
+    padding-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+.filter {
+  margin-bottom: 20px;
+  min-height: 20px;
+  padding: 19px;
+  
+  form, input[type="text"] {
+    width: 90%;
+  }
+
+  input[type="submit"] {
+    border: none;
+    background: url("filter_search_button.png") center no-repeat    
   }
 }

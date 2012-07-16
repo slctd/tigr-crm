@@ -1,6 +1,8 @@
 %h1= t('.all_contacts')
-= link_to t('.add_new_company'), new_company_path
-= link_to t('.add_new_person'), new_person_path
+
+.buttons-panel
+  = link_to t('.add_new_company'), new_company_path
+  = link_to t('.add_new_person'), new_person_path
 
 = render 'filter_form'
 

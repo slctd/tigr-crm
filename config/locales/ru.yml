@@ -224,8 +224,8 @@ ru:
   contacts:
     index:
       all_contacts: Все контакты
-      add_new_company: Новая компания
-      add_new_person: Новая персона
+      add_new_company: Добавить новую компанию
+      add_new_person: Добавить новую персону
       
   companies:
     form:
@@ -268,7 +268,7 @@ ru:
   tasks:
     index:
       tasks: Задачи
-      new_task: Новая задача
+      new_task: Поставить новую задачу
     new:
       new_task: Новая задача
     edit:
@@ -288,7 +288,7 @@ ru:
       edit_deal: Редактировать сделку
     index:
       deals: Сделки
-      new_deal: Новая сделка
+      new_deal: Добавить новую сделку
     new:
       new_deal: Новая сделка
     show:
@@ -309,7 +309,7 @@ ru:
       edit_event: Редактировать мероприятие
     index:
       events: Мероприятия
-      new_event: Новое мероприятие
+      new_event: Добавить новое мероприятие
     new:
       new_event: Новое мероприятие
     show:
@@ -354,7 +354,7 @@ ru:
     users:
       index:
         users: Пользователи
-        new_user: Добавить пользователя
+        new_user: Создать нового пользователя
       new:
         new_user: Новый пользователь
       edit:
