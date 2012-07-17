@@ -10,30 +10,29 @@
 .buttons-panel
   = link_to t('.edit_company'), edit_company_path(@company), class: "edit"
 
-.container
-  .row
-    .span8
-      %h3= t('.general_info')
-      %table.table-condensed
+.row-fluid
+  .span8
+    %h3= t('.general_info')
+    %table.table-condensed
+      %tr
+        %td= t('.contact_type')
+        %td
+          - if @company.contact_type.nil?
+            = t('.not_set')
+          - else
+            = t("types.contact.#{@company.contact_type.name}")
+      = render @company.emails
+      = render @company.phones
+      = render @company.addresses
+      - unless @company.description.nil?
         %tr
-          %td= t('.contact_type')
-          %td
-            - if @company.contact_type.nil?
-              = t('.not_set')
-            - else
-              = t("types.contact.#{@company.contact_type.name}")
-        = render @company.emails
-        = render @company.phones
-        = render @company.addresses
-        - unless @company.description.nil?
-          %tr
-            %td= t('.description')
-            %td= @company.description.html_safe
-        
-    .span4
-      = image_tag @company.image_url
-      %br
-      = render 'upload_image_form', object: @company
+          %td= t('.description')
+          %td= @company.description.html_safe
+      
+  .span4
+    = image_tag @company.image_url
+    %br
+    = render 'upload_image_form', object: @company
 
 .tabbable
   = render 'tabs_header', object: @company

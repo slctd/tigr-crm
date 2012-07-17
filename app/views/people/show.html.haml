@@ -10,34 +10,33 @@
 .buttons-panel
   = link_to t(".edit_person"), edit_person_path(@person), class: "edit"
 
-.container
-  .row
-    .span8
-      %h3= t(".general_info")
-      %table.table-condensed
+.row-fluid
+  .span8
+    %h3= t(".general_info")
+    %table.table-condensed
+      %tr
+        -unless @person.company.nil?
+          %td= t(".company")
+          %td= link_to @person.company.name, @person.company
+      %tr
+        %td= t(".contact_type")
+        %td
+          - if @person.contact_type.nil?
+            = t('.not_set')
+          - else
+            = t("types.contact.#{@person.contact_type.name}")
+      = render @person.emails
+      = render @person.phones
+      = render @person.addresses
+      - unless @person.description.nil?
         %tr
-          -unless @person.company.nil?
-            %td= t(".company")
-            %td= link_to @person.company.name, @person.company
-        %tr
-          %td= t(".contact_type")
-          %td
-            - if @person.contact_type.nil?
-              = t('.not_set')
-            - else
-              = t("types.contact.#{@person.contact_type.name}")
-        = render @person.emails
-        = render @person.phones
-        = render @person.addresses
-        - unless @person.description.nil?
-          %tr
-            %td= t(".description")
-            %td= @person.description.html_safe
+          %td= t(".description")
+          %td= @person.description.html_safe
 
-    .span4  
-      = image_tag @person.image_url
-      %br
-      = render 'upload_image_form', object: @person
+  .span4  
+    = image_tag @person.image_url
+    %br
+    = render 'upload_image_form', object: @person
     
 .tabbable
   = render 'tabs_header'
