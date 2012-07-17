@@ -1,5 +1,7 @@
-%fieldset.well
-  = f.input :phone
-  = f.association :phone_type, label_method: lambda { |type| t("types.phone.#{type.name}") }, include_blank: false 
-  = f.hidden_field :_destroy
-  = link_to ('<i class="icon-trash"></i> '+t('.remove_phone')).html_safe, '#', class: "btn btn-warning remove_phone_fields"
+%fieldset
+  .control-group{class: ("error" if f.object.errors.any?)}
+    .controls.one-line.input-prepend<
+      = f.input_field :phone
+      = f.select :phone_type_id, options_for_select(PhoneType.all.map { |type| [t("types.phone.#{type.name}"), type.id] }), include_blank: false
+      = f.hidden_field :_destroy
+      = link_to image_tag("delete_small.png", alt: t('.remove_phone')), '#', title: t('.remove_phone'), class: "remove_phone_fields"

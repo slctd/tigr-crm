@@ -1,5 +1,7 @@
-%fieldset.well
-  = f.input :email
-  = f.association :email_type, label_method: lambda { |type| t("types.email.#{type.name}") }, include_blank: false 
-  = f.hidden_field :_destroy
-  = link_to ('<i class="icon-trash"></i> '+t('.remove_email')).html_safe, '#', class: "btn btn-warning remove_email_fields"
+%fieldset
+  .control-group{class: ("error" if f.object.errors.any?)}
+    .controls.one-line.input-prepend<
+      = f.input_field :email
+      = f.select :email_type_id, options_for_select(EmailType.all.map { |type| [t("types.email.#{type.name}"), type.id] }), include_blank: false
+      = f.hidden_field :_destroy
+      = link_to image_tag("delete_small.png", alt: t('.remove_email')), '#', title: t('.remove_email'), class: "remove_email_fields"

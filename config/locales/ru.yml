@@ -189,6 +189,9 @@ ru:
     address_fields:
       add_address: Добавить адрес
       remove_address: Удалить адрес
+      city: Город
+      state: Область
+      postal_code: Индекс
     user_contact_fields:
       add_user_contact: Добавить контакт
       remove_user_contact: Удалить контакт
@@ -230,6 +233,9 @@ ru:
   companies:
     form:
       general_info: Основная информация
+      email: Электронная почта
+      phone: Телефон
+      address: Адрес
     new:
       new_company: Новая компания
     edit:
@@ -251,6 +257,9 @@ ru:
   people:
     form:
       general_info: Основная информация
+      email: Электронная почта
+      phone: Телефон
+      address: Адрес
     new:
       new_person: Новая персона
     edit:

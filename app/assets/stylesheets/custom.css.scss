@@ -62,3 +62,42 @@ h1 {
   width: 90px;
   margin-right: 2px;
 }
+
+/* Fields */
+fieldset > .control-group {
+  
+  width: 50%;
+  
+  select { background-color: #FFF; }
+
+  .controls.one-line {
+
+    input[type="text"] {
+      width: 70%;
+      border-right: none;
+    }
+    select {
+      width: 20%;
+      border-left: none;
+    }
+
+    a > img {
+      margin-top: -3px;
+    }
+  }
+
+  .controls {
+    textarea {
+      width: 448px;
+    }
+  }
+
+  .address-first-line {
+    input[type="text"] { width: 150px; }
+  }
+
+  .address-second-line {
+   select { width: 151px; } 
+   .country { width: 303px; }
+  }
+}

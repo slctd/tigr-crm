@@ -1,9 +1,13 @@
-%fieldset.well
-  = f.input :address
-  = f.input :city
-  = f.input :state
-  = f.input :country  
-  = f.input :postal_code
-  = f.association :address_type, label_method: lambda { |type| t("types.address.#{type.name}") }, include_blank: false 
-  = f.hidden_field :_destroy
-  = link_to ('<i class="icon-trash"></i> '+t('.remove_address')).html_safe, '#', class: "btn btn-warning remove_address_fields"
+%fieldset
+  .control-group
+    .controls
+      = f.text_area :address, rows: 3
+      = link_to image_tag("delete_small.png", alt: t('.remove_address')), '#', title: t('.remove_address'), class: "remove_address_fields"
+      .address-first-line.input-prepend
+        = f.input_field :city, placeholder: t('.city'), class: "span4"
+        = f.input_field :state, placeholder: t('.state'), class: "span4"
+        = f.input_field :postal_code, placeholder: t('.postal_code'), class: "span4"
+      .address-second-line
+        = f.input_field :country, class: "country"
+        = f.select :address_type_id, options_for_select(AddressType.all.map { |type| [t("types.address.#{type.name}"), type.id] }), include_blank: false
+      = f.hidden_field :_destroy

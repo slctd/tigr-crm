@@ -1,4 +1,4 @@
-= simple_form_for @person, :html => { :class => 'form-horizontal' } do |f|
+= simple_form_for @person do |f|
   = f.input :firstname
   = f.input :lastname
   = f.input :company_name
@@ -6,19 +6,22 @@
   = f.association :contact_type, label_method: lambda { |type| t("types.contact.#{type.name}") }
 
   %h2= t(".general_info")
-  = f.simple_fields_for :emails do |email_form|
+  %h3= t('.email')
+  = f.fields_for :emails do |email_form|
     = render 'email_fields', f: email_form
   = link_to_add_fields t('application.email_fields.add_email'), f, :emails
   %br
   %br
   
-  = f.simple_fields_for :phones do |phone_form|
+  %h3= t('.phone')
+  = f.fields_for :phones do |phone_form|
     = render 'phone_fields', f: phone_form
   = link_to_add_fields t('application.phone_fields.add_phone'), f, :phones
   %br
   %br
   
-  = f.simple_fields_for :addresses do |address_form|
+  %h3= t('.address')
+  = f.fields_for :addresses do |address_form|
     = render 'address_fields', f: address_form
   = link_to_add_fields t('application.address_fields.add_address'), f, :addresses
   %br
