@@ -1,0 +1,18 @@
+%h1= t('.all') + " " + t(".#{params[:type]}")
+
+- if params[:type] == "contacts"
+  %table.table.contacts
+    = render partial: 'company', collection: @companies
+    = render partial: 'person', collection: @people
+
+- if params[:type] == "tasks"
+  %table.table
+    = render partial: 'task', collection: @tasks
+
+- if params[:type] == "deals"
+  %table.table
+    = render @deals
+
+- if params[:type] == "events"
+  %table.table
+    = render @events

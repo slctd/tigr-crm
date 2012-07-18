@@ -5,18 +5,30 @@
   %table.table.contacts
     = render partial: 'company', collection: @companies
     = render partial: 'person', collection: @people
+  - if @contacts_count > 10
+    .more
+      = link_to "#{t('.more')} #{(@contacts_count - 10).to_s}", search_all_path("contacts", params[:search])
 
 - unless @tasks.count == 0
   %h2= t('.tasks')
   %table.table
     = render partial: 'task', collection: @tasks
+  - if @tasks_count > 10
+    .more
+      = link_to "#{t('.more')} #{(@tasks_count - 10).to_s}", search_all_path("tasks", params[:search])
   
 - unless @deals.count == 0
   %h2= t('.deals')
   %table.table  
     = render @deals
+  - if @deals_count > 10
+    .more
+      = link_to "#{t('.more')} #{(@deals_count - 10).to_s}", search_all_path("deals", params[:search])
   
 - unless @events.count == 0
   %h2= t('.events')
   %table.table  
     = render @events
+  - if @events_count > 10
+    .more
+      = link_to "#{t('.more')} #{(@events_count - 10).to_s}", search_all_path("events", params[:search])

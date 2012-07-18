@@ -381,6 +381,13 @@ ru:
       tasks: Задачи
       deals: Сделки
       events: События
+      more: Еще
+    all:
+      all: Все найденные
+      contacts: контакты
+      tasks: задачи
+      deals: сделки
+      events: события
       
   dashboard:
     index:
