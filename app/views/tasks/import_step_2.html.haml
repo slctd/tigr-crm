@@ -21,4 +21,5 @@
           = select_tag "columns[#{n}]", options_for_select(@import.import_columns.map { |col| [t("activerecord.attributes.task.#{col.to_s}"), col.to_s]}, (params["columns"]["#{n}"] if params["columns"]))
         %td= cell.data
   = hidden_field_tag :import_table, @import.import_table.id
-  = submit_tag t('import.import')
+  = link_to t('import.back'), tasks_import_step_1_path, class: 'btn'
+  = submit_tag t('import.import'), class: 'btn'

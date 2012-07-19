@@ -3,15 +3,22 @@ ru:
     errors:
       general:
         error: Произошла ошибка при импорте
+        encoding: Указана некорректная кодировка файла
         unique: Повторяющиеся поля импорта
       task:
         no_name: Ни один столбец не соответствует названию задачи
         no_deadline_date: Ни один столбец не соответствует сроку выполнения задачи
     title: Импорт
     step: Шаг
+    next: Далее
+    back: Назад
     import: Импортировать
     file_to_upload: Выберите файл
     complete: Импорт завершен
+    select_encoding: Кодировка файла
+    encoding:
+      win1251: Windows-1251
+      utf-8: UTF-8
     table:
       file_column: Колонка в файле
       system_column: Соответствующее поле в Tigr CRM

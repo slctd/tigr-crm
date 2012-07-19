@@ -56,20 +56,23 @@ class TasksController < ApplicationController
   def import_step_2
     # Save CSV file to database
     # and select columns to import
-    file = params[:file]
     begin
       ActiveRecord::Base.transaction do
         @import = Import.new(Task)
 
-        CSV.foreach(file.tempfile, {:headers => true}) do |row|
+        f = File.open(params[:file].tempfile, "rb:#{params[:encoding]}:utf-8")
+
+        CSV.parse(f, {:headers => true}) do |row|
           next if row.to_s.parse_csv.join.blank? # Skip blank row
 
           import_row = @import.import_table.import_rows.create
           
           row.each do |cell|
+            header = cell[0].to_s#.force_encoding("utf-8")#.encode("utf-8", replace: nil)
+            data = cell[1].to_s#.force_encoding("utf-8")#.encode("utf-8", replace: nil)
             import_row.import_cells.create(
-              header: cell[0].to_s.force_encoding('utf-8') || "",
-              data: cell[1].to_s.force_encoding('utf-8') || ""
+              header: header || "",
+              data: data || ""
             )
           end
         end
@@ -78,6 +81,10 @@ class TasksController < ApplicationController
       flash[:error] = t('import.errors.general.error')
       redirect_to tasks_import_step_1_path
       return
+    rescue ArgumentError
+      flash[:error] = t('import.errors.general.encoding')
+      redirect_to tasks_import_step_1_path
+      return      
     end
   end
 
