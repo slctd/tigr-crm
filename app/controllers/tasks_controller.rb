@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
-  
+
   def index
     @tasks = Task.order("deadline_date desc")
 
@@ -48,7 +48,67 @@ class TasksController < ApplicationController
 
     redirect_to task_or_taskable_url(@task), notice: 'Task was deleted.'
   end
-  
+
+  def import_step_1
+    # Show select file form
+  end
+
+  def import_step_2
+    # Save CSV file to database
+    # and select columns to import
+    file = params[:file]
+    begin
+      ActiveRecord::Base.transaction do
+        @import = Import.new(import_columns: Task.import_columns)
+        @import.import_table = ImportTable.create
+
+        CSV.foreach(file.tempfile, {:headers => true}) do |row|
+          next if row.to_s.parse_csv.join.blank? # Skip blank row
+
+          import_row = @import.import_table.import_rows.create
+          
+          row.each do |cell|
+            import_row.import_cells.create(
+              header: cell[0].to_s.force_encoding('utf-8') || "",
+              data: cell[1].to_s.force_encoding('utf-8') || ""
+            )
+          end
+        end
+      end
+    rescue ActiveRecord::RecordInvalid => e
+      flash[:error] = t('import.errors.general.error')
+      redirect_to tasks_import_step_1_path
+      return
+    end
+  end
+
+  def import_step_3
+    @import = Import.new(import_columns: Task.import_columns, import_table: params[:import_table], columns: params[:columns])
+    @import.object = Task
+    @import.import_table = ImportTable.find(params[:import_table])
+
+    @import.rules[:name] = {required: true}
+    @import.rules[:contact] = {
+      proc: Proc.new { |value| Company.find_by_name(value) || Person.where('firstname = ? and lastname = ?', value.split[0], value.split[1]) }, 
+      default: nil
+    }
+    @import.rules[:deadline_date] = {required: true}
+    @import.rules[:user] = {
+      proc: Proc.new { |value| User.find_by_email(value) }, 
+      default: current_user
+    }
+    @import.rules[:task_type] = {
+      proc: Proc.new { |value| TaskType.find_by_name(value) }, 
+      default: TaskType.find_by_name('note')
+    }
+
+    if @import.save?
+      redirect_to tasks_path, notice: t('import.complete')
+    else
+      render 'import_step_2'
+    end
+  end  
+
   private
 
     def task_or_taskable_url(task)

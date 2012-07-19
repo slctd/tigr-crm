@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120716180603) do
+ActiveRecord::Schema.define(:version => 20120719081111) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address"
@@ -96,6 +96,27 @@ ActiveRecord::Schema.define(:version => 20120716180603) do
     t.text     "description"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "import_cells", :force => true do |t|
+    t.integer  "import_row_id"
+    t.integer  "number"
+    t.text     "header"
+    t.text     "data"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "import_rows", :force => true do |t|
+    t.integer  "import_table_id"
+    t.integer  "number"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "import_tables", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "participations", :force => true do |t|

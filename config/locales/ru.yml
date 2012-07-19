@@ -1,4 +1,21 @@
 ru:
+  import:
+    errors:
+      general:
+        error: Произошла ошибка при импорте
+        unique: Повторяющиеся поля импорта
+      task:
+        no_name: Ни один столбец не соответствует названию задачи
+        no_deadline_date: Ни один столбец не соответствует сроку выполнения задачи
+    title: Импорт
+    step: Шаг
+    import: Импортировать
+    file_to_upload: Выберите файл
+    complete: Импорт завершен
+    table:
+      file_column: Колонка в файле
+      system_column: Соответствующее поле в Tigr CRM
+      value: Значение (в первой записи)
 
   number:
     format:

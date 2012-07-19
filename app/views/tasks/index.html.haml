@@ -1,6 +1,7 @@
 %h1= t(".tasks")
 .buttons-panel
-  = link_to t(".new_task"), new_task_path, class: "add"
+  = link_to t('.new_task'), new_task_path, class: "add"
+  = link_to t('import.title'), tasks_import_step_1_path, class: "import"
 
 = render 'filter_form'
 

@@ -17,7 +17,12 @@ class Task < ActiveRecord::Base
   before_validation :set_taskable
   
   scope :by_name, lambda {|name| where("name like ?", "%#{name}%")}
-  
+
+  # Attributes to import
+  def self.import_columns
+    [:name, :description, :contact, :deadline_date, :user, :task_type]
+  end
+
   private
     def set_taskable
       if self.contact =~ /_/

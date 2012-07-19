@@ -1,0 +1,24 @@
+%h1= t('import.title')
+%h2= "#{t('import.step')} 2"
+
+- if @import.errors[:base].any?
+  .alert.alert-block
+    - @import.errors[:base].each do |msg|
+      %p= msg
+
+= form_tag tasks_import_step_3_path do
+  %table.table
+    %tr
+      %th= t('import.table.file_column') 
+      %th= t('import.table.system_column')
+      %th= t('import.table.value')
+    - n = 0
+    - @import.import_table.import_rows.find_by_number(1).import_cells.each do |cell|
+      - n += 1
+      %tr
+        %td= cell.header
+        %td
+          = select_tag "columns[#{n}]", options_for_select(@import.import_columns.map { |col| [t("activerecord.attributes.task.#{col.to_s}"), col.to_s]}, (params["columns"]["#{n}"] if params["columns"]))
+        %td= cell.data
+  = hidden_field_tag :import_table, @import.import_table.id
+  = submit_tag t('import.import')

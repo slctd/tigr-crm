@@ -15,13 +15,16 @@ Crm::Application.routes.draw do
     end
     
     resources :deals do
-      post 'add_participant' => 'deals#add_participant', as: "add_participant"
-      get 'remove_participant/:participant_type/:participant_id' => 'deals#remove_participant', as: "remove_participant"
+      post 'add_participant' => 'deals#add_participant', as: 'add_participant'
+      get 'remove_participant/:participant_type/:participant_id' => 'deals#remove_participant', as: 'remove_participant'
       resources :tasks, except: [:index, :show]
       resources :histories, only: [:create, :destroy]
     end
 
     resources :tasks, except: [:show]
+    get 'tasks/import_step_1'  => 'tasks#import_step_1'
+    post 'tasks/import_step_2' => 'tasks#import_step_2'
+    post 'tasks/import_step_3' => 'tasks#import_step_3'
     
     resources :contacts, only: [:index]
     

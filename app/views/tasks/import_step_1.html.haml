@@ -1,0 +1,8 @@
+%h1= t('import.title')
+%h2= "#{t('import.step')} 1"
+
+= form_tag tasks_import_step_2_path, multipart: true do
+  = t('import.file_to_upload')
+  = file_field_tag "file" 
+  %br
+  = submit_tag t('import.import'), class: "btn"

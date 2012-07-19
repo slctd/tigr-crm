@@ -26,12 +26,13 @@ h1 {
     display: inline-block;
     padding-left: 20px;
     margin-right: 20px;
-    background: url("button_add.png") transparent center left no-repeat;
+    background: transparent center left no-repeat;
   }
   a.add { background-image: url("button_add.png"); }
   a.edit { background-image: url("button_edit.png"); }
   a.close-event { background-image: url("button_close.png"); }
   a.open { background-image: url("button_open.png"); }
+  a.import { background-image: url("button_import.png"); }
 }
 
 .filter {
