@@ -23,6 +23,34 @@ class Task < ActiveRecord::Base
     [:name, :description, :contact, :deadline_date, :user, :task_type]
   end
 
+  # Import rules
+  def self.import_rules
+    {
+      name: {
+        required: true
+      },
+      contact: {
+        proc: Proc.new { |value| 
+            contact = Company.find_by_name(value)
+            if contact.nil?
+              contact = Person.where('firstname = ? and lastname = ?', value.split[0], value.split[1]).first
+            end
+            "#{contact.id}_#{contact.class.name}" unless contact.nil?
+          }, 
+        default: nil
+      },
+      deadline_date: {required: true},
+      user: {
+        proc: Proc.new { |value| User.find_by_email(value) }, 
+        default: User.current
+      },
+      task_type: {
+        proc: Proc.new { |value| TaskType.find_by_name(value) }, 
+        default: TaskType.find_by_name('note')
+      }
+    }
+  end
+
   private
     def set_taskable
       if self.contact =~ /_/

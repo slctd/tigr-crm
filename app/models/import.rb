@@ -31,7 +31,7 @@ class Import
             if self.rules[column.to_sym].present?
               # If there is a proc, call it
               if self.rules[column.to_sym][:proc].present?
-                value = self.rules[column.to_sym][:proc].call(cell) unless cell.nil?
+                value = self.rules[column.to_sym][:proc].call(value) unless value.nil?
               end
 
               # If there is default value and cell is empty, set it
@@ -56,8 +56,16 @@ class Import
   end
 
   private
-    def initialize(attributes = {})
-      self.rules = {}
+    def initialize(object, import_table = nil, attributes = {})
+      self.object = object
+      self.rules = object.import_rules
+      self.import_columns = object.import_columns
+      
+      unless import_table.nil?
+        self.import_table = ImportTable.find(import_table)
+      else
+        self.import_table = ImportTable.create
+      end
 
       attributes.each do |name, value|
         send("#{name}=", value)

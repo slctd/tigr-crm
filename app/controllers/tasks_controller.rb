@@ -59,8 +59,7 @@ class TasksController < ApplicationController
     file = params[:file]
     begin
       ActiveRecord::Base.transaction do
-        @import = Import.new(import_columns: Task.import_columns)
-        @import.import_table = ImportTable.create
+        @import = Import.new(Task)
 
         CSV.foreach(file.tempfile, {:headers => true}) do |row|
           next if row.to_s.parse_csv.join.blank? # Skip blank row
@@ -83,31 +82,14 @@ class TasksController < ApplicationController
   end
 
   def import_step_3
-    @import = Import.new(import_columns: Task.import_columns, import_table: params[:import_table], columns: params[:columns])
-    @import.object = Task
-    @import.import_table = ImportTable.find(params[:import_table])
-
-    @import.rules[:name] = {required: true}
-    @import.rules[:contact] = {
-      proc: Proc.new { |value| Company.find_by_name(value) || Person.where('firstname = ? and lastname = ?', value.split[0], value.split[1]) }, 
-      default: nil
-    }
-    @import.rules[:deadline_date] = {required: true}
-    @import.rules[:user] = {
-      proc: Proc.new { |value| User.find_by_email(value) }, 
-      default: current_user
-    }
-    @import.rules[:task_type] = {
-      proc: Proc.new { |value| TaskType.find_by_name(value) }, 
-      default: TaskType.find_by_name('note')
-    }
-
+    @import = Import.new(Task, params[:import_table], columns: params[:columns])
+   
     if @import.save?
       redirect_to tasks_path, notice: t('import.complete')
     else
       render 'import_step_2'
     end
-  end  
+  end
 
   private
 
