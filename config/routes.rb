@@ -9,6 +9,9 @@ Crm::Application.routes.draw do
     get 'deals/import_step_1'  => 'deals#import_step_1'
     post 'deals/import_step_2' => 'deals#import_step_2'
     post 'deals/import_step_3' => 'deals#import_step_3'
+    get 'events/import_step_1'  => 'events#import_step_1'
+    post 'events/import_step_2' => 'events#import_step_2'
+    post 'events/import_step_3' => 'events#import_step_3'
 
     mount Ckeditor::Engine => "/ckeditor"
     

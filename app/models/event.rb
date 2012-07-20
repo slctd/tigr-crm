@@ -11,6 +11,21 @@ class Event < ActiveRecord::Base
   
   scope :by_name, lambda {|name| where("name like ?", "%#{name}%")}
   
+  # Attributes to import
+  def self.import_columns
+    [:name, :opened]
+  end
+
+  # Import rules
+  def self.import_rules
+    {
+      name: {required: true},
+      opened: {
+        default: true
+      }
+    }
+  end
+
   def add_participant(participant)
     if participant =~ /_/
       contact_id, contact_type = participant.split('_')

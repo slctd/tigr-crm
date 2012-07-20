@@ -39,9 +39,7 @@ class Deal < ActiveRecord::Base
   # Import rules
   def self.import_rules
     {
-      name: {
-        required: true
-      },
+      name: {required: true},
       contact: {
         proc: Proc.new { |value| 
             contact = Company.find_by_name(value)

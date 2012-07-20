@@ -1,4 +1,9 @@
+require "#{Rails.root}/lib/importer"
+
 class EventsController < ApplicationController
+
+  include Importer
+  
   before_filter :authenticate_user!
   load_and_authorize_resource
   

@@ -77,6 +77,7 @@ module Importer
     if @import.save?
       redirect_to eval("#{params[:controller]}_path"), notice: t('import.complete')
     else
+      flash.now[:error] = t('import.errors.general.error')
       render 'application/import/step_2'
     end
   end
