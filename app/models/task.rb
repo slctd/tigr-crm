@@ -45,7 +45,16 @@ class Task < ActiveRecord::Base
         default: User.current
       },
       task_type: {
-        proc: Proc.new { |value| TaskType.find_by_name(value) }, 
+        proc: Proc.new { |value|
+          task_type = nil
+          TaskType.all.each do |type|
+            if I18n.t("types.task.#{type.name}") == value
+              task_type = type
+              break
+            end
+          end
+          task_type
+        },
         default: TaskType.find_by_name('note')
       }
     }

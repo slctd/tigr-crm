@@ -60,7 +60,14 @@ class Deal < ActiveRecord::Base
       },
       budget_type: {
         proc: Proc.new { |value|
-          BudgetType.find_by_name(value)
+          budget_type = nil
+          BudgetType.all.each do |type|
+            if I18n.t("types.budget.#{type.name}") == value
+              budget_type = type
+              break
+            end
+          end
+          budget_type
         },
         default: BudgetType.first
       },
@@ -71,7 +78,14 @@ class Deal < ActiveRecord::Base
       },
       stage: {
         proc: Proc.new { |value|
-          Stage.find_by_name(value)
+          my_stage = nil
+          Stage.all.each do |stage|
+            if I18n.t("stages.#{stage.name}") == value
+              my_stage = stage
+              break
+            end
+          end
+          my_stage
         },
         default: Stage.find_by_success_probability(0)
       }
