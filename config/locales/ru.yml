@@ -4,6 +4,7 @@ ru:
       general:
         error: Произошла ошибка при импорте
         encoding: Указана некорректная кодировка файла
+        incorrect_params: Указаны некорректные параметры импорта для данного файла
         unique: Повторяющиеся поля импорта
       task:
         no_name: Ни один столбец не соответствует названию задачи
@@ -16,9 +17,14 @@ ru:
     file_to_upload: Выберите файл
     complete: Импорт завершен
     select_encoding: Кодировка файла
+    select_col_sep: Разделитель
     encoding:
       win1251: Windows-1251
       utf-8: UTF-8
+    col_sep:
+      semicolon: Точка с запятой
+      comma: Запятая
+      tab: Табуляция
     table:
       file_column: Колонка в файле
       system_column: Соответствующее поле в Tigr CRM

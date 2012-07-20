@@ -1,7 +1,5 @@
 class Import
   include ActiveModel::Validations
-  include ActiveModel::Conversion
-  extend ActiveModel::Naming
   
   attr_accessor :import_columns, :import_table, :columns, :rules, :object
 
@@ -48,7 +46,7 @@ class Import
         end
         self.import_table.destroy
       end
-    rescue ActiveRecord::RecordInvalid
+    rescue
       return false
     end
 
