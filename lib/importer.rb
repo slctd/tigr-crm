@@ -1,3 +1,4 @@
+require "#{Rails.root}/lib/importer"
 module Importer
 
   # Show select file form. No logic with model

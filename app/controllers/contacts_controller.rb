@@ -1,4 +1,9 @@
+require "#{Rails.root}/lib/importer"
+
 class ContactsController < ApplicationController
+  
+  include Importer
+
   before_filter :authenticate_user!
   load_and_authorize_resource class: ContactsController
   

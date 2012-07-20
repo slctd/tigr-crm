@@ -26,6 +26,19 @@ class Company < ActiveRecord::Base
                    uniqueness: { case_sensitive:  false }
   
   scope :by_name, lambda {|name| where("name like ?", "%#{name}%")}
+
+# Attributes to import
+  def self.import_columns
+    [:name]
+  end
+
+  # Import rules
+  def self.import_rules
+    {
+      name: {required: true}
+    }
+  end
+
                   
   def id_with_class_name
     "#{id}_#{self.class.name}"

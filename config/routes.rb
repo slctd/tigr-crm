@@ -3,6 +3,9 @@ Crm::Application.routes.draw do
   scope '(:locale)' do
 
     # Import paths
+    get 'contacts/import_step_1'  => 'contacts#import_step_1'
+    post 'contacts/import_step_2' => 'contacts#import_step_2'
+    post 'contacts/import_step_3' => 'contacts#import_step_3'    
     get 'tasks/import_step_1'  => 'tasks#import_step_1'
     post 'tasks/import_step_2' => 'tasks#import_step_2'
     post 'tasks/import_step_3' => 'tasks#import_step_3'

@@ -15,32 +15,60 @@ class Import
     begin
       ActiveRecord::Base.transaction do
         self.import_table.import_rows.each do |row|
-          object = self.object.new
 
-          self.import_columns.each do |column|
+          # Rules set is default
+          rules_set = self.rules
+          import_columns_set = self.import_columns
+          object = nil
+          # Detect type of object
+          if self.rules[:polymorphic].present?
+            self.rules[:polymorphic].each do |subclass, condition|
+              if condition.call(row, hash_revert(self.columns))
+                rules_set = rules_set.merge(subclass.to_s.camelize.constantize.import_rules)
+                import_columns_set += subclass.to_s.camelize.constantize.import_columns
+                object = subclass.to_s.camelize.constantize.new
+                break
+              end
+            end
+          else
+            object = self.object.new
+          end
+
+          import_columns_set.each do |column|
+            # Transform column. Is's required because of columns like
+            # :name => :alias
+            column = column.to_a[0][0].to_s.to_sym if column.is_a?(Hash)
+
             cell = cell_number(column.to_s)
 
             # Find the value in the CSV cell
             value = nil
             value = row.import_cells.find_by_number(cell).data unless cell.nil?
 
+            # What attribute to set
+            attribute = column.to_s
 
             # If there are rules, use them
-            if self.rules[column.to_sym].present?
+            if rules_set[column.to_sym].present?
 
               # If there is a proc, call it
-              if self.rules[column.to_sym][:proc].present?
-                value = self.rules[column.to_sym][:proc].call(value) unless value.nil?
+              if rules_set[column.to_sym][:proc].present?
+                value = rules_set[column.to_sym][:proc].call(value) unless value.nil?
               end
 
               # If there is default value and cell is empty, set it
-              if self.rules[column.to_sym][:default].present?
-                value = self.rules[column.to_sym][:default] if value.nil?
+              if rules_set[column.to_sym][:default].present?
+                value = rules_set[column.to_sym][:default] if value.nil?
+              end
+
+              # If there is an alias to another column
+              if rules_set[column.to_sym][:alias_to].present?
+                attribute = rules_set[column.to_sym][:alias_to].to_s
               end
             end
 
             # Set the attribute of object
-            object.send("#{column.to_s}=", value) unless value.nil?
+            object.send("#{attribute}=", value) unless value.nil?
           end
 
           object.save!
@@ -100,5 +128,13 @@ class Import
         return col_key.to_i if col_value == header
       end
       return nil
+    end
+
+    def hash_revert h
+      new_h = Hash.new
+      h.each {|key,value|
+        if not new_h.has_key?(key) then new_h[value] = key end
+      }
+      return new_h
     end
 end

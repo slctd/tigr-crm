@@ -30,6 +30,20 @@ class Person < ActiveRecord::Base
   
   scope :by_name, lambda {|name| where("firstname like ? OR lastname like ?", "#{name}%", "#{name}%")}
 
+# Attributes to import
+  def self.import_columns
+    [:firstname, :lastname, :job, :name => :alias]
+  end
+
+  # Import rules
+  def self.import_rules
+    {
+      firstname: {required: true},
+      lastname: {required: true},
+      name: { alias_to: 'company_name' }
+    }
+  end
+
   def name
     "#{firstname} #{lastname}"  
   end

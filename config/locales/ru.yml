@@ -124,6 +124,8 @@ ru:
         postal_code: Индекс
         country: Страна
         address_type: Тип адреса
+      contact:
+        contact_type: Тип контакта
       company:
         name: Название
         description: Описание

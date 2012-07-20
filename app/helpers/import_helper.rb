@@ -1,12 +1,23 @@
 module ImportHelper
 
   def import_options_for_select(import, header, n)
-    options_for_select(
-      import.import_columns.map { |col| 
-        [t("activerecord.attributes.#{import.object.to_s.downcase}.#{col.to_s}"), col.to_s]
-      }, 
-      default_value(import, header, n)
-    )
+    options = []
+
+    # Add general columns
+    import.import_columns.map do |col| 
+      options << [t("activerecord.attributes.#{import.object.to_s.downcase}.#{col.to_s}"), col.to_s]
+    end
+
+    # Add columns for polymorphic classes
+    if import.rules[:polymorphic].present?
+      import.rules[:polymorphic].each do |subclass, proc|
+        subclass.to_s.camelize.constantize.import_columns.map do |col|
+          options << [t("activerecord.attributes.#{subclass.to_s}.#{col.to_s}"), col.to_s] unless col.is_a?(Hash)
+        end
+      end
+    end
+
+    options_for_select(options, default_value(import, header, n))
   end
 
   def step(n)
@@ -18,6 +29,16 @@ module ImportHelper
       if params["columns"].present?
         params["columns"]["#{n}"]
       else
+
+        # If object is polymorphic
+        if import.rules[:polymorphic].present?
+          import.rules[:polymorphic].each do |subclass, proc|
+            subclass.to_s.camelize.constantize.import_columns.each do |col|
+              return col.to_s if header == t("activerecord.attributes.#{subclass.to_s}.#{col.to_s}")
+            end
+          end
+        end
+
         import.import_columns.each do |col| 
           return col.to_s if header == t("activerecord.attributes.#{import.object.to_s.downcase}.#{col.to_s}")
         end
