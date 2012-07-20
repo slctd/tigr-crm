@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120719081111) do
+ActiveRecord::Schema.define(:version => 20120720092253) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address"
@@ -62,11 +62,11 @@ ActiveRecord::Schema.define(:version => 20120719081111) do
     t.decimal  "budget"
     t.integer  "budget_type_id"
     t.date     "closing_date"
-    t.integer  "responsible_id"
     t.integer  "stage_id"
     t.integer  "success_probability"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.integer  "user_id"
   end
 
   create_table "emails", :force => true do |t|
@@ -185,11 +185,11 @@ ActiveRecord::Schema.define(:version => 20120719081111) do
     t.integer  "deal_id"
     t.string   "name"
     t.integer  "task_type_id"
-    t.integer  "responsible_id"
     t.string   "description"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.date     "deadline_date"
+    t.integer  "user_id"
   end
 
   create_table "types", :force => true do |t|

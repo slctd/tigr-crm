@@ -4,7 +4,7 @@ class Deal < ActiveRecord::Base
   belongs_to :budget_type
   belongs_to :stage
   belongs_to :currency
-  belongs_to :user, class_name: "User", foreign_key: "responsible_id"
+  belongs_to :user
   belongs_to :dealable, polymorphic: true  
   has_many :deal_contacts
   has_many :people, through: :deal_contacts, source: :participatiable, source_type: 'Person'
@@ -15,7 +15,7 @@ class Deal < ActiveRecord::Base
   attr_accessible :budget,              :budget_type_id, 
                   :closing_date,        :currency_id,
                   :description,         :name,
-                  :responsible_id,      :stage_id,
+                  :user_id,            :stage_id,
                   :success_probability, :contact
 
   after_initialize :set_success_probability
@@ -23,7 +23,7 @@ class Deal < ActiveRecord::Base
   before_validation :set_success_probability
   before_validation :set_dealable
                   
-  validates :name, :closing_date, :responsible_id, :stage_id, presence: true
+  validates :name, :closing_date, :user_id, :stage_id, presence: true
   validates :budget, numericality: { greater_than_or_equal_to: 0 }, allow_blank: true
   validates :success_probability, numericality: { only_integer: true,
                                                   greater_than_or_equal_to: 0,
@@ -32,7 +32,7 @@ class Deal < ActiveRecord::Base
   scope :by_name, lambda {|name| where("name like ?", "%#{name}%")}
   
   def responsible
-    User.find(self.responsible_id)
+    User.find(self.user_id)
   end
 
   def add_participant(participant)

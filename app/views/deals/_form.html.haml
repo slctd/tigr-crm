@@ -7,7 +7,7 @@
   = f.input :budget
   = f.association :budget_type, label_method: lambda { |type| t("types.budget.#{type.name}") }, include_blank: false
   = f.input :closing_date, as: :string, input_html: { class: 'date_picker' }
-  = f.association :user, label_method: :email, value_method: :id, selected: current_user.id, include_blank: false 
+  = f.association :user, label_method: :email, value_method: :id, include_blank: false 
   = f.association :stage, label_method: lambda { |type| t("stages.#{type.name}") }, include_blank: false
   = f.input :success_probability
   

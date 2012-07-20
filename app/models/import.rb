@@ -27,6 +27,7 @@ class Import
 
             # If there are rules, use them
             if self.rules[column.to_sym].present?
+              
               # If there is a proc, call it
               if self.rules[column.to_sym][:proc].present?
                 value = self.rules[column.to_sym][:proc].call(value) unless value.nil?

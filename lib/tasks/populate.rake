@@ -68,7 +68,7 @@ def create_deals
         closing_date: rand(2..10).days.since,
         stage_id: rand(Stage.first.id..Stage.last.id),
         contact: "#{company.id}_Company",
-        responsible_id: User.first.id
+        user_id: User.first.id
         )
     end
   end
@@ -84,7 +84,7 @@ def create_deals
         closing_date: rand(2..10).days.since,
         stage_id: rand(Stage.first.id..Stage.last.id),
         contact: "#{person.id}_Person",
-        responsible_id: User.first.id
+        user_id: User.first.id
         )
     end
   end
@@ -136,7 +136,7 @@ def create_tasks
         description: Faker::Lorem.paragraph,
         deadline_date: rand(2..10).days.since,
         task_type_id: rand(TaskType.first.id..TaskType.last.id),
-        responsible_id: User.first.id,
+        user_id: User.first.id,
         contact: "#{company.id}_Company"
       )
     end
@@ -149,7 +149,7 @@ def create_tasks
         description: Faker::Lorem.paragraph,
         deadline_date: rand(2..10).days.since,
         task_type_id: rand(TaskType.first.id..TaskType.last.id),
-        responsible_id: User.first.id,
+        user_id: User.first.id,
         contact: "#{person.id}_Person"
       )
     end
@@ -162,7 +162,7 @@ def create_tasks
         description: Faker::Lorem.paragraph,
         deadline_date: rand(2..10).days.since,
         task_type_id: rand(TaskType.first.id..TaskType.last.id),
-        responsible_id: User.first.id,
+        user_id: User.first.id,
         deal_id: deal.id
       )
     end
@@ -175,7 +175,7 @@ def create_tasks
         description: Faker::Lorem.paragraph,
         deadline_date: rand(2..10).days.since,
         task_type_id: rand(TaskType.first.id..TaskType.last.id),
-        responsible_id: User.first.id,
+        user_id: User.first.id,
         event_id: event.id
       )
     end 
@@ -188,7 +188,7 @@ def create_tasks
         description: Faker::Lorem.paragraph,
         deadline_date: n.days.ago,
         task_type_id: rand(TaskType.first.id..TaskType.last.id),
-        responsible_id: User.first.id
+        user_id: User.first.id
       )
     end
   end
