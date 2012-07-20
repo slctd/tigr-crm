@@ -2,6 +2,14 @@ Crm::Application.routes.draw do
 
   scope '(:locale)' do
 
+    # Import paths
+    get 'tasks/import_step_1'  => 'tasks#import_step_1'
+    post 'tasks/import_step_2' => 'tasks#import_step_2'
+    post 'tasks/import_step_3' => 'tasks#import_step_3'
+    get 'deals/import_step_1'  => 'deals#import_step_1'
+    post 'deals/import_step_2' => 'deals#import_step_2'
+    post 'deals/import_step_3' => 'deals#import_step_3'
+
     mount Ckeditor::Engine => "/ckeditor"
     
     resources :stages, only: [:show]
@@ -22,9 +30,6 @@ Crm::Application.routes.draw do
     end
 
     resources :tasks, except: [:show]
-    get 'tasks/import_step_1'  => 'tasks#import_step_1'
-    post 'tasks/import_step_2' => 'tasks#import_step_2'
-    post 'tasks/import_step_3' => 'tasks#import_step_3'
     
     resources :contacts, only: [:index]
     
@@ -57,6 +62,6 @@ Crm::Application.routes.draw do
     
     match 'dashboard/index' => "dashboard#index", as: "dashboard"
     
-    root :to => 'dashboard#index'
+    root :to => 'dashboard#index'    
   end
 end

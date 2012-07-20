@@ -1,6 +1,7 @@
 %h1= t(".deals")
 .buttons-panel
   = link_to t(".new_deal"), new_deal_path, class: "add"
+  = link_to t("import.title"), deals_import_step_1_path, class: "import"
 
 = render 'filter_form'
 

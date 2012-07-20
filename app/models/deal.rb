@@ -31,6 +31,53 @@ class Deal < ActiveRecord::Base
   
   scope :by_name, lambda {|name| where("name like ?", "%#{name}%")}
   
+  # Attributes to import
+  def self.import_columns
+    [:name, :description, :contact, :currency, :budget, :budget_type, :closing_date, :user, :stage, :success_probability]
+  end
+
+  # Import rules
+  def self.import_rules
+    {
+      name: {
+        required: true
+      },
+      contact: {
+        proc: Proc.new { |value| 
+            contact = Company.find_by_name(value)
+            if contact.nil?
+              contact = Person.where('firstname = ? and lastname = ?', value.split[0], value.split[1]).first
+            end
+            "#{contact.id}_#{contact.class.name}" unless contact.nil?
+          }, 
+        default: nil
+      },
+      currency: {
+        proc: Proc.new { |value|
+          Currency.find_by_name(value) || Currency.find_by_abbreviation(value)
+        },
+        default: Currency.first
+      },
+      budget_type: {
+        proc: Proc.new { |value|
+          BudgetType.find_by_name(value)
+        },
+        default: BudgetType.first
+      },
+      closing_date: {required: true},
+      user: {
+        proc: Proc.new { |value| User.find_by_email(value) }, 
+        default: User.current
+      },
+      stage: {
+        proc: Proc.new { |value|
+          Stage.find_by_name(value)
+        },
+        default: Stage.find_by_success_probability(0)
+      }
+    }
+  end
+
   def responsible
     User.find(self.user_id)
   end

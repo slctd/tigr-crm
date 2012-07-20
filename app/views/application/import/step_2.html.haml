@@ -6,7 +6,7 @@
     - @import.errors[:base].each do |msg|
       %p= msg
 
-= form_tag tasks_import_step_3_path do
+= form_tag step(3) do
   %table.table
     %tr
       %th= t('import.table.file_column') 
@@ -18,8 +18,8 @@
       %tr
         %td= cell.header
         %td
-          = select_tag "columns[#{n}]", options_for_select(@import.import_columns.map { |col| [t("activerecord.attributes.task.#{col.to_s}"), col.to_s]}, (params["columns"]["#{n}"] if params["columns"]))
+          = select_tag "columns[#{n}]", import_options_for_select(@import, cell.header, n)
         %td= cell.data
   = hidden_field_tag :import_table, @import.import_table.id
-  = link_to t('import.back'), tasks_import_step_1_path, class: 'btn'
+  = link_to t('import.back'), step(1), class: 'btn'
   = submit_tag t('import.import'), class: 'btn'

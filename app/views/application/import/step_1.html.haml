@@ -1,7 +1,7 @@
 %h1= t('import.title')
 %h2= "#{t('import.step')} 1"
 
-= form_tag tasks_import_step_2_path, multipart: true, class: 'form-horizontal' do
+= form_tag step(2), multipart: true, class: 'form-horizontal' do
   .control-group
     = label_tag :file, t('import.file_to_upload'), class: 'control-label'
     .controls
