@@ -56,10 +56,6 @@ module Importer
 
       render 'application/import/step_2'
 
-    rescue ActiveRecord::RecordInvalid
-      flash[:error] = t('import.errors.general.error')
-      redirect_to step(1)
-      return
     rescue ArgumentError
       flash[:error] = t('import.errors.general.encoding')
       redirect_to step(1)
@@ -68,6 +64,10 @@ module Importer
       flash[:error] = t('import.errors.general.incorrect_params')
       redirect_to step(1)
       return
+    rescue
+      flash[:error] = t('import.errors.general.error')
+      redirect_to step(1)
+      return 
     end
   end
 
