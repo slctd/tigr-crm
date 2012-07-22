@@ -418,6 +418,9 @@ ru:
         profile: Профиль пользователя
         email: Email
         name: Имя
+        gender: Пол
+        birthday: День рождения
+        comment: Комментарий
         
   search:
     index:

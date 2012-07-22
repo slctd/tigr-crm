@@ -8,6 +8,7 @@ class Ability
     
     unless user.admin?
       cannot :manage, User
+      can :manage, User, id: User.current.id
     end
     
     # Define abilities for the passed in user here. For example:
