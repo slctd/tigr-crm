@@ -13,6 +13,11 @@ class DealsController < ApplicationController
     if params[:by_name].present?
       @deals = @deals.by_name(params[:by_name])
     end
+
+    respond_to do |format|
+      format.html
+      format.csv { render text: Deal.to_csv }
+    end
   end
   
   def show

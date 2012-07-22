@@ -121,6 +121,30 @@ class Deal < ActiveRecord::Base
       end
     end    
   end
+
+  def self.to_csv
+    columns = [:name, :contact, :description, :currency, :budget, :budget_type, :closing_date, :user, :stage, :success_probability]
+    CSV.generate do |csv|
+      csv << columns.map { |column| I18n.t("activerecord.attributes.deal.#{column.to_s}")}
+
+      all.each do |deal|
+        fields = []
+        
+        fields << deal.name
+        deal.dealable.present? ? fields << deal.dealable.name : fields << ""
+        fields << deal.description
+        fields << deal.currency.name
+        fields << deal.budget || ""
+        fields << I18n.t("types.budget.#{deal.budget_type.name}")
+        fields << deal.closing_date
+        fields << deal.user.email
+        fields << I18n.t("stages.#{deal.stage.name}")
+        fields << deal.success_probability || ""
+        
+        csv << fields
+      end
+    end
+  end
   
   private
   

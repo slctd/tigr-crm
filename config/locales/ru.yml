@@ -338,6 +338,7 @@ ru:
     index:
       deals: Сделки
       new_deal: Добавить новую сделку
+      export: Экспорт
     new:
       new_deal: Новая сделка
     show:
