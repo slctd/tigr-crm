@@ -34,6 +34,8 @@
             %li{class: ("active" if params[:controller] == "events")}
               = link_to "#{image_tag('events_icon.png')} #{t('.events')}".html_safe, events_path              
             %li.divider-vertical
+            %li{class: ("active" if params[:controller] == "options")}
+              = link_to "#{image_tag('options_icon.png')} #{t('.options')}".html_safe, options_path            
             - if current_user.admin?
               %li{class: ("active" if params[:controller] == "admin/users")}
                 = link_to "#{image_tag('users_icon.png')} #{t('.users')}".html_safe, admin_users_path

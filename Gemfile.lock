@@ -109,6 +109,10 @@ GEM
     jwt (0.1.4)
       json (>= 1.2.4)
     kgio (2.7.4)
+    launchy (2.1.0)
+      addressable (~> 2.2.6)
+    letter_opener (0.0.2)
+      launchy
     libnotify (0.7.4)
       ffi (~> 1.0.11)
     libv8 (3.3.10.4)
@@ -279,6 +283,7 @@ DEPENDENCIES
   haml
   haml-rails
   jquery-rails
+  letter_opener
   libnotify
   localtunnel
   mysql2
@@ -292,6 +297,7 @@ DEPENDENCIES
   rb-inotify
   rmagick
   rspec-rails
+  rubyzip
   sass-rails (~> 3.2.3)
   simple_form
   spork

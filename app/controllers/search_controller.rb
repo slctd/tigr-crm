@@ -1,4 +1,7 @@
 class SearchController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource class: SearchController
+  
   def index
     # Find companies
     @companies = Company.where("name like ?", "%#{params[:search]}%").order(:name)

@@ -67,7 +67,10 @@ Crm::Application.routes.draw do
     get '/search/(:type)/(:search)' => 'search#all', as: 'search_all'
     
     match 'dashboard/index' => "dashboard#index", as: "dashboard"
-    
-    root :to => 'dashboard#index'    
+  
+    get 'options/index', as: 'options'
+    get 'options/export', as: 'options_export'
+
+    root :to => 'dashboard#index'
   end
 end
