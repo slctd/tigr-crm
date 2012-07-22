@@ -32,4 +32,36 @@ class Contact < ActiveRecord::Base
       }
     }
   end
+
+  def self.to_csv
+    columns = [:name, :firstname, :lastname, :job,:contact_type, :description]
+    
+    CSV.generate do |csv|
+      csv << columns.map { |column| I18n.t("activerecord.attributes.company.#{column.to_s}", default: I18n.t("activerecord.attributes.person.#{column.to_s}"))}
+
+      contacts = Company.all + Person.all
+
+      contacts.each do |contact|
+        fields = []
+        
+        if contact.is_a?(Person)
+          fields << contact.firstname
+          fields << contact.lastname
+          contact.company.present? ? fields << contact.company.name : fields << ""
+          fields << contact.job
+        else
+          fields << ""
+          fields << ""
+          fields << contact.name
+          fields << ""
+        end
+
+        contact.contact_type.present? ? fields << I18n.t("types.contact.#{contact.contact_type.name}") : fields << ""
+
+        fields << contact.description || ""
+
+        csv << fields
+      end
+    end
+  end
 end

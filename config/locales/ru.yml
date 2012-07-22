@@ -267,6 +267,7 @@ ru:
       all_contacts: Все контакты
       add_new_company: Добавить новую компанию
       add_new_person: Добавить новую персону
+      export: Экспорт
       
   companies:
     form:

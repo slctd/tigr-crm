@@ -4,6 +4,7 @@
   = link_to t('.add_new_company'), new_company_path, class: "add"
   = link_to t('.add_new_person'), new_person_path, class: "add"
   = link_to t("import.title"), contacts_import_step_1_path, class: "import"
+  = link_to t('.export'), contacts_path(format: 'csv'), class: "export"
 
 = render 'filter_form'
 

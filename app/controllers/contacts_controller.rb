@@ -22,6 +22,7 @@ class ContactsController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render }
+      format.csv { render text: Contact.to_csv }
     end
   end
 end
