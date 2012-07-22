@@ -13,6 +13,11 @@ class TasksController < ApplicationController
     if params[:by_name].present?
       @tasks = @tasks.by_name(params[:by_name])
     end
+
+    respond_to do |format|
+      format.html
+      format.csv { render text: Task.to_csv }
+    end
   end
   
   def new

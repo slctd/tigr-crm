@@ -2,6 +2,7 @@
 .buttons-panel
   = link_to t('.new_task'), new_task_path, class: "add"
   = link_to t('import.title'), tasks_import_step_1_path, class: "import"
+  = link_to t('.export'), tasks_path(format: 'csv'), class: "export"
 
 = render 'filter_form'
 

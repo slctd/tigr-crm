@@ -60,6 +60,23 @@ class Task < ActiveRecord::Base
     }
   end
 
+  def self.to_csv
+    columns = [:name, :task_type, :description, :contact, :deadline_date, :user]
+    CSV.generate do |csv|
+      csv << columns.map { |column| I18n.t("activerecord.attributes.task.#{column.to_s}")}
+      all.each do |task|
+        fields = []
+        fields << task.name
+        fields << I18n.t("types.task.#{task.task_type.name}")
+        fields << task.description
+        task.taskable.present? ? fields << task.taskable.name : fields << ""
+        fields << task.deadline_date
+        fields << task.user.email
+        csv << fields
+      end
+    end
+  end
+
   private
     def set_taskable
       if self.contact =~ /_/

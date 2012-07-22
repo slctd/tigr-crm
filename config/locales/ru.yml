@@ -317,6 +317,7 @@ ru:
     index:
       tasks: Задачи
       new_task: Поставить новую задачу
+      export: Экспорт
     new:
       new_task: Новая задача
     edit:
