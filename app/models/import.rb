@@ -35,40 +35,44 @@ class Import
           end
 
           import_columns_set.each do |column|
-            # Transform column. Is's required because of columns like
-            # :name => :alias
-            column = column.to_a[0][0].to_s.to_sym if column.is_a?(Hash)
 
-            cell = cell_number(column.to_s)
+            unless column.to_s == "dont_import"
+              # Transform column. Is's required because of columns like
+              # :name => :alias
+              column = column.to_a[0][0].to_s.to_sym if column.is_a?(Hash)
 
-            # Find the value in the CSV cell
-            value = nil
-            value = row.import_cells.find_by_number(cell).data unless cell.nil?
+              cell = cell_number(column.to_s)
 
-            # What attribute to set
-            attribute = column.to_s
+              # Find the value in the CSV cell
+              value = nil
+              value = row.import_cells.find_by_number(cell).data unless cell.nil?
 
-            # If there are rules, use them
-            if rules_set[column.to_sym].present?
+              # What attribute to set
+              attribute = column.to_s
 
-              # If there is a proc, call it
-              if rules_set[column.to_sym][:proc].present?
-                value = rules_set[column.to_sym][:proc].call(value) unless value.nil?
+              # If there are rules, use them
+              if rules_set[column.to_sym].present?
+
+                # If there is a proc, call it
+                if rules_set[column.to_sym][:proc].present?
+                  value = rules_set[column.to_sym][:proc].call(value) unless value.nil?
+                end
+
+                # If there is default value and cell is empty, set it
+                if rules_set[column.to_sym][:default].present?
+                  value = rules_set[column.to_sym][:default] if value.nil?
+                end
+
+                # If there is an alias to another column
+                if rules_set[column.to_sym][:alias_to].present?
+                  attribute = rules_set[column.to_sym][:alias_to].to_s
+                end
               end
 
-              # If there is default value and cell is empty, set it
-              if rules_set[column.to_sym][:default].present?
-                value = rules_set[column.to_sym][:default] if value.nil?
-              end
-
-              # If there is an alias to another column
-              if rules_set[column.to_sym][:alias_to].present?
-                attribute = rules_set[column.to_sym][:alias_to].to_s
-              end
+              # Set the attribute of object
+              object.send("#{attribute}=", value) unless value.nil?
             end
 
-            # Set the attribute of object
-            object.send("#{attribute}=", value) unless value.nil?
           end
 
           object.save!

@@ -2,7 +2,7 @@ class Contact < ActiveRecord::Base
 
   # Attributes to import
   def self.import_columns
-    [:contact_type]
+    [:description, :contact_type]
   end
 
   # Import rules
@@ -34,7 +34,7 @@ class Contact < ActiveRecord::Base
   end
 
   def self.to_csv
-    columns = [:name, :firstname, :lastname, :job,:contact_type, :description]
+    columns = [:firstname, :lastname, :name, :job,:contact_type, :description]
     
     CSV.generate do |csv|
       csv << columns.map { |column| I18n.t("activerecord.attributes.company.#{column.to_s}", default: I18n.t("activerecord.attributes.person.#{column.to_s}"))}

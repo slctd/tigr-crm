@@ -3,6 +3,9 @@ module ImportHelper
   def import_options_for_select(import, header, n)
     options = []
 
+    # Add don't import option
+    options << [t('import.dont_import'), "dont_import"]
+
     # Add general columns
     import.import_columns.map do |col| 
       options << [t("activerecord.attributes.#{import.object.to_s.downcase}.#{col.to_s}"), col.to_s]
@@ -42,7 +45,9 @@ module ImportHelper
         import.import_columns.each do |col| 
           return col.to_s if header == t("activerecord.attributes.#{import.object.to_s.downcase}.#{col.to_s}")
         end
-        import.import_columns[0].to_s
+        
+        # If function didn't return anything select "don't import" option
+        "dont_import"
       end
     end
 end

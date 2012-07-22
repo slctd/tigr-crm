@@ -23,6 +23,7 @@ ru:
     complete: Импорт завершен
     select_encoding: Кодировка файла
     select_col_sep: Разделитель
+    dont_import: Не импортировать
     encoding:
       win1251: Windows-1251
       utf-8: UTF-8
@@ -126,6 +127,7 @@ ru:
         address_type: Тип адреса
       contact:
         contact_type: Тип контакта
+        description: Описание
       company:
         name: Название
         description: Описание
@@ -268,7 +270,7 @@ ru:
       add_new_company: Добавить новую компанию
       add_new_person: Добавить новую персону
       export: Экспорт
-      
+
   companies:
     form:
       general_info: Основная информация
