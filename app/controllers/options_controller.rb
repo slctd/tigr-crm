@@ -12,7 +12,11 @@ class OptionsController < ApplicationController
 
     begin
 
+      # Define export path
       export_path = "#{Rails.root}/public/export"
+
+      # Create it if it doesn't exist
+      Dir.mkdir(export_path) unless File.directory? export_path
 
       # Generate random string to secure files from accident access
       random_dir = Digest::SHA1.hexdigest(Time.now.to_s + "random salt 1749 yadf dfhasdiofuna89fad")
@@ -52,17 +56,18 @@ class OptionsController < ApplicationController
       end
 
       # Generate link to file
-      file_link = "http://#{request.host}/export/#{random_dir}/#{filename}.zip"
-      # Send email
-      CrmMailer.export(current_user, file_link).deliver
+      @file_link = "http://#{request.host}/export/#{random_dir}/#{filename}.zip"
+      
+      # Right now we will not send emails
+      # CrmMailer.export(current_user, file_link).deliver
 
-      # Redirect back
-      redirect_to options_path, notice: t('options.export.success', email: current_user.email)
+      # Render view with flash message
+      flash.now[:notice] = t('options.export.success')
 
-    #rescue
-    #  flash[:error] = t('options.export.failure')
-    #  redirect_to options_path
-    #  return
+    rescue
+      flash[:error] = t('options.export.failure')
+      redirect_to options_path
+      return
     end
 
   end

@@ -28,7 +28,8 @@ end
 group :development do
   gem 'rspec-rails'
   gem 'guard-rspec'
-  gem 'localtunnel'  
+  gem 'localtunnel'
+  gem 'letter_opener'
 end
 
 group :test do
@@ -63,7 +64,6 @@ gem 'omniauth-vkontakte'
 #gem 'omniauth-facebook'
 gem 'ckeditor'
 gem 'rubyzip'
-gem 'letter_opener'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

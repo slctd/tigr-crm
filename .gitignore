@@ -19,3 +19,4 @@ pickle-email-*.html
 /config/oauth.yml
 /config/deploy.rb
 .DS_Store
+/public/export/*.zip
