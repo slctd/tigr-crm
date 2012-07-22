@@ -13,6 +13,11 @@ class EventsController < ApplicationController
     if params[:by_name].present?
       @events = @events.by_name(params[:by_name])
     end
+
+    respond_to do |format|
+      format.html
+      format.csv { render text: Event.to_csv }
+    end
   end
   
   def show

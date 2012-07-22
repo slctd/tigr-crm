@@ -52,4 +52,20 @@ class Event < ActiveRecord::Base
     end    
   end
   
+  def self.to_csv
+    columns = [:name, :opened]
+    
+    CSV.generate do |csv|
+      csv << columns.map { |column| I18n.t("activerecord.attributes.event.#{column.to_s}")}
+
+      all.each do |event|
+        fields = []
+        
+        fields << event.name
+        fields << event.opened.to_s
+
+        csv << fields
+      end
+    end
+  end
 end

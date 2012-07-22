@@ -360,6 +360,7 @@ ru:
     index:
       events: Мероприятия
       new_event: Добавить новое мероприятие
+      export: Экспорт
     new:
       new_event: Новое мероприятие
     show:
