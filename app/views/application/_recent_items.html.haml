@@ -6,7 +6,7 @@
       \:
       - if item.itemable.present?
         - unless item.itemable.is_a?(Task)
-          = link_to item.itemable.name || item.itemable.email, polymorphic_path(item.itemable)
+          = link_to item.itemable.name || item.itemable.email, (item.itemable.is_a?(User) ? admin_user_path(item.itemable) : polymorphic_path(item.itemable))
         - else
           = item.itemable.name
       - else
