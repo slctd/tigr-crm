@@ -55,6 +55,9 @@ class OptionsController < ApplicationController
         end
       end
 
+      # Set permissions to the file
+      File.chmod(0644, "#{export_path}/#{random_dir}/#{filename}.zip")
+
       # Generate link to file
       @file_link = "http://#{request.host}/export/#{random_dir}/#{filename}.zip"
       
