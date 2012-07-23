@@ -13,4 +13,4 @@
     = deal.responsible.name || deal.responsible.email
   %td
     - if deal.budget.present?
-      = "#{deal.budget.to_s} #{deal.currency.abbreviation}"
+      = number_to_currency(deal.budget, unit: currency_to_symbol(deal.currency.abbreviation))

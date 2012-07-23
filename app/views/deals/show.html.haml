@@ -13,8 +13,7 @@
     %td= @deal.success_probability
     %td
       - if @deal.budget.present?
-        = @deal.budget
-        = @deal.currency.abbreviation
+        = number_to_currency(@deal.budget, unit: currency_to_symbol(@deal.currency.abbreviation))
       - else
         = t(".budget_not_set")
     %td= @deal.closing_date

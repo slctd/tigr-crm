@@ -6,7 +6,7 @@
     = render partial: 'person', collection: @people
 
 - if params[:type] == "tasks"
-  %table.table
+  %table.table.tasks
     = render partial: 'task', collection: @tasks
 
 - if params[:type] == "deals"

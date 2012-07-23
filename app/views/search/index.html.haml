@@ -11,7 +11,7 @@
 
 - unless @tasks.count == 0
   %h2= t('.tasks')
-  %table.table
+  %table.table.tasks
     = render partial: 'task', collection: @tasks
   - if @tasks_count > 10
     .more
