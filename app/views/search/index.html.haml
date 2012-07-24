@@ -7,7 +7,7 @@
     = render partial: 'person', collection: @people
   - if @contacts_count > 10
     .more
-      = link_to "#{t('.more')} #{(@contacts_count - 10).to_s}", search_all_path("contacts", params[:search])
+      = link_to "#{t('.more')} #{(@contacts_count - 10).to_s}", contacts_path(by_name: params[:search])
 
 - unless @tasks.count == 0
   %h2= t('.tasks')
@@ -15,7 +15,7 @@
     = render partial: 'task', collection: @tasks
   - if @tasks_count > 10
     .more
-      = link_to "#{t('.more')} #{(@tasks_count - 10).to_s}", search_all_path("tasks", params[:search])
+      = link_to "#{t('.more')} #{(@tasks_count - 10).to_s}", tasks_path(by_name: params[:search])
   
 - unless @deals.count == 0
   %h2= t('.deals')
@@ -23,7 +23,7 @@
     = render @deals
   - if @deals_count > 10
     .more
-      = link_to "#{t('.more')} #{(@deals_count - 10).to_s}", search_all_path("deals", params[:search])
+      = link_to "#{t('.more')} #{(@deals_count - 10).to_s}", deals_path(by_name: params[:search])
   
 - unless @events.count == 0
   %h2= t('.events')
@@ -31,4 +31,4 @@
     = render @events
   - if @events_count > 10
     .more
-      = link_to "#{t('.more')} #{(@events_count - 10).to_s}", search_all_path("events", params[:search])
+      = link_to "#{t('.more')} #{(@events_count - 10).to_s}", events_path(by_name: params[:search])

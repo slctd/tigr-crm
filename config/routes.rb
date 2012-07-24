@@ -64,7 +64,6 @@ Crm::Application.routes.draw do
     end
     
     get '/search/(:search)' => 'search#index', as: 'search'
-    get '/search/(:type)/(:search)' => 'search#all', as: 'search_all'
     
     match 'dashboard/index' => "dashboard#index", as: "dashboard"
   

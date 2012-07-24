@@ -3,15 +3,16 @@ class SearchController < ApplicationController
   load_and_authorize_resource class: SearchController
   
   def index
+    
     # Find companies
-    @companies = Company.where("name like ?", "%#{params[:search]}%").order(:name)
+    @companies = Company.by_name(params[:search]).order(:name)
     # Remember thier count
     companies_count = @companies.count
     # Remove all but 10 companies to show
     @companies = @companies.limit(10)
 
     # The same logic for people, tasks, deals and events
-    @people = Person.where("firstname like ? or lastname like ?", "%#{params[:search]}%", "%#{params[:search]}%").order(:firstname)
+    @people = Person.by_name(params[:search]).order(:firstname)
     people_count = @people.count
 
     # Here we should calculate limit for people
@@ -26,30 +27,16 @@ class SearchController < ApplicationController
     # Calculate sum of companies and people
     @contacts_count = companies_count + people_count
 
-    @tasks =  Task.where("name like ? or description like ?", "%#{params[:search]}%", "%#{params[:search]}%").order(:name)
+    @tasks =  Task.by_name(params[:search]).order("deadline_date desc")
     @tasks_count = @tasks.count
     @tasks = @tasks.limit(10)
 
-    @deals =  Deal.where("name like ? or description like ?", "%#{params[:search]}%", "%#{params[:search]}%").order(:name)
+    @deals =  Deal.by_name(params[:search]).order(:closing_date)
     @deals_count = @deals.count
     @deals = @deals.limit(10)
 
-    @events = Event.where("name like ?", "%#{params[:search]}%").order(:name)
+    @events = Event.by_name(params[:search]).order(:name)
     @events_count = @events.count
     @events = @events.limit(10)
-  end
-
-  def all
-    case params[:type]
-      when "contacts" then
-        @companies = Company.where("name like ?", "%#{params[:search]}%").order(:name)
-        @people = Person.where("firstname like ? or lastname like ?", "%#{params[:search]}%", "%#{params[:search]}%").order(:firstname)
-      when "tasks" then
-        @tasks =  Task.where("name like ? or description like ?", "%#{params[:search]}%", "%#{params[:search]}%").order(:name)
-      when "deals" then
-        @deals =  Deal.where("name like ? or description like ?", "%#{params[:search]}%", "%#{params[:search]}%").order(:name)
-      when "events" then
-        @events = Event.where("name like ?", "%#{params[:search]}%").order(:name)
-    end
   end
 end
