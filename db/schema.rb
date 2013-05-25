@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(:version => 20120720092253) do
     t.string   "image"
   end
 
+  add_index "companies", ["name"], :name => "index_companies_on_name", :unique => true
+
   create_table "currencies", :force => true do |t|
     t.string   "name"
     t.string   "abbreviation"

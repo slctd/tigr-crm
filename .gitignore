@@ -20,3 +20,4 @@ pickle-email-*.html
 /config/deploy.rb
 .DS_Store
 /public/export/
+.idea/
