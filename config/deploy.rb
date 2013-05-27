@@ -1,3 +1,5 @@
+config = YAML.load(File.read(File.expand_path('../deployer.yml', __FILE__)))
+
 require "bundler/capistrano"
 
 load "config/recipes/base"
@@ -8,9 +10,9 @@ load "config/recipes/nodejs"
 load "config/recipes/rbenv"
 load "config/recipes/check"
 
-server ENV['CAP_SERVER'], :web, :app, :db, primary: true
+server config['CAP_SERVER'], :web, :app, :db, primary: true
 
-set :user, ENV['CAP_USER']
+set :user, config['CAP_USER']
 set :application, "tigr-crm"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
