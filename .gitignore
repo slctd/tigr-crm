@@ -17,7 +17,7 @@ pickle-email-*.html
 *~
 /config/database.yml
 /config/oauth.yml
-/config/deploy.rb
+config/deployer.yml
 .DS_Store
 /public/export/
 .idea/
