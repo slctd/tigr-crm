@@ -17,6 +17,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 
   gem 'bootstrap-sass'
+  gem 'turbo-sprockets-rails3'
 end
 
 gem 'jquery-rails'
@@ -55,7 +56,7 @@ gem 'faker'
 gem 'rmagick'
 gem 'carrierwave'
 gem 'country_select'
-gem "nilify_blanks"
+gem 'nilify_blanks'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-yandex'
