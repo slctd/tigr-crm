@@ -207,9 +207,9 @@ Devise.setup do |config|
 
   oauth_config = YAML.load_file(Rails.root.join('config', 'omniauth.yml'))[Rails.env]
 
-  oauth_config.each do |provider|
-    config.omniauth provider[0], provider[1]['app_id'], provider[1]['app_secret']
-  end
+  config.omniauth :facebook, oauth_config['facebook']['app_id'], oauth_config['facebook']['app_secret'], strategy_class: OmniAuth::Strategies::Facebook
+  config.omniauth :twitter, oauth_config['twitter']['app_id'], oauth_config['twitter']['app_secret']
+  config.omniauth :vkontakte, oauth_config['vkontakte']['app_id'], oauth_config['vkontakte']['app_secret']
 
 
   # ==> Warden configuration
