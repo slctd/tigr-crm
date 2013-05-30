@@ -59,9 +59,9 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first ||
-        Authentication.where(provider: auth.provider, uid: auth.uid).first.try(:user)
+        Authentication.where(provider: auth.provider, uid: auth.uid.to_s).first.try(:user)
     if user.present?
-      user.authentications.where(provider: auth.provider, uid: auth.uid).first_or_create
+      user.authentications.where(provider: auth.provider, uid: auth.uid.to_s).first_or_create
     else
 
       auth.slice(:provider, :uid)
