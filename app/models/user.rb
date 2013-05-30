@@ -63,8 +63,10 @@ class User < ActiveRecord::Base
     if user.present?
       user.authentications.where(provider: auth.provider, uid: auth.uid).first_or_create
     else
+
+      auth.slice(:provider, :uid)
       user = User.includes(:authentications).
-          where("authentications.provider = :provider and authentications.uid = :uid", auth.slice(:provider, :uid)).
+          where("authentications.provider = :provider and authentications.uid = :uid", auth.slice(:provider, :uid).stringify_values).
           first_or_initialize do |user|
 
         user.authentications.build(provider: auth.provider, uid: auth.uid)
