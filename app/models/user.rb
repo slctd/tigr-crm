@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   # :trackable, :validatable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :omniauthable
+         :recoverable, :rememberable, :omniauthable, omniauth_providers: [:facebook, :twitter, :vkontakte]
 
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :name, :gender, :birthday, :comment, :user_contacts_attributes, :image, :remove_image
