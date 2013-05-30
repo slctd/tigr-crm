@@ -29,7 +29,7 @@ namespace :postgresql do
   desc "Symlink the database.yml file into latest release"
   task :symlink, roles: :app do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-    run "ln -nfs #{shared_path}/config/oauth.yml #{release_path}/config/oauth.yml"
+    run "ln -nfs #{shared_path}/config/omniauth.yml #{release_path}/config/omniauth.yml"
   end
   after "deploy:finalize_update", "postgresql:symlink"
 end

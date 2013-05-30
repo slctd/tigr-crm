@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
+# TODO: check csv without this inclusion
 require "csv"
 require "active_record/railtie"
 require "action_controller/railtie"

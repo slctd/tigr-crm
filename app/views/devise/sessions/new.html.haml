@@ -11,21 +11,21 @@
       = t('.sign_in_with')
       %div
         %br
-        %a{href: "/auth/twitter"}
+        = link_to user_omniauth_authorize_path(:twitter) do
           = image_tag "twitter.png", :alt => "Twitter"
           = t('social.twitter')
         %br
         %br
-        %a{href: "/auth/yandex"}
-          = image_tag "yandex.png", :alt => "Ya.ru"
-          = t('social.yandex')
+        = link_to user_omniauth_authorize_path(:facebook) do
+          = image_tag "facebook.png", :alt => "Facebook"
+          = t('social.facebook')
+        -#%br
+        -#%br
+        -#%a{href: "/auth/google_oauth2"}
+        -#  = image_tag "google_oauth2.png", :alt => "Google+"
+        -#  = t('social.google')
         %br
         %br
-        %a{href: "/auth/google_oauth2"}
-          = image_tag "google_oauth2.png", :alt => "Google+"
-          = t('social.google')
-        %br
-        %br
-        %a{href: "/auth/vkontakte"}
+        = link_to user_omniauth_authorize_path(:vkontakte) do
           = image_tag "vkontakte.png", :alt => "Vkontakte"
           = t('social.vk')

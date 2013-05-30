@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   # :trackable, :validatable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable
+         :recoverable, :rememberable, :omniauthable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :name, :gender, :birthday, :comment, :user_contacts_attributes, :image, :remove_image
@@ -55,5 +55,26 @@ class User < ActiveRecord::Base
   
   def self.current=(user)
     Thread.current[:user] = user
+  end
+
+  def self.from_omniauth(auth)
+    user = User.where(email: auth.info.email).first ||
+        Authentication.where(provider: auth.provider, uid: auth.uid).first.try(:user)
+    if user.present?
+      user.authentications.where(provider: auth.provider, uid: auth.uid).first_or_create
+    else
+      user = User.includes(:authentications).
+          where("authentications.provider = :provider and authentications.uid = :uid", auth.slice(:provider, :uid)).
+          first_or_initialize do |user|
+
+        user.authentications.build(provider: auth.provider, uid: auth.uid)
+
+        user.name = auth.info.name
+        user.name = auth.info.nickname if user.name.empty?
+        user.email = auth.info.email.present? ? auth.info.email : "#{user.name.parameterize}@#{auth.provider}.com"
+      end
+      user.save(validate: false) if user.new_record?
+    end
+    user
   end
 end
