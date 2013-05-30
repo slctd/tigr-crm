@@ -207,7 +207,7 @@ Devise.setup do |config|
 
   oauth_config = YAML.load_file(Rails.root.join('config', 'omniauth.yml'))[Rails.env]
 
-  config.omniauth :facebook, oauth_config['facebook']['app_id'], oauth_config['facebook']['app_secret'], strategy_class: OmniAuth::Strategies::Facebook
+  #config.omniauth :facebook, oauth_config['facebook']['app_id'], oauth_config['facebook']['app_secret'], strategy_class: OmniAuth::Strategies::Facebook
   config.omniauth :twitter, oauth_config['twitter']['app_id'], oauth_config['twitter']['app_secret']
   config.omniauth :vkontakte, oauth_config['vkontakte']['app_id'], oauth_config['vkontakte']['app_secret']
 
