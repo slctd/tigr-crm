@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: deals
+#
+#  id                  :integer          not null, primary key
+#  dealable_id         :integer
+#  dealable_type       :string(255)
+#  name                :string(255)
+#  description         :text
+#  currency_id         :integer
+#  budget              :decimal(, )
+#  budget_type_id      :integer
+#  closing_date        :date
+#  stage_id            :integer
+#  success_probability :integer
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  user_id             :integer
+#
+
 require 'spec_helper'
 
 describe Deal do

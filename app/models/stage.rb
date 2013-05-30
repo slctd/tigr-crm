@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: stages
+#
+#  id                  :integer          not null, primary key
+#  name                :string(255)
+#  success_probability :integer
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#
+
 class Stage < ActiveRecord::Base
   has_many :deals
   

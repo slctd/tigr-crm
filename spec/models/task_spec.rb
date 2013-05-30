@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: tasks
+#
+#  id            :integer          not null, primary key
+#  taskable_id   :integer
+#  taskable_type :string(255)
+#  event_id      :integer
+#  deal_id       :integer
+#  name          :string(255)
+#  task_type_id  :integer
+#  description   :string(255)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  deadline_date :date
+#  user_id       :integer
+#
+
 require 'spec_helper'
 
 describe Task do
