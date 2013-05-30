@@ -11,7 +11,6 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery-ui
 //= require jquery_ujs
 //= require jquery.tokeninput
 //= require jquery.ui.datepicker-ru
