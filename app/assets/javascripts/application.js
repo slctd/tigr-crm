@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.tokeninput
+//= require jquery.ui.datepicker
 //= require jquery.ui.datepicker-ru
+//= require jquery.ui.autocomplete
 //= require bootstrap
 //= require_tree .
