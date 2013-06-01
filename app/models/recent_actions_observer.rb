@@ -1,5 +1,5 @@
 class RecentActionsObserver < ActiveRecord::Observer
-  observe :person, :company, :task, :deal, :event#, :user
+  observe :person, :company, :task, :deal, :event, :user
 
   def after_create(record)
     action = RecentAction.new(
