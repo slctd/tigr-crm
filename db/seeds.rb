@@ -2,6 +2,7 @@ Type.destroy_all
 Stage.destroy_all
 Currency.destroy_all
 Deal.destroy_all
+Task.destroy_all
 
 ActionType.create!(name: 'create')
 ActionType.create!(name: 'update')
@@ -10,6 +11,7 @@ ActionType.create!(name: 'destroy')
 User.where(email: 'admin@example.com').destroy_all
 
 admin = User.create!(
+  name: 'Administrator',
   email: 'admin@example.com',
   password: 'qwerty',
   password_confirmation: 'qwerty'
@@ -49,8 +51,8 @@ CSV.foreach('db/seeds/deals.csv', headers: true) do |row|
   end
 
   description = <<-DESCRIPTION
-Статус: #{row['status']}
-Описание: #{row['description']}
+<p>Статус: #{row['status']}</p>
+<p>Описание: #{row['description']}</p>
   DESCRIPTION
   contact = company.present? ? "#{company.id}_Company" : nil
   Deal.create! name: "##{row['number']} #{row['deal']}", budget: row['sum'].to_f, description: description,
@@ -58,3 +60,38 @@ CSV.foreach('db/seeds/deals.csv', headers: true) do |row|
                stage_id: stage.id, user_id: manager.id
 end
 
+task_type_id = TaskType.where(name: 'demo').first.id
+
+CSV.foreach('db/seeds/tasks.csv', headers: true) do |row|
+
+  description = <<-DESCRIPTION
+<p>Назначил: #{row['manager']}</p>
+<p>Добавлено: #{row['created_at']}</p>
+<p>Приоритет: #{row['priority']}</p>
+<p>Статус: #{row['status']}</p>
+<p>Время: #{row['work_time']}</p>
+<p>Задание выполнено: #{row['finished']}</p>
+<p>Дата выполнения: #{row['finished_at']}</p>
+<p>Результат: #{row['result']}</p>
+<p>Принято: #{row['accepted']}</p>
+<p>Комментарий: #{row['accepted_comment']}</p>
+  DESCRIPTION
+
+  company = Company.where(name: row['company']).first_or_create! if row['company'].present?
+  contact = company.present? ? "#{company.id}_Company" : nil
+
+  performer = User.where(name: row['performer']).first_or_create do |user|
+    user.email = "#{row['performer'].parameterize}@tigr.crm"
+    user.password = 'secret'
+    user.password_confirmation = 'secret'
+  end
+
+  Task.create(
+      name: row['name'],
+      description: description,
+      deadline_date: row['deadline'].to_date,
+      task_type_id: task_type_id,
+      user_id: performer.id,
+      contact: contact
+  )
+end
