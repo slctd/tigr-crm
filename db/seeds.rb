@@ -3,6 +3,7 @@ Stage.destroy_all
 Currency.destroy_all
 Deal.destroy_all
 Task.destroy_all
+Company.destroy_all
 
 ActionType.create!(name: 'create')
 ActionType.create!(name: 'update')
@@ -19,7 +20,7 @@ admin = User.create!(
 admin.toggle!(:admin)
 
 User.current = admin
-
+#
 types = I18n.t 'types'
 
 types.each do |type|
@@ -95,3 +96,44 @@ CSV.foreach('db/seeds/tasks.csv', headers: true) do |row|
       contact: contact
   )
 end
+
+email_type_id = EmailType.where(name: 'work').first.id
+phone_type_id = PhoneType.where(name: 'work').first.id
+address_type_id = AddressType.where(name: 'work').first.id
+CSV.foreach('db/seeds/companies.csv', headers: true) do |row|
+  description = <<-DESCRIPTION
+<p>Менеджер: #{row['manager']}</p>
+<p>Тип: #{row['type']}</p>
+<p>Статус: #{row['status']}</p>
+<p>Интерес: #{row['interest']}</p>
+<p>Сайт: #{row['site']}</p>
+<p>Деятельность: #{row['activity']}</p>
+<p>Примечание: #{row['comment']}</p>
+<p>Юридическое название: #{row['legal_name']}</p>
+<p>Юридический адрес: #{row['legal_address']}</p>
+<p>ИНН: #{row['inn']}</p>
+<p>КПП: #{row['kpp']}</p>
+<p>Расчетный счёт: #{row['payment_account']}</p>
+<p>Банк: #{row['bank']}</p>
+<p>Корр. счет: #{row['corr_account']}</p>
+<p>Лицевой счет: #{row['personal_account']}</p>
+<p>БИК: #{row['bik']}</p>
+<p>Руководитель: #{row['director']}</p>
+<p>Бухгалтер: #{row['accountant']}</p>
+<p>Код ОКАТО: #{row['okato']}</p>
+  DESCRIPTION
+
+  company = Company.where(name: row['name']).first_or_create!(description: description)
+  if row['email'].present?
+    emails = row['email'].split(';')
+    emails.each do |email|
+      puts email
+      company.emails.create! email: email.strip, email_type_id: email_type_id
+    end
+  end
+  company.phones.create! phone: row['phone'], phone_type_id: phone_type_id              if row['phone'].present?
+  company.addresses.create! address: row['address'], address_type_id: address_type_id   if row['address'].present?
+  company.people.create! full_name: row['contact_person']                      if row['contact_person'].present?
+end
+
+
