@@ -33,8 +33,7 @@ GEM
       rake
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
-    bootstrap-sass (2.3.1.2)
-      sass (~> 3.2)
+    bootstrap-sass (2.0.4.2)
     builder (3.0.4)
     cancan (1.6.10)
     capistrano (2.15.4)
@@ -142,7 +141,7 @@ GEM
       treetop (~> 1.4.8)
     method_source (0.8.1)
     mime-types (1.23)
-    multi_json (1.7.4)
+    multi_json (1.7.5)
     multipart-post (1.2.0)
     net-scp (1.1.1)
       net-ssh (>= 2.6.5)
@@ -279,7 +278,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate (>= 2.5.0)
-  bootstrap-sass
+  bootstrap-sass (~> 2.0.4.0)
   cancan
   capistrano
   capybara
