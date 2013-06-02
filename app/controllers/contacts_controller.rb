@@ -16,8 +16,8 @@ class ContactsController < ApplicationController
       @people = @people.by_name(params[:by_name])
     end
     
-    @contacts = @companies.where("name like ?", "%#{params[:q]}%") +
-                @people.where("firstname like ? or lastname like ?", "%#{params[:q]}%", "%#{params[:q]}%")
+    @contacts = @companies.where('name like ?', "%#{params[:q]}%") +
+                @people.where('full_name like ?', "%#{params[:q]}%")
 
     respond_to do |format|
       format.html

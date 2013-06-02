@@ -12,6 +12,7 @@
 #  updated_at      :datetime         not null
 #  contact_type_id :integer
 #  image           :string(255)
+#  full_name       :string(255)
 #
 
 class Person < ActiveRecord::Base
@@ -37,14 +38,14 @@ class Person < ActiveRecord::Base
   
   attr_accessible :company_id, :company_name, 
                   :description, :firstname, 
-                  :job, :lastname, 
+                  :job, :lastname, :full_name,
                   :emails_attributes, :phones_attributes,
                   :contact_type_id, :image, 
                   :remove_image, :addresses_attributes
                   
-  validates :firstname, :lastname, presence: true
+  validates_presence_of :full_name
   
-  scope :by_name, lambda {|name| where("firstname like ? OR lastname like ?", "#{name}%", "#{name}%")}
+  scope :by_name, lambda {|name| where('full_name like ?', name)}
 
 # Attributes to import
   def self.import_columns

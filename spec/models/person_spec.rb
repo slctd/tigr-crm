@@ -12,6 +12,7 @@
 #  updated_at      :datetime         not null
 #  contact_type_id :integer
 #  image           :string(255)
+#  full_name       :string(255)
 #
 
 require 'spec_helper'
