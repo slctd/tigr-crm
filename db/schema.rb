@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130601103610) do
+ActiveRecord::Schema.define(:version => 20130603050612) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address"
@@ -188,9 +188,9 @@ ActiveRecord::Schema.define(:version => 20130601103610) do
     t.integer  "deal_id"
     t.string   "name"
     t.integer  "task_type_id"
-    t.string   "description"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.text     "description",   :limit => 255
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.date     "deadline_date"
     t.integer  "user_id"
   end

@@ -6,7 +6,7 @@ set_default(:postgresql_database) { "#{application}_production" }
 namespace :postgresql do
   desc "Install the latest stable release of PostgreSQL."
   task :install, roles: :db, only: {primary: true} do
-    #run "#{sudo} add-apt-repository ppa:pitti/postgresql"
+    #run "#{sudo} add-apt-repository ppa:pitti/postgresql -y"
     #run "#{sudo} apt-get -y update"
     run "#{sudo} apt-get -y install postgresql libpq-dev"
   end
