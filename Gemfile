@@ -80,3 +80,5 @@ gem 'capistrano'
 gem 'annotate', '>=2.5.0'
 gem 'russian'
 gem 'whenever', require: false
+
+gem 'newrelic_rpm'

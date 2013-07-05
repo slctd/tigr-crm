@@ -17,7 +17,7 @@ require 'whenever/capistrano'
 
 set :user, config['CAP_USER']
 set :application, config['CAP_APP_NAME']
-set :deploy_to, "/home/#{user}/web-app"
+set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
 
