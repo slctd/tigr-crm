@@ -1,3 +1,4 @@
+# encoding: utf-8
 Type.destroy_all
 Stage.destroy_all
 Currency.destroy_all
