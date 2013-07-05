@@ -12,6 +12,9 @@ load "config/recipes/check"
 
 server config['CAP_SERVER'], :web, :app, :db, primary: true
 
+set :whenever_command, 'bundle exec whenever'
+require 'whenever/capistrano'
+
 set :user, config['CAP_USER']
 set :application, config['CAP_APP_NAME']
 set :deploy_to, "/home/#{user}/web-app"
