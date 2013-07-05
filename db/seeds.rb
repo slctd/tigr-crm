@@ -20,7 +20,14 @@ admin = User.create!(
 admin.toggle!(:admin)
 
 User.current = admin
-#
+
+User.create!(
+    name: 'Demo',
+    email: 'demo@example.com',
+    password: 'demodemo',
+    password_confirmation: 'demodemo'
+)
+
 types = I18n.t 'types'
 
 types.each do |type|
