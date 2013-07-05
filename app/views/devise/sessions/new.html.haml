@@ -7,6 +7,14 @@
         = f.input :email, :required => false, :autofocus => true
         = f.input :password, :required => false
         = f.button :submit, t('.sign_in')
+      %p
+        %b Администартор
+        %p Логин: admin@example.com
+        %p Пароль: password
+      %p
+        %b Пользователь
+        %p Логин: demo@example.com
+        %p Пароль: password
     .span6        
       = t('.sign_in_with')
       %div

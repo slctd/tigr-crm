@@ -9,13 +9,13 @@ ActionType.create!(name: 'create')
 ActionType.create!(name: 'update')
 ActionType.create!(name: 'destroy')
 
-User.where(email: 'admin@example.com').destroy_all
+User.destroy_all
 
 admin = User.create!(
   name: 'Administrator',
   email: 'admin@example.com',
-  password: 'qwerty',
-  password_confirmation: 'qwerty'
+  password: 'password',
+  password_confirmation: 'password'
 )
 admin.toggle!(:admin)
 
@@ -24,8 +24,8 @@ User.current = admin
 User.create!(
     name: 'Demo',
     email: 'demo@example.com',
-    password: 'demodemo',
-    password_confirmation: 'demodemo'
+    password: 'password',
+    password_confirmation: 'password'
 )
 
 types = I18n.t 'types'
