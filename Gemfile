@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.14'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -30,7 +30,7 @@ end
 group :development do
   gem 'rspec-rails'
   gem 'guard-rspec'
-  gem 'localtunnel'
+  gem 'quiet_assets'
   gem 'letter_opener'
 end
 
@@ -53,6 +53,7 @@ gem 'haml-rails'
 gem 'devise'
 gem 'cancan'
 gem 'simple_form'
+gem 'kaminari-bootstrap', '~> 0.1.3'
 gem 'faker'
 gem 'rmagick'
 gem 'carrierwave'

@@ -8,6 +8,11 @@
 
 = render 'filter_form'
 
+= paginate @contacts
+
 %table.table.contacts
-  = render @companies
-  = render @people
+  -#= render @companies
+  -#= render @people
+  = render @contacts
+
+= paginate @contacts

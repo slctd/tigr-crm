@@ -9,7 +9,7 @@ class ContactsController < ApplicationController
   
   def index
     @companies = Company.order(:name)
-    @people = Person.order(:firstname)
+    @people = Person.order(:full_name)
     
     if params[:by_name].present?
       @companies = @companies.by_name(params[:by_name])
@@ -18,6 +18,8 @@ class ContactsController < ApplicationController
     
     @contacts = @companies.where('name like ?', "%#{params[:q]}%") +
                 @people.where('full_name like ?', "%#{params[:q]}%")
+
+    @contacts = Kaminari.paginate_array(@contacts).page(params[:page]).per(20)
 
     respond_to do |format|
       format.html

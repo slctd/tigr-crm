@@ -141,7 +141,7 @@ CSV.foreach('db/seeds/companies.csv', headers: true) do |row|
   end
   company.phones.create! phone: row['phone'], phone_type_id: phone_type_id              if row['phone'].present?
   company.addresses.create! address: row['address'], address_type_id: address_type_id   if row['address'].present?
-  company.people.create! full_name: row['contact_person']                      if row['contact_person'].present?
+  company.people.where(full_name: row['contact_person']).first_or_create!                      if row['contact_person'].present?
 end
 
 
