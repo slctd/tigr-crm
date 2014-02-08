@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Сделки">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Название</Data></Cell>
+        <Cell><Data ss:Type="String">Контакт</Data></Cell>
+        <Cell><Data ss:Type="String">Описание</Data></Cell>
+        <Cell><Data ss:Type="String">Валюта</Data></Cell>
+        <Cell><Data ss:Type="String">Бюджет</Data></Cell>
+        <Cell><Data ss:Type="String">Тип бюджета</Data></Cell>
+        <Cell><Data ss:Type="String">Дата закрытия</Data></Cell>
+        <Cell><Data ss:Type="String">Ответственное лицо</Data></Cell>
+        <Cell><Data ss:Type="String">Стадия</Data></Cell>
+        <Cell><Data ss:Type="String">Вероятность успеха</Data></Cell>
+      </Row>
+      <% @deals.each do |deal| %>
+          <Row>
+            <Cell><Data ss:Type="String"><%= deal.name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= deal.contact_name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= Sanitize.clean(deal.description) %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= deal.currency_name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= deal.budget %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= deal.budget_type_name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= deal.closing_date %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= deal.user_email %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= deal.stage_name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= deal.success_probability %></Data></Cell>
+          </Row>
+      <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

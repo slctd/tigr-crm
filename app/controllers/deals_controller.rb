@@ -17,6 +17,7 @@ class DealsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { render text: Deal.to_csv }
+      format.xls
     end
   end
   

@@ -2,7 +2,7 @@
 .buttons-panel
   = link_to t(".new_deal"), new_deal_path, class: "add"
   = link_to t("import.title"), deals_import_step_1_path, class: "import"
-  = link_to t('.export'), deals_path(format: 'csv'), class: "export"
+  = link_to t('.export'), deals_path(format: 'xls'), class: "export"
 
 = render 'filter_form'
 
