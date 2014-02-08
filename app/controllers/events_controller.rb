@@ -17,6 +17,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { render text: Event.to_csv }
+      format.xls
     end
   end
   
