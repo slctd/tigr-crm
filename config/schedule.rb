@@ -21,5 +21,5 @@ set :output, "#{path}/log/cron.log"
 # Learn more: http://github.com/javan/whenever
 
 every 1.day do
-  rake 'db:seed'
+  rake 'db:reset'
 end

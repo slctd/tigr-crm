@@ -56,4 +56,16 @@ class Company < ActiveRecord::Base
   def id_with_class_name
     "#{id}_#{self.class.name}"
   end
+
+  def email
+    emails.map(&:email).join('; ')
+  end
+
+  def phone
+    phones.map(&:phone).join('; ')
+  end
+
+  def address
+    addresses.map(&:address).join('; ')
+  end
 end

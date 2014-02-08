@@ -1,10 +1,10 @@
 # encoding: utf-8
-Type.destroy_all
-Stage.destroy_all
-Currency.destroy_all
-Deal.destroy_all
-Task.destroy_all
-Company.destroy_all
+#Type.destroy_all
+#Stage.destroy_all
+#Currency.destroy_all
+#Deal.destroy_all
+#Task.destroy_all
+#Company.destroy_all
 
 ActionType.create!(name: 'create')
 ActionType.create!(name: 'update')

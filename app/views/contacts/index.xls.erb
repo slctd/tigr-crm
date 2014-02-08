@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Компании">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Название компании</Data></Cell>
+        <Cell><Data ss:Type="String">E-mail</Data></Cell>
+        <Cell><Data ss:Type="String">Телефон</Data></Cell>
+        <Cell><Data ss:Type="String">Адрес</Data></Cell>
+      </Row>
+      <% @companies.each do |company| %>
+          <Row>
+            <Cell><Data ss:Type="String"><%= company.name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= company.email %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= company.phone %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= company.address %></Data></Cell>
+
+          </Row>
+      <% end %>
+    </Table>
+  </Worksheet>
+  <Worksheet ss:Name="Люди">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Компания</Data></Cell>
+        <Cell><Data ss:Type="String">ФИО</Data></Cell>
+        <Cell><Data ss:Type="String">E-mail</Data></Cell>
+        <Cell><Data ss:Type="String">Телефон</Data></Cell>
+        <Cell><Data ss:Type="String">Адрес</Data></Cell>
+      </Row>
+      <% @people.each do |person| %>
+          <Row>
+            <Cell><Data ss:Type="String"><%= person.company_name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= person.full_name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= person.email %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= person.phone %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= person.address %></Data></Cell>
+          </Row>
+      <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

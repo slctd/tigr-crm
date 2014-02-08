@@ -1,4 +1,4 @@
-config = YAML.load(File.read(File.expand_path('../deployer-demo.yml', __FILE__)))
+config = YAML.load(File.read(File.expand_path('../../deployer-demo.yml', __FILE__)))
 
 require "bundler/capistrano"
 

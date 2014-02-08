@@ -25,6 +25,7 @@ class ContactsController < ApplicationController
       format.html
       format.json { render }
       format.csv { render text: Contact.to_csv }
+      format.xls
     end
   end
 end
