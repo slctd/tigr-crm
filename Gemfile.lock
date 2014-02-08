@@ -247,6 +247,8 @@ GEM
     rubyzip (0.9.9)
     russian (0.6.0)
       i18n (>= 0.5.0)
+    sanitize (2.0.6)
+      nokogiri (>= 1.4.4)
     sass (3.2.9)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -327,6 +329,7 @@ DEPENDENCIES
   rspec-rails
   rubyzip
   russian
+  sanitize
   sass-rails (~> 3.2.3)
   simple_form
   spork

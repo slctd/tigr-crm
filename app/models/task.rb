@@ -78,6 +78,18 @@ class Task < ActiveRecord::Base
     }
   end
 
+  def task_name
+    I18n.t("types.task.#{self.task_type.name}")
+  end
+
+  def contact_name
+    self.taskable.present? ? self.taskable.name : ''
+  end
+
+  def user_email
+    user.email
+  end
+
   def self.to_csv
     columns = [:name, :task_type, :description, :contact, :deadline_date, :user]
     CSV.generate do |csv|

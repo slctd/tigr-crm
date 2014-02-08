@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Задачи">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Название</Data></Cell>
+        <Cell><Data ss:Type="String">Тип задания</Data></Cell>
+        <Cell><Data ss:Type="String">Описание</Data></Cell>
+        <Cell><Data ss:Type="String">Контакт</Data></Cell>
+        <Cell><Data ss:Type="String">Срок выполнения</Data></Cell>
+        <Cell><Data ss:Type="String">Назначить на</Data></Cell>
+      </Row>
+      <% @tasks.each do |task| %>
+          <Row>
+            <Cell><Data ss:Type="String"><%= task.name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= task.task_name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= Sanitize.clean(task.description) %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= task.contact_name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= task.deadline_date %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= task.user_email %></Data></Cell>
+          </Row>
+      <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

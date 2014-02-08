@@ -176,10 +176,10 @@ ru:
       task:
         name: Название
         task_type: Тип задания
-        deadline_date: Срок выполнения
-        user: Назначить на
         description: Описание
         contact: Контакт
+        deadline_date: Срок выполнения
+        user: Назначить на
       user:
         email: Email
         name: Имя
