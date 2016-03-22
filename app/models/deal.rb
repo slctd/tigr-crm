@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: deals
+#
+#  id                  :integer          not null, primary key
+#  dealable_id         :integer
+#  dealable_type       :string(255)
+#  name                :string(255)
+#  description         :text
+#  currency_id         :integer
+#  budget              :decimal(, )
+#  budget_type_id      :integer
+#  closing_date        :date
+#  stage_id            :integer
+#  success_probability :integer
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  user_id             :integer
+#
+
 class Deal < ActiveRecord::Base
   attr_accessor :contact
   
@@ -122,6 +142,26 @@ class Deal < ActiveRecord::Base
     end    
   end
 
+  def budget_type_name
+    self.budget_type.present? ? I18n.t("types.budget.#{self.budget_type.name}") : ''
+  end
+
+  def contact_name
+    self.dealable.present? ? self.dealable.name : ''
+  end
+
+  def currency_name
+    currency.name
+  end
+
+  def user_email
+    user.email
+  end
+
+  def stage_name
+    I18n.t("stages.#{self.stage.name}")
+  end
+
   def self.to_csv
     columns = [:name, :contact, :description, :currency, :budget, :budget_type, :closing_date, :user, :stage, :success_probability]
     CSV.generate do |csv|
@@ -135,7 +175,7 @@ class Deal < ActiveRecord::Base
         fields << deal.description
         fields << deal.currency.name
         fields << deal.budget || ""
-        fields << I18n.t("types.budget.#{deal.budget_type.name}")
+        fields << deal.budget_type_name
         fields << deal.closing_date
         fields << deal.user.email
         fields << I18n.t("stages.#{deal.stage.name}")

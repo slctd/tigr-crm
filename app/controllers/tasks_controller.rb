@@ -17,6 +17,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { render text: Task.to_csv }
+      format.xls
     end
   end
   

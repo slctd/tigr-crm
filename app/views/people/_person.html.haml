@@ -1,7 +1,7 @@
 %tr
   %td.image= image_tag person.image_url(:thumb)
   %td
-    = link_to person.name, person
+    = link_to person.full_name, person
     - if person.company.present?
       .person_company
         = t(".company")

@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: people
+#
+#  id              :integer          not null, primary key
+#  firstname       :string(255)
+#  lastname        :string(255)
+#  company_id      :integer
+#  job             :string(255)
+#  description     :text
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  contact_type_id :integer
+#  image           :string(255)
+#  full_name       :string(255)
+#
+
 class Person < ActiveRecord::Base
   scope :free, where(company_id: nil)
   
@@ -21,14 +38,14 @@ class Person < ActiveRecord::Base
   
   attr_accessible :company_id, :company_name, 
                   :description, :firstname, 
-                  :job, :lastname, 
+                  :job, :lastname, :full_name,
                   :emails_attributes, :phones_attributes,
                   :contact_type_id, :image, 
                   :remove_image, :addresses_attributes
                   
-  validates :firstname, :lastname, presence: true
+  validates_presence_of :full_name
   
-  scope :by_name, lambda {|name| where("firstname like ? OR lastname like ?", "#{name}%", "#{name}%")}
+  scope :by_name, lambda {|name| where('full_name like ?', name)}
 
 # Attributes to import
   def self.import_columns
@@ -58,5 +75,17 @@ class Person < ActiveRecord::Base
   
   def id_with_class_name
     "#{id}_#{self.class.name}"
+  end
+
+  def email
+    emails.map(&:email).join('; ')
+  end
+
+  def phone
+    phones.map(&:phone).join('; ')
+  end
+
+  def address
+    addresses.map(&:address).join('; ')
   end
 end

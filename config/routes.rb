@@ -53,9 +53,10 @@ Crm::Application.routes.draw do
     end
   
     resources :authentications, only: [:destroy]
-    match '/auth/:provider/callback' => 'authentications#create'
-    
-    devise_for :users
+    #match '/auth/:provider/callback' => 'authentications#create'
+
+    devise_for :users, path_names: {sign_in: 'login', sign_out: 'logout'}, controllers: {omniauth_callbacks: 'omniauth_callbacks'}
+
     resources :users, only: [:edit, :update]
     get '/profile' => 'users#profile', as: 'profile'
     

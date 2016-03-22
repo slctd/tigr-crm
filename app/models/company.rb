@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: companies
+#
+#  id              :integer          not null, primary key
+#  name            :string(255)
+#  description     :text
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  contact_type_id :integer
+#  image           :string(255)
+#
+
 class Company < ActiveRecord::Base
   has_many :people
   has_many :emails, as: :emailable, inverse_of: :emailable, dependent: :destroy
@@ -42,5 +55,17 @@ class Company < ActiveRecord::Base
                   
   def id_with_class_name
     "#{id}_#{self.class.name}"
+  end
+
+  def email
+    emails.map(&:email).join('; ')
+  end
+
+  def phone
+    phones.map(&:phone).join('; ')
+  end
+
+  def address
+    addresses.map(&:address).join('; ')
   end
 end

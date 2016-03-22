@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: tasks
+#
+#  id            :integer          not null, primary key
+#  taskable_id   :integer
+#  taskable_type :string(255)
+#  event_id      :integer
+#  deal_id       :integer
+#  name          :string(255)
+#  task_type_id  :integer
+#  description   :text(255)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  deadline_date :date
+#  user_id       :integer
+#
+
 class Task < ActiveRecord::Base
   attr_accessor :contact
   
@@ -58,6 +76,18 @@ class Task < ActiveRecord::Base
         default: TaskType.find_by_name('note')
       }
     }
+  end
+
+  def task_name
+    I18n.t("types.task.#{self.task_type.name}")
+  end
+
+  def contact_name
+    self.taskable.present? ? self.taskable.name : ''
+  end
+
+  def user_email
+    user.email
   end
 
   def self.to_csv

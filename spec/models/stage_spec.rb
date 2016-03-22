@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: stages
+#
+#  id                  :integer          not null, primary key
+#  name                :string(255)
+#  success_probability :integer
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#
+
 require 'spec_helper'
 
 describe Stage do

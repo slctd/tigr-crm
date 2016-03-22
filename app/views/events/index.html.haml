@@ -2,7 +2,7 @@
 .buttons-panel
   = link_to t(".new_event"), new_event_path, class: "add"
   = link_to t("import.title"), events_import_step_1_path, class: "import"
-  = link_to t('.export'), events_path(format: 'csv'), class: "export"
+  = link_to t('.export'), events_path(format: 'xls'), class: "export"
 
 = render 'filter_form'
 

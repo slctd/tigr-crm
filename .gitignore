@@ -16,7 +16,10 @@ rerun.txt
 pickle-email-*.html
 *~
 /config/database.yml
-/config/oauth.yml
-/config/deploy.rb
+config/omniauth.yml
+config/deployer.yml
+config/deployer-demo.yml
+config/custom.yml
 .DS_Store
 /public/export/
+.idea/

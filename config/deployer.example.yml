@@ -1,0 +1,4 @@
+CAP_USER: deployer
+CAP_SERVER: example.com
+CAP_APP_NAME: example
+CAP_GIT_REPO: git@github.com:example/example.git
