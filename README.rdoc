@@ -6,5 +6,8 @@ Credits:
 
 Project Leader - Sergey Smirnov https://github.com/sergous
 
-Rails Developer - Alexander Borovykh https://github.com/ImmaculatePine
+Rails Developers:
 
+Alexander Borovykh https://github.com/ImmaculatePine
+
+Artur Trofimov https://github.com/arturtr
