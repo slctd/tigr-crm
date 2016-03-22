@@ -2,3 +2,5 @@
 
 This is a CRM project by SLCTD.
 And this is just a test readme file. Someday it will be rewritten.
+
+Credits:
