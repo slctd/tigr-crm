@@ -1,6 +1,6 @@
 {
   "name": "Tigr CRM",
   "tagline": "Ruby on Rails Web CRM with social networks integration.",
-  "body": "Open Source Web CRM Open Source project by SLCTD team.\r\n\r\nTeam:\r\n\r\nProject Leader - [Sergey Smirnov](https://github.com/sergous)\r\n\r\nRails Developer - [Alexander Borovykh](https://github.com/ImmaculatePine)\r\n\r\nRails Developer - [Artur Trofimov](https://github.com/arturtr)\r\n",
+  "body": "Web CRM Open Source project by SLCTD team.\r\n\r\n## Demo \r\n[Heroku Demo Site](http://tigr-crm.herokuapp.com/)\r\n\r\nLicense - Open Source [GPL3](https://github.com/slctd/tigr-crm/blob/master/LICENSE.txt).\r\nPlease feel free to fork and commit.\r\n\r\n## Team:\r\n\r\nProject Leader - [Sergey Smirnov](https://github.com/sergous)\r\n\r\nRails Developer - [Alexander Borovykh](https://github.com/ImmaculatePine)\r\n\r\nRails Developer - [Artur Trofimov](https://github.com/arturtr)\r\n\r\nAdministrator - Alex Kanogin.",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
