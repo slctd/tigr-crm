@@ -1,6 +1,8 @@
-== Tigr-CRM
+== Tigr CRM
 
-This is a CRM project by SLCTD.
-And this is just a test readme file. Someday it will be rewritten.
+Open Source Web CRM project by SLCTD.
 
 Credits:
+Project Leader - Sergey Smirnov https://github.com/sergous
+Rails Developer - Alexander Borovykh https://github.com/ImmaculatePine
+
